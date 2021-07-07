@@ -1,0 +1,31 @@
+header {
+  background-color: #37718E;
+}
+
+nav {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px !important;
+}
+
+.nav-link, .navbar-brand {
+  color: #FFFFFF;
+  padding: 20px !important;
+  line-height: 30px;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+  color: #FFFFFF;
+  background-color: #2E607F;
+}
+
+
+@media (max-width: 800px) {
+  
+  nav {
+    padding: 0;
+    width: 100%;
+  }
+
+}
