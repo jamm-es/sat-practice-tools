@@ -13,6 +13,7 @@ nav {
   color: #FFFFFF;
   padding: 20px !important;
   line-height: 30px;
+  height: 70px;
 }
 
 .nav-link:hover, .navbar-brand:hover {

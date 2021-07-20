@@ -1,0 +1,14 @@
+.test-view-container {
+  display: grid;
+  grid-template-columns: auto 400px;
+}
+
+.test-view-pdf {
+  grid-column: 1;
+}
+
+.test-view-grade {
+  grid-column: 2;
+  padding: 40px;
+  height: calc(100vh - 70px);
+}

@@ -1,0 +1,74 @@
+.section-wrapper {
+  margin-bottom: 40px;
+}
+
+.section-title-segment {
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+  user-select: none;
+}
+
+.section-collapse-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.section-title-segment > h2 {
+  display: inline-block;
+  color: #EADEDA;
+  background-color: #648DA1;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 10px;
+  margin-top: 0;
+  vertical-align: middle;
+  height: 50px;
+}
+
+.section-title-segment > div {
+  display: inline-block;
+  background-color: #648DA1;
+  width: 50px;
+  height: 50px;
+  margin-top: 0;
+  vertical-align: middle;
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+  position: relative;
+  right: 0.5px;
+}
+
+.section-title-bottom {
+  display: block;
+  position: relative;
+  height: 15px;
+  background-color: #648DA1;
+  margin-top: -15px;
+  top: 50px;
+  z-index: 0;
+}
+
+.section {
+  background-color: #E0D5CF;
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.section-columns {
+  column-gap: 2px;
+  column-rule: 2px solid #B5AEA4;
+  margin-bottom: 40px;
+}
+
+.section-compact-collapse-tab {
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  background-color: #E0D5CF;
+  text-align: center;
+}

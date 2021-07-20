@@ -1,0 +1,81 @@
+.grade-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.grade-footer-compact {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.grade-footer-aligner {
+  display: inline-flex;
+  align-items: center;
+}
+
+.grade-footer-compact .grade-footer-aligner {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.grade-footer-compact .grade-footer-aligner:not(:last-of-type) > * {
+  margin-bottom: 20px;
+}
+
+.grade-footer-score {
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.grade-footer-score-numbers-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.grade-footer-score-main {
+  padding: 10px;
+  background-color: #D5CBC4;
+  border: 2px solid #B5AEA4;
+  color: #37718E;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 80px;
+  text-align: center;
+
+}
+
+.grade-footer-score-raw .grade-footer-score-main {
+  width: 60px;
+}
+
+.grade-footer-correct {
+  color: #538D5C;
+}
+
+.grade-footer-score-range {
+  color: #423E38;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.grade-button {
+  background-color: #65A46D;
+  outline-color: none;
+  color: #EADEDA;
+  font-size: 20px;
+  text-align: right;
+}
+
+.grade-button:hover {
+  background-color: #538D5C;
+  color: #EADEDA;
+}
+
+.grade-button:disabled {
+  background-color: #6C675F;
+}

@@ -3,9 +3,8 @@ footer {
   color: #BFB8AD;
   text-align: center;
   font-size: 15px;
-  margin-bottom: 15px;
   background-color: #393E3B;
-  padding-top: 15px;
+  padding: 20px 0
 }
 
 footer * {

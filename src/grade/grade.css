@@ -1,0 +1,26 @@
+.btn-grade {
+  background-color: #65A46D;
+  color: #EADEDA;
+}
+
+.btn-grade:hover {
+  background-color: #538D5C;
+}
+
+.grade-final {
+  margin-top: 40px;
+}
+
+.grade-final .grade-footer-score-numbers-wrapper {
+  /*align-items: flex-end;*/
+}
+
+.grade-final .grade-footer-score-main {
+  font-size: 40px;
+  line-height: 40px;
+  width: 130px;
+}
+
+.grade-final .grade-footer-score-range {
+  
+}
