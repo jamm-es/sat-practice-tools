@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Overlay, Popover } from 'react-bootstrap';
 
 import './question.css';
 
@@ -7,9 +8,11 @@ export default class Question extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.highlightRef = React.createRef();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.props.graded !== nextProps.graded || this.props.userAnswer !== nextProps.userAnswer;
   }
 
@@ -48,99 +51,124 @@ export default class Question extends React.Component {
     this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, processedOutput);
   }
 
-  grade() {
-    if(!this.props.graded) {
-      this.props.handleGradedQuestionChange(this.props.sectionName, this.props.questionNumber);
+  handleBackgroundClick(e) {
+    e.preventDefault();
+    console.log('background click', e.currentTarget);
+    console.log('background click', e.target === e.currentTarget || this.props.graded)
+    if(e.target === e.currentTarget || this.props.graded) {
+      this.props.handleShowAnswer(this.props.sectionName, this.props.questionNumber, this.highlightRef.current)
     }
   }
 
+  handleOtherClick(e) {
+    e.preventDefault();
+    console.log('other click', e.currentTarget)
+    this.props.handleShowAnswer(this.props.sectionName, this.props.questionNumber, this.highlightRef.current)
+  }
+
   render() {
-    return (
-      <div className={`question ${this.props.graded ? 'question-graded' : ''} ${this.props.doHighlightBackground ? 'question-highlight-background' : ''}`}>
+    return <div 
+      className={`question ${this.props.graded ? 'question-graded' : ''}`} 
+    >
 
-        <span className='question-number'>
-          {this.props.questionNumber}:
-        </span>
-        
-        <div className='question-divider' />
-
-        {(() => {
-          if(this.props.type === 'mcq') {
-            return <>
-              <input className='question-text' value={this.props.userAnswer}
-                onChange={this.handleMCQInput.bind(this)}
-                disabled={this.props.graded}
-                ref={this.props.myRef}
-                placeholder={['A', 'B', 'C', 'D'][(this.props.questionNumber-1) % 4]}
-              ></input>{/* user answer text box*/}
-
-              <div className='question-divider' />
-              
-              <div 
-                className='question-radio-selecter'
-                onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'A');}}
-              >
-                <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`}>
-                  A
-                </div>
-              </div>
-              <div 
-                className='question-radio-selecter'
-                onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'B');}}
-              >
-                <div className={`question-radio ${this.props.userAnswer === 'B' ? 'question-radio-selected' : ''}`}>
-                  B
-                </div>
-              </div>
-              <div 
-                className='question-radio-selecter'
-                onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'C');}}
-              >
-                <div className={`question-radio ${this.props.userAnswer === 'C' ? 'question-radio-selected' : ''}`}>
-                  C
-                </div>
-              </div>
-              <div 
-                className='question-radio-selecter'
-                onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'D');}}
-              >
-                <div className={`question-radio ${this.props.userAnswer === 'D' ? 'question-radio-selected' : ''}`}>
-                  D
-                </div>
-              </div>
-
-            </>  
-          }
-          else if(this.props.type === 'saq') {
-            return <>
-              <input className='question-text question-saq' 
-                value={this.props.userAnswer}
-                placeholder='23/7'
-                maxLength={4}
-                onChange={this.handleSAQInput.bind(this)}
-                disabled={this.props.graded}
-                ref={this.props.myRef}
-              />
-            </>
-          }
-        })()}
-        
-        
-
-        <div className='question-divider' />
-
-        <div className='question-check' onClick={this.grade.bind(this)}>
-          {
-            !this.props.graded ?
-            <span className='fas fa-edit' /> :
-            this.props.correct ?
-            <span className='question-check-right fas fa-check'/> :
-            <span className='question-check-wrong'>{this.props.answer}</span>
-          }
-        </div>
-        <input className='question-text' disabled></input> {/* user answer text box*/}
+      <div
+        className={`question-background ${this.props.doHighlightBackground ? 'question-background-accent' : ''}`}
+        onClick={this.handleBackgroundClick.bind(this)}
+      >
       </div>
-    );
+      <div
+        className={'question-select-highlight'}
+        ref={this.highlightRef}
+      >
+      </div>
+
+      <span 
+        className='question-number'
+        onClick={this.handleOtherClick.bind(this)}
+      >
+        {this.props.questionNumber}:
+      </span>
+      
+      <div className='question-divider' />
+
+      {(() => {
+        if(this.props.type === 'mcq') {
+          return <>
+            <input className='question-text' value={this.props.userAnswer}
+              onChange={this.handleMCQInput.bind(this)}
+              disabled={this.props.graded}
+              ref={this.props.myRef}
+              placeholder={['A', 'B', 'C', 'D'][(this.props.questionNumber-1) % 4]}
+            ></input>{/* user answer text box*/}
+
+            <div className='question-divider' />
+            
+            <div 
+              className='question-radio-selecter'
+              onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'A');}}
+            >
+              <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`}>
+                A
+              </div>
+            </div>
+            <div 
+              className='question-radio-selecter'
+              onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'B');}}
+            >
+              <div className={`question-radio ${this.props.userAnswer === 'B' ? 'question-radio-selected' : ''}`}>
+                B
+              </div>
+            </div>
+            <div 
+              className='question-radio-selecter'
+              onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'C');}}
+            >
+              <div className={`question-radio ${this.props.userAnswer === 'C' ? 'question-radio-selected' : ''}`}>
+                C
+              </div>
+            </div>
+            <div 
+              className='question-radio-selecter'
+              onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'D');}}
+            >
+              <div className={`question-radio ${this.props.userAnswer === 'D' ? 'question-radio-selected' : ''}`}>
+                D
+              </div>
+            </div>
+
+          </>  
+        }
+        else if(this.props.type === 'saq') {
+          return <>
+            <input className='question-text question-saq' 
+              value={this.props.userAnswer}
+              placeholder='23/7'
+              maxLength={4}
+              onChange={this.handleSAQInput.bind(this)}
+              disabled={this.props.graded}
+              ref={this.props.myRef}
+            />
+          </>
+        }
+      })()}
+      
+      
+
+      <div className='question-divider' />
+
+      <div 
+        className='question-check'
+        onClick={this.handleOtherClick.bind(this)}
+      >
+        {
+          !this.props.graded ?
+          <span className='question-check fas fa-ellipsis-h'/> :
+          this.props.correct ?
+          <span className='question-check-right fas fa-check'/> :
+          <div className='question-check-wrong'>{this.props.answer}</div>
+        }
+      </div>
+    </div>;
   }
 
 }
@@ -150,9 +178,10 @@ Question.propTypes = {
   sectionName: PropTypes.string,
   questionNumber: PropTypes.number,
   answer: PropTypes.string,
+  userAnswer: PropTypes.string,
   graded: PropTypes.bool,
-  answerExplanation: PropTypes.string,
   handleAnswerChange: PropTypes.func,
   handleGradedQuestionChange: PropTypes.func,
-  type: PropTypes.string
+  type: PropTypes.string,
+  handleShowAnswer: PropTypes.func
 }

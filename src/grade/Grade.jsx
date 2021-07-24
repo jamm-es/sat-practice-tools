@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import {csv} from 'd3';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import {Redirect} from 'react-router-dom';
 
 import {default as Section} from './Section';
+import {default as QuestionInfo} from './QuestionInfo';
+import {default as ScoreSummary} from './ScoreSummary';
 
 import './grade.css';
 import './footer.css';
@@ -36,6 +39,11 @@ export default class Grade extends React.Component {
       math_no_calc_num_correct: 0,
       reading_num_correct: 0,
       writing_num_correct: 0,
+      isQuestionInfoActive: false,
+      questionInfoSection: 'reading',
+      questionInfoIndex: 0,
+      oldHighlightedElement: undefined,
+      failedToLoad: false
     };
   }
 
@@ -53,21 +61,40 @@ export default class Grade extends React.Component {
           state[`${section}_correct`] = new Array(numQuestions).fill(false);
         });
         this.setState(state);
-      });
-    
-    for(const weights of this.weightsCategories) {
-      import(`../data/weights/${this.props.test}/${weights}.csv`)
-        .then(async weightsPath => {
-          const state = {};
-          const weightsData = await csv(weightsPath.default);
-          state[`${weights}_weights`] = [];
-          for(const weight of weightsData) {
-            state[`${weights}_weights`][weight.raw_score] = weight.weighted;
-          }
-          this.setState(state);
-        }
-      );
+      })
+      .catch(() => this.setState({ failedToLoad: true }));
+
+    if(this.props.thirdPartyMode) {
+      for(const weights of this.weightsCategories) {
+        import(`../data/weights/estimated/${weights}.csv`)
+          .then(async weightsPath => {
+            const state = {};
+            const weightsData = await csv(weightsPath.default);
+            state[`${weights}_weights`] = [];
+            for(const weight of weightsData) {
+              state[`${weights}_weights`][weight.raw_score] = weight.weighted;
+            }
+            this.setState(state);
+          })
+          .catch(() => this.setState({ failedToLoad: true }));
+      }
     }
+    else {
+      for(const weights of this.weightsCategories) {
+        import(`../data/weights/${this.props.test}/${weights}.csv`)
+          .then(async weightsPath => {
+            const state = {};
+            const weightsData = await csv(weightsPath.default);
+            state[`${weights}_weights`] = [];
+            for(const weight of weightsData) {
+              state[`${weights}_weights`][weight.raw_score] = weight.weighted;
+            }
+            this.setState(state);
+          })
+          .catch(() => this.setState({ failedToLoad: true }));
+      }
+    }
+
   }
 
   changeAnswers(section, questionNum, answer) {
@@ -93,7 +120,7 @@ export default class Grade extends React.Component {
   }
 
   changeGradedQuestion(section, i, gradeAnyways) {
-    if(!this.state.suppressModal && !gradeAnyways && this.state[`${section}_user_answers`][i-1] === '') {
+    if(!this.state.suppressModal && !gradeAnyways && this.state[`${section}_user_answers`][i] === '') {
       this.setState({
         showBlankAnswersModal: true,
         curSectionToGrade: section,
@@ -102,13 +129,13 @@ export default class Grade extends React.Component {
     }
     else {
       const state = {};
-      const isCorrect = this.gradeQuestion(this.state[`${section}_user_answers`][i-1], this.state[`${section}_questions`][i-1].answer, this.state[`${section}_questions`][i-1].type);
+      const isCorrect = this.gradeQuestion(this.state[`${section}_user_answers`][i], this.state[`${section}_questions`][i].answer, this.state[`${section}_questions`][i].type);
       state[`${section}_graded`] = [...this.state[`${section}_graded`]];
       state[`${section}_user_answers`] = [...this.state[`${section}_user_answers`]];
       state[`${section}_correct`] = [...this.state[`${section}_correct`]];
-      state[`${section}_graded`][i-1] = true;
-      state[`${section}_user_answers`][i-1] = this.state[`${section}_user_answers`][i-1] === '' ? '~' : this.state[`${section}_user_answers`][i-1];
-      state[`${section}_correct`][i-1] = isCorrect;
+      state[`${section}_graded`][i] = true;
+      state[`${section}_user_answers`][i] = this.state[`${section}_user_answers`][i] === '' ? '~' : this.state[`${section}_user_answers`][i-1];
+      state[`${section}_correct`][i] = isCorrect;
       this.setState(prevState => {
         state[`${section}_num_correct`] = prevState[`${section}_num_correct`] + (isCorrect ? 1 : 0); 
         return state
@@ -189,8 +216,31 @@ export default class Grade extends React.Component {
     }
   }
 
+  handleShowAnswer(section, questionNumber, element) {
+
+    if(typeof this.state.oldHighlightedElement !== 'undefined') {
+      this.state.oldHighlightedElement.classList.remove('active');
+    }
+
+    if(section === this.state.questionInfoSection && questionNumber-1 === this.state.questionInfoIndex && this.state.isQuestionInfoActive) {
+      this.setState({ isQuestionInfoActive: false });
+    }
+    else {
+      element.classList.add('active');
+      this.setState(prevState => ({ 
+        questionInfoSection: section,
+        questionInfoIndex: questionNumber-1,
+        oldHighlightedElement: element,
+        isQuestionInfoActive: true
+      }));
+    }
+  }
+
   render() {
-    console.log(this.props.numColumns);
+    if(this.state.failedToLoad) return <Redirect to='/not-found' />
+
+    if(typeof this.state['reading_questions'] === 'undefined') return <></>;
+
     const weightedSections = {};
     for(let section of this.state.sections) {
       let weighted = '?';
@@ -205,120 +255,90 @@ export default class Grade extends React.Component {
       weightedSections[section] = weighted;
     }
 
-    let englishSectionWeighted = '?';
-    if(typeof this.state['reading_graded'] !== 'undefined') {
-      englishSectionWeighted = this.state[`reading_graded`].some(d => d) || this.state[`writing_graded`].some(d => d)
-        ? weightedSections['reading'] + weightedSections['writing']
-        : '?';
-    }
+    const englishSectionWeighted = this.state[`reading_graded`].some(d => d) || this.state[`writing_graded`].some(d => d)
+      ? weightedSections['reading'] + weightedSections['writing']
+      : '?';
+    
     const mathSectionWeighted = weightedSections['math_calc']
 
     const overallWeighted = englishSectionWeighted !== '?' &&  mathSectionWeighted !== '?' ? englishSectionWeighted + mathSectionWeighted : '?';
 
-    return (
-      <div>
-        {this.state.sections.map(section => 
-          <Section 
-            key={section}
-            sectionName={section}
-            questions={this.state[`${section}_questions`]} 
-            userAnswer={this.state[`${section}_user_answers`]}
-            graded={this.state[`${section}_graded`]}
-            correct={this.state[`${section}_correct`]}
-            handleAnswerChange={this.changeAnswers.bind(this)}
-            handleGradedQuestionChange={this.changeGradedQuestion.bind(this)}
-            handleGradedSectionChange={this.changeGradedSection.bind(this)}
-            numCorrect={this.state[`${section}_num_correct`]}
-            numAnswered={this.state[`${section}_num_answered`]}
-            weighted={weightedSections[section]}
-            shouldRerender={section === this.state.rerenderSection}
-            numColumns={this.props.numColumns}
-            compactMode={this.props.compactMode}
-          />
-        )}
-        <div className={`grade-footer ${this.props.compactMode ? 'grade-footer-compact' : ''}`}>
-          <div className='grade-footer-aligner' style={{textAlign: 'left'}}>
-            <div className='grade-footer-score'>
-              <div>
-                Reading/Writing:
-              </div>
-              <div className='grade-footer-score-numbers-wrapper'>
-                <div className='grade-footer-score-main'>
-                  {englishSectionWeighted}
-                </div>
-                <div className='grade-footer-score-range'>
-                  <div>200 to</div>
-                  <div>800</div>
-                </div>
-              </div>
-            </div>
-            <div className='grade-footer-score'>
-              <div>
-                Math:
-              </div>
-              <div className='grade-footer-score-numbers-wrapper'>
-                <div className='grade-footer-score-main'>
-                  {mathSectionWeighted}
-                </div>
-                <div className='grade-footer-score-range'>
-                  <div>200 to</div>
-                  <div>800</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='grade-footer-aligner' style={{textAlign: 'right'}}>
-            <button type='button' className='grade-button btn' disabled={this.state.graded}
-              onClick={() => {
-                this.changeGradedTest();
-              }} 
-            >
-              <span className='fas fa-edit' /> Grade Test
-            </button>
-          </div>
-        </div>
-        <div className='grade-footer-score grade-final'>
-          <div>
-            Final Score:
-          </div>
-          <div className='grade-footer-score-numbers-wrapper'>
-            <div className='grade-footer-score-main'>
-              {overallWeighted}
-            </div>
-            <div className='grade-footer-score-range'>
-              <div>400 to</div>
-              <div>1600</div>
-            </div>
-          </div>
-        </div>
-        <Modal show={this.state.showBlankAnswersModal} onHide={() => this.setState({showBlankAnswersModal: false})}>
-          <Modal.Header>
-            <Modal.Title>Unanswered Questions Remain</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            On the SAT, you are not penalized for incorrect answers.
-            To earn the highest score, make sure to answer every question even if you're unsure.
-          </Modal.Body>
-          <Modal.Body>
-            <input type='checkbox' id='grade-suppress-modal' className='form-check-input' 
-              value={this.state.suppressModal} 
-              onChange={ () => this.setState( prevState => ({ suppressModal: !prevState.suppressModal }) ) }
-            /> {/* comment adds a space between checkbox and label */}
-            <label for='grade-suppress-modal' className='form-check-label'>
-              Stop showing this warning
-            </label>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant='sub' onClick={() => {this.gradeAnyways(); this.setState({showBlankAnswersModal: false});}}>
-              <span className='fas fa-edit' /> Grade Anyways
-            </Button>
-            <Button variant='main' onClick={() => this.setState({showBlankAnswersModal: false})}>
-              <span className='fas fa-pen-nib' /> Change Answers
-            </Button>
-          </Modal.Footer>
-        </Modal>
+    return <div className={this.props.testViewMode ? 'grade-compact' : ''}>
+      <QuestionInfo 
+        isActive={this.state.isQuestionInfoActive}
+        section={this.state.questionInfoSection}
+        questionNumber={this.state.questionInfoIndex+1}
+        isGraded={this.state[`${this.state.questionInfoSection}_graded`][this.state.questionInfoIndex]}
+        question={this.state[`${this.state.questionInfoSection}_questions`][this.state.questionInfoIndex]}
+        changeGradedQuestion={this.changeGradedQuestion.bind(this)}
+        isFloating={this.props.testViewMode}
+      />
+      {this.state.sections.map(section => 
+        <Section 
+          key={section}
+          sectionName={section}
+          questions={this.state[`${section}_questions`]} 
+          userAnswer={this.state[`${section}_user_answers`]}
+          graded={this.state[`${section}_graded`]}
+          correct={this.state[`${section}_correct`]}
+          handleAnswerChange={this.changeAnswers.bind(this)}
+          handleGradedQuestionChange={this.changeGradedQuestion.bind(this)}
+          handleGradedSectionChange={this.changeGradedSection.bind(this)}
+          numCorrect={this.state[`${section}_num_correct`]}
+          numAnswered={this.state[`${section}_num_answered`]}
+          weighted={weightedSections[section]}
+          shouldRerender={section === this.state.rerenderSection}
+          numColumns={this.props.numColumns}
+          compactMode={this.props.testViewMode}
+          handleShowAnswer={this.handleShowAnswer.bind(this)}
+        />
+      )}
+      <ScoreSummary
+        reading_correct={this.state.reading_correct}
+        writing_correct={this.state.reading_correct}
+        math_no_calc_correct={this.state.reading_correct}
+        math_calc_correct={this.state.reading_correct}
+        weightedMath={mathSectionWeighted}
+        weightedEnglish={englishSectionWeighted}
+        weightedOverall={overallWeighted}
+        isFloating={this.props.testViewMode}
+      />
+      <div className='grade-footer-aligner' style={{textAlign: 'right'}}>
+        <button type='button' className='grade-button btn' disabled={this.state.graded}
+          onClick={() => {
+            this.changeGradedTest();
+          }} 
+        >
+          <span className='fas fa-edit' /> Grade Test
+        </button>
       </div>
-    );
+      <Modal show={this.state.showBlankAnswersModal} onHide={() => this.setState({showBlankAnswersModal: false})}>
+        <Modal.Header closeButton>
+          <Modal.Title>Unanswered Questions Remain</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          On the SAT, you are not penalized for incorrect answers.
+          To earn the highest score, make sure to answer every question even if you're unsure.
+        </Modal.Body>
+        <Modal.Body>
+          <input type='checkbox' id='grade-suppress-modal' className='form-check-input' 
+            value={this.state.suppressModal} 
+            onChange={ () => this.setState( prevState => ({ suppressModal: !prevState.suppressModal }) ) }
+          /> {/* comment adds a space between checkbox and label */}
+          <label for='grade-suppress-modal' className='form-check-label'>
+            Stop showing this warning
+          </label>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='sub' onClick={() => {this.gradeAnyways(); this.setState({showBlankAnswersModal: false});}}>
+            <span className='fas fa-edit' /> Grade Anyways
+          </Button>
+          <Button variant='main' onClick={() => this.setState({showBlankAnswersModal: false})}>
+            <span className='fas fa-pen-nib' /> Change Answers
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   }
 
 }
@@ -326,10 +346,11 @@ export default class Grade extends React.Component {
 Grade.propTypes = {
   test: PropTypes.string,
   numColumns: PropTypes.number,
-  compactMode: PropTypes.bool
+  testViewMode: PropTypes.bool,
+  thirdPartyMode: PropTypes.bool
 }
 
 Grade.defaultProps = {
   numColumns: 3,
-  compactMode: false
+  testViewMode: false
 }

@@ -14,7 +14,12 @@ export default class PDFViewer extends React.Component {
 
   render() {
     console.log('rendered pdfviewer');
-    PDFObject.embed(this.props.pdfPath, `#${this.props.containerID}`);
+    console.log(this.props.pdfPath)
+    const options = {
+      fallbackLink: `Your browser can't view embedded PDFs. <a href='[url]'>Download the test</a> to view it.`,
+      suppressConsole: true
+    };
+    PDFObject.embed(this.props.pdfPath, `#${this.props.containerID}`, options);
     return <div style={{ width: this.props.width, height: this.props.height }} id={this.props.containerID} />;
   }
 

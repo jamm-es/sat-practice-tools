@@ -102,24 +102,34 @@ export default class Section extends React.Component {
           <div className='collapse show' ref={this.collapseRef}>
             {questionTypes.map((questionType) => {
               const questionTypeQuestions = this.props.questions.filter(d => d.type === questionType);
-              return <div className={`section-columns`} style={{ columnCount: this.props.numColumns }}>
-                {questionTypeQuestions.map((d, i) => 
-                  <Question
-                    doHighlightBackground={i % (Math.ceil(questionTypeQuestions.length/this.props.numColumns)) % 2 === 0 }
-                    sectionName={this.props.sectionName}
-                    questionNumber={d.question_number} 
-                    answer={d.answer} 
-                    answerExplanation={d.somebs} 
-                    userAnswer={this.props.userAnswer[d.question_number-1]}
-                    graded={this.props.graded[d.question_number-1]}
-                    handleAnswerChange={this.props.handleAnswerChange.bind(this)} 
-                    handleGradedQuestionChange={this.props.handleGradedQuestionChange.bind(this)}
-                    type={d.type}
-                    correct={this.props.correct[d.question_number-1]}
-                    myRef={this.questionRefs[d.question_number-1]}
-                    nextRef={+d.question_number !== this.props.questions.length ? this.questionRefs[d.question_number] : null}
-                  />
-                )}
+              return <div className={`section-columns`} 
+                style={{ 
+                  columnCount: this.props.numColumns, height: 26 * Math.ceil((questionTypeQuestions.length+1) / this.props.numColumns),
+                  columnRule: this.props.numColumns !== 1 ? '2px solid #B5AEA4' : undefined
+                }}
+              >
+                <div className='section-column-relative'>
+                  <div className={'section-center'}>
+                    {questionTypeQuestions.map((d, i) => <>
+                        <Question
+                          doHighlightBackground={i % (Math.ceil((questionTypeQuestions.length+1) / this.props.numColumns)) % 2 === 0 }
+                          sectionName={this.props.sectionName}
+                          questionNumber={d.question_number} 
+                          answer={d.answer} 
+                          userAnswer={this.props.userAnswer[d.question_number-1]}
+                          graded={this.props.graded[d.question_number-1]}
+                          handleAnswerChange={this.props.handleAnswerChange.bind(this)} 
+                          type={d.type}
+                          correct={this.props.correct[d.question_number-1]}
+                          myRef={this.questionRefs[d.question_number-1]}
+                          nextRef={+d.question_number !== this.props.questions.length ? this.questionRefs[d.question_number] : null}
+                          handleShowAnswer={this.props.handleShowAnswer.bind(this)}
+                          key={i}
+                        />
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             })}
           </div>

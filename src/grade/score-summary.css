@@ -1,0 +1,64 @@
+.score-summary-floating {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+
+.score-summary-tab {
+  display: flex;
+  position: relative;
+  z-index: 6;
+  user-select: none;
+}
+
+.score-summary-tab > * {
+  display: inline-block;
+  background-color: #37718E;
+  height: 45px;
+}
+
+.score-summary-tab-title {
+  font-size: 25px;
+  line-height: 25px;
+  padding: 10px;
+  color: #EADEDA;
+}
+
+.score-summary-tab-left, .score-summary-tab-right {
+  width: 45px;
+}
+
+.score-summary-tab-left {
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+.score-summary-tab-right {
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+}
+
+
+.score-summary-body {
+  display: grid;
+  width: 100%;
+}
+
+.score-summary-floating .score-summary-body {
+  position: relative;
+  z-index: 5;
+  background-color: #EADEDA;
+  padding: 20px;
+  box-shadow: 0 0 20px -5px #181510;
+}
+
+.score-summary-overall .grade-footer-score-main {
+  font-size: 40px;
+  line-height: 40px;
+  width: 130px;
+}

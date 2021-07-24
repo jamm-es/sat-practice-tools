@@ -10,15 +10,16 @@ nav {
 }
 
 .nav-link, .navbar-brand {
-  color: #FFFFFF;
-  padding: 20px !important;
-  line-height: 30px;
+  color: #EADEDA !important;
+  padding: 25px !important;
+  line-height: 20px;
   height: 70px;
+  background-color: #37718E !important;
+  vertical-align: middle;
 }
 
 .nav-link:hover, .navbar-brand:hover {
-  color: #FFFFFF;
-  background-color: #2E607F;
+  background-color: #2E607F !important;
 }
 
 

@@ -1,17 +1,48 @@
 .question {
-  line-height: 26px;
-  text-align: left;
+  text-align: right;
   height: 26px;
-}
-
-.question.question-highlight-background {
-  background-color: #D5CBC4;
+  vertical-align: middle;
+  line-height: 26px;
 }
 
 .question > * {
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+  z-index: 2;
 }
+
+.question-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 26px;
+  z-index: 1;
+  background-color: #E0D5CF;
+}
+
+.question-background-accent {
+  background-color: #D5CBC4;
+}
+
+.question-select-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 26px;
+  z-index: 10;
+  pointer-events: none
+}
+
+.question-select-highlight.active {
+  border: 2px solid #648DA1;
+
+}
+
+.question-graded .question-divider {
+  pointer-events: none;
+}
+
 
 .question-divider {
   height: 26px;
@@ -22,9 +53,12 @@
 
 .question-number {
   margin-right: 5px;
-  width: 40px;
   text-align: right;
   user-select: none;
+}
+
+.question-graded .question-number {
+  pointer-events: none;
 }
 
 .question-text {
@@ -39,6 +73,8 @@
   color: #181510;
   position: relative;
   z-index: 1;
+  margin-bottom: 1px;
+  user-select: none;
 }
 
 .question-text::placeholder {
@@ -46,12 +82,13 @@
 }
 
 .question-text:focus {
-  outline: 1px solid #648DA1;
-  border: 1px solid #648DA1;
+  outline: none;
+  border: 2px solid #648DA1;
 }
 
 .question-graded > .question-text {
   color: #6C675F;
+  pointer-events: none;
 }
 
 .question-saq {
@@ -65,8 +102,11 @@
 .question-radio-selecter {
   width: 26px;
   height: 26px;
-  text-align: center;
-  vertical-align: middle;
+  padding: 1px;
+  margin-top: -0.8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .question-radio {
@@ -80,8 +120,8 @@
   font-weight: bold;
   color: #181510;
   text-align: center;
+  vertical-align: bottom;
   user-select: none;
-  padding-left: 1px;
 }
 
 .question-radio-selected {
@@ -89,9 +129,14 @@
   color: #EADEDA;
 }
 
+.question-graded .question-radio-selecter {
+  pointer-events: none;
+}
+
 .question-graded .question-radio {
   border-color: #6C675F;
   color: #6C675F;
+  pointer-events: none;
 }
 
 .question-graded .question-radio-selected {
@@ -107,13 +152,18 @@
 }
 
 .question-check-right {
-  color: #65A46D
+  color: #65A46D;
+  pointer-events: none;
 }
-
 
 .question-check-wrong {
   color: #8C3131;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   font-weight: bold;
+  display: inline-block;
+  position: relative;
+  bottom: 2px;
+  pointer-events: none;
+  user-select: none;
 }

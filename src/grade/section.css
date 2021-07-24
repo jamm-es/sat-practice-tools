@@ -59,10 +59,28 @@
   margin: 0 auto;
 }
 
+.section > .collapse {
+  position: relative;
+}
+
 .section-columns {
   column-gap: 2px;
-  column-rule: 2px solid #B5AEA4;
   margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+
+.section-column-relative {
+  width: 100%;
+  position: relative;
+}
+
+.section-center {
+  display: inline-block;
+  text-align: right;
 }
 
 .section-compact-collapse-tab {
