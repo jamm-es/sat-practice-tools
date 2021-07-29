@@ -1,5 +1,8 @@
-header {
+header  {
   background-color: #37718E;
+  font-size: 20px;
+  position: relative;
+  z-index: 99999;
 }
 
 nav {
@@ -12,7 +15,6 @@ nav {
 .nav-link, .navbar-brand {
   color: #EADEDA !important;
   padding: 25px !important;
-  line-height: 20px;
   height: 70px;
   background-color: #37718E !important;
   vertical-align: middle;
@@ -22,12 +24,46 @@ nav {
   background-color: #2E607F !important;
 }
 
+.navbar-toggler {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 25px;
+  color: #EADEDA !important;
+  padding: 20px;
+}
+
+.navbar-collapse.collapsing {
+  transition: none;
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .navbar-collapse {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px;
+  }
+
+}
 
 @media (max-width: 800px) {
   
   nav {
-    padding: 0;
+    padding: 0 !important;
     width: 100%;
+  }
+
+  .header-dark-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00000080;
+    z-index: 9999;
   }
 
 }

@@ -23,7 +23,8 @@ export default class Section extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if(nextProps.shouldRerender || this.props.weighted !== nextProps.weighted) {
+    if(nextProps.shouldRerender || this.props.weighted !== nextProps.weighted 
+      || this.props.rerenderIndex !== nextProps.rerenderIndex) {
       return true;
     }
 
@@ -34,6 +35,19 @@ export default class Section extends React.Component {
       if(nextProps.graded[i]) ++numNextGraded;
     }
     return numCurrentGraded !== numNextGraded;
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.rerenderIndex !== this.props.rerenderIndex) {
+      this.collapseRef.current.classList.add('show');
+      this.compactCollapseRef.current.classList.add('show');
+      this.compactCollapseIconRef.current.classList.remove('fa-chevron-down');
+      this.compactCollapseIconRef.current.classList.add('fa-chevron-up');
+
+      if(!this.collapseIconRef.current.classList.contains('fa-chevron-down')) { // indicates that section is expanded
+        this.handleSectionCollapse();
+      }
+    }
   }
 
   getPrintedSectionName() {
@@ -76,12 +90,18 @@ export default class Section extends React.Component {
 
         this.collapseIconRef.current.classList.remove('fa-chevron-down');
         this.collapseIconRef.current.classList.add('fa-chevron-right');
+
+        this.compactCollapseIconRef.current.classList.remove('fa-chevron-up');
+        this.compactCollapseIconRef.current.classList.add('fa-chevron-down');
       }
       else {
         this.collapseRef.current.classList.add('show');
 
         this.collapseIconRef.current.classList.add('fa-chevron-down');
         this.collapseIconRef.current.classList.remove('fa-chevron-right');
+        
+        this.compactCollapseIconRef.current.classList.add('fa-chevron-up');
+        this.compactCollapseIconRef.current.classList.remove('fa-chevron-down');
       }
     }
   }
@@ -107,6 +127,7 @@ export default class Section extends React.Component {
                   columnCount: this.props.numColumns, height: 26 * Math.ceil((questionTypeQuestions.length+1) / this.props.numColumns),
                   columnRule: this.props.numColumns !== 1 ? '2px solid #B5AEA4' : undefined
                 }}
+                key={questionType}
               >
                 <div className='section-column-relative'>
                   <div className={'section-center'}>
@@ -114,7 +135,7 @@ export default class Section extends React.Component {
                         <Question
                           doHighlightBackground={i % (Math.ceil((questionTypeQuestions.length+1) / this.props.numColumns)) % 2 === 0 }
                           sectionName={this.props.sectionName}
-                          questionNumber={d.question_number} 
+                          questionNumber={+d.question_number} 
                           answer={d.answer} 
                           userAnswer={this.props.userAnswer[d.question_number-1]}
                           graded={this.props.graded[d.question_number-1]}
@@ -125,6 +146,8 @@ export default class Section extends React.Component {
                           nextRef={+d.question_number !== this.props.questions.length ? this.questionRefs[d.question_number] : null}
                           handleShowAnswer={this.props.handleShowAnswer.bind(this)}
                           key={i}
+                          rerenderIndex={this.props.rerenderIndex}
+                          compactMode={this.props.compactMode}
                         />
                       </>
                     )}
@@ -211,13 +234,9 @@ export default class Section extends React.Component {
             </div>
           </div>
         </div>
-        {
-          this.props.compactMode
-          ? <div onClick={this.handleSectionCollapse.bind(this)} className='section-compact-collapse-tab'>
-            <span className='fas fa-chevron-up' ref={this.compactCollapseIconRef}/>
-          </div>
-          : <></>
-        }
+        <div onClick={this.handleSectionCollapse.bind(this)} className='section-compact-collapse-tab'>
+          <span className='fas fa-chevron-up' ref={this.compactCollapseIconRef}/>
+        </div>
       </div>
     );
   }
@@ -237,5 +256,6 @@ Section.propTypes = {
   numAnswered: PropTypes.number,
   shouldRerender: PropTypes.bool,
   numColumns: PropTypes.number,
-  compactMode: PropTypes.bool
+  compactMode: PropTypes.bool,
+  rerenderIndex: PropTypes.number
 };

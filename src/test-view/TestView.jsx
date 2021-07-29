@@ -25,6 +25,7 @@ export default class TestView extends React.Component {
     this.state = {
       pdfPath: '',
       thirdPartyPath: '',
+      rerenderIndex: 0
     }
     if(this.isPastTest) {
       for(let i = 0; i < thirdPartyUrls[this.props.test].length; ++i) {
@@ -43,18 +44,48 @@ export default class TestView extends React.Component {
   }
 
   handleUploadedFile(e) {
-    console.log(URL.createObjectURL(e.target.files[0]));
-    console.log(e.target.files[0]);
-    this.setState({ thirdPartyPath: URL.createObjectURL(e.target.files[0]) });
+    this.setState(prevState => ({ 
+      thirdPartyPath: URL.createObjectURL(e.target.files[0]),
+      rerenderIndex: prevState.rerenderIndex+1
+    }));
   }
 
-  render() {
+  // from https://stackoverflow.com/questions/4878756/how-to-capitalize-first-letter-of-each-word-like-a-2-word-city
+  toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
+  render() {    
     return (
-      <div className='test-view-container'>
-        <div className='test-view-pdf'>
+      <div className={`test-view-container ${!this.props.isTestMode && 'grade-view'}`}>
+        {this.props.isTestMode && <div className='test-view-pdf'>
           {
             this.state.thirdPartyPath !== ''
             ? <div className='test-view-third-party-wrapper'>
+
+              <div className='test-view-button-container'>
+                {
+                  thirdPartyUrls[this.props.test].map((url, i) => 
+                    <Button 
+                      variant='main' 
+                      key={i}
+                      disabled={url === this.state.thirdPartyPath}
+                      onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
+                    >
+                      Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
+                    </Button>
+                  )
+                }
+                <Button
+                  variant='main'
+                  onClick={() => this.setState(prevState => ({ thirdPartyPath: '', rerenderIndex: prevState.rerenderIndex+1 }))}
+                >
+                  Return to Disclaimer
+                </Button>
+              </div>
+
               {
                 this.embeddableHostnames.includes(new URL(this.state.thirdPartyPath).hostname)
                 ? <iframe src={this.state.thirdPartyPath} />
@@ -76,27 +107,6 @@ export default class TestView extends React.Component {
                   </div>
                 </div>
               }
-              
-              <div className='test-view-button-container'>
-                {
-                  thirdPartyUrls[this.props.test].map((url, i) => 
-                    <Button 
-                      variant='main' 
-                      key={i}
-                      disabled={url === this.state.thirdPartyPath}
-                      onClick={() => this.setState({ thirdPartyPath: url })}
-                    >
-                      Link {i+1} ({new URL(url).hostname})
-                    </Button>
-                  )
-                }
-                <Button
-                  variant='main'
-                  onClick={() => this.setState({ thirdPartyPath: '' })}
-                >
-                  Return to Disclaimer
-                </Button>
-              </div>
             </div>
             : this.isPastTest
             ? <div className='test-view-old-wrapper'>
@@ -108,9 +118,9 @@ export default class TestView extends React.Component {
                     <Button 
                       variant='main' 
                       key={i}
-                      onClick={() => this.setState({ thirdPartyPath: url })}
+                      onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
-                      Link {i+1} ({new URL(url).hostname})
+                      Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
                     </Button>
                   )
                 }
@@ -122,14 +132,26 @@ export default class TestView extends React.Component {
             : <PDFViewer pdfPath={this.state.pdfPath} />
 
           }
-        </div>
-        <div className='overflow-auto test-view-grade'>
+        </div>}
+        <div className={`test-view-grade ${this.props.isTestMode ? 'overflow-auto' : ''}`}>
+          {!this.props.isTestMode && <h1>Test: {this.toTitleCase(this.props.test.replaceAll('-', ' '))}</h1>}
           <Grade 
             test={this.props.test} 
             thirdPartyMode={this.isPastTest}
-            numColumns={1} 
-            testViewMode 
+            numColumns={this.props.isTestMode ? 1 : 3} 
+            testViewMode={this.props.isTestMode}
+            rerenderIndex={this.state.rerenderIndex}
           />
+        </div>
+        <div className='test-view-change-button'>
+          <Link to={ location => {
+            const segments = location.pathname.split('/');
+            return `/${segments[1] === 'grade' ? 'test' : 'grade'}/${segments[2]}`
+          }}>
+            <Button variant='main' onClick={() => this.setState(prevState => ({ rerenderIndex: prevState.rerenderIndex+1 }))}>
+              {this.props.isTestMode ? 'Remove Test View' : 'View Test Side-by-side'}
+            </Button>
+          </Link>
         </div>
       </div>
     )
@@ -137,7 +159,8 @@ export default class TestView extends React.Component {
 
 }
 
-Grade.propTypes = {
+TestView.propTypes = {
   test: PropTypes.string,
-  isPastTest: PropTypes.bool
+  isPastTest: PropTypes.bool,
+  isTestMode: PropTypes.bool
 }

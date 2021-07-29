@@ -43,7 +43,8 @@ export default class Grade extends React.Component {
       questionInfoSection: 'reading',
       questionInfoIndex: 0,
       oldHighlightedElement: undefined,
-      failedToLoad: false
+      failedToLoad: false,
+      pressedGradeButtonIndex: 0
     };
   }
 
@@ -52,6 +53,7 @@ export default class Grade extends React.Component {
       .then(async questionsPath => {
         const questions = await csv(questionsPath.default);
         const state = {};
+        state.allQuestions = questions;
         state.sections = questions.map(d => d.section).filter((value, index, self) => self.indexOf(value) === index);
         state.sections.forEach(section => {
           const numQuestions = questions.filter(d => d.section === section).length;
@@ -65,34 +67,34 @@ export default class Grade extends React.Component {
       .catch(() => this.setState({ failedToLoad: true }));
 
     if(this.props.thirdPartyMode) {
-      for(const weights of this.weightsCategories) {
-        import(`../data/weights/estimated/${weights}.csv`)
-          .then(async weightsPath => {
-            const state = {};
-            const weightsData = await csv(weightsPath.default);
-            state[`${weights}_weights`] = [];
-            for(const weight of weightsData) {
-              state[`${weights}_weights`][weight.raw_score] = weight.weighted;
+      import(`../data/weights/estimated.csv`)
+        .then(async weightsPath => {
+          const state = {};
+          const weightsData = await csv(weightsPath.default);
+          for(const weightsCategory of this.weightsCategories) {
+            state[`${weightsCategory}_weights`] = [];
+            for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
+              state[`${weightsCategory}_weights`][weight.raw_score] = weight.weighted;
             }
-            this.setState(state);
-          })
-          .catch(() => this.setState({ failedToLoad: true }));
-      }
+          }
+          this.setState(state);
+        })
+        .catch(() => this.setState({ failedToLoad: true }));
     }
     else {
-      for(const weights of this.weightsCategories) {
-        import(`../data/weights/${this.props.test}/${weights}.csv`)
-          .then(async weightsPath => {
-            const state = {};
-            const weightsData = await csv(weightsPath.default);
-            state[`${weights}_weights`] = [];
-            for(const weight of weightsData) {
-              state[`${weights}_weights`][weight.raw_score] = weight.weighted;
+      import(`../data/weights/${this.props.test}.csv`)
+        .then(async weightsPath => {
+          const state = {};
+          const weightsData = await csv(weightsPath.default);
+          for(const weightsCategory of this.weightsCategories) {
+            state[`${weightsCategory}_weights`] = [];
+            for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
+              state[`${weightsCategory}_weights`][weight.raw_score] = weight.weighted;
             }
-            this.setState(state);
-          })
-          .catch(() => this.setState({ failedToLoad: true }));
-      }
+          }
+          this.setState(state);
+        })
+        .catch(() => this.setState({ failedToLoad: true }));
     }
 
   }
@@ -163,7 +165,7 @@ export default class Grade extends React.Component {
         state[`${section}_correct`][i] = isCorrect;
         if(isCorrect) ++state[`${section}_num_correct`];
       }
-      this.setState(state);
+      this.setState(prevState => ({ ...state, pressedGradeButtonIndex: prevState.pressedGradeButtonIndex+1}));
     }
   }
 
@@ -193,7 +195,7 @@ export default class Grade extends React.Component {
           if(isCorrect) ++state[`${section}_num_correct`];
         }
       });
-      this.setState(state);
+      this.setState(prevState => ({ ...state, pressedGradeButtonIndex: prevState.pressedGradeButtonIndex+1}));
     }
   }
 
@@ -227,7 +229,7 @@ export default class Grade extends React.Component {
     }
     else {
       element.classList.add('active');
-      this.setState(prevState => ({ 
+      this.setState(() => ({ 
         questionInfoSection: section,
         questionInfoIndex: questionNumber-1,
         oldHighlightedElement: element,
@@ -291,17 +293,26 @@ export default class Grade extends React.Component {
           numColumns={this.props.numColumns}
           compactMode={this.props.testViewMode}
           handleShowAnswer={this.handleShowAnswer.bind(this)}
+          rerenderIndex={this.props.rerenderIndex}
         />
       )}
       <ScoreSummary
         reading_correct={this.state.reading_correct}
-        writing_correct={this.state.reading_correct}
-        math_no_calc_correct={this.state.reading_correct}
-        math_calc_correct={this.state.reading_correct}
+        writing_correct={this.state.writing_correct}
+        math_no_calc_correct={this.state.math_no_calc_correct}
+        math_calc_correct={this.state.math_calc_correct}
+        reading_questions={this.state.reading_questions}
+        writing_questions={this.state.writing_questions}
+        math_no_calc_questions={this.state.math_no_calc_questions}
+        math_calc_questions={this.state.math_calc_questions}
         weightedMath={mathSectionWeighted}
         weightedEnglish={englishSectionWeighted}
         weightedOverall={overallWeighted}
+        allQuestions={this.state.allQuestions}
         isFloating={this.props.testViewMode}
+        forceRerender={this.state.justRerendered}
+        pressedGradeButtonIndex={this.state.pressedGradeButtonIndex}
+        rerenderIndex={this.props.rerenderIndex}
       />
       <div className='grade-footer-aligner' style={{textAlign: 'right'}}>
         <button type='button' className='grade-button btn' disabled={this.state.graded}
@@ -347,10 +358,12 @@ Grade.propTypes = {
   test: PropTypes.string,
   numColumns: PropTypes.number,
   testViewMode: PropTypes.bool,
-  thirdPartyMode: PropTypes.bool
+  thirdPartyMode: PropTypes.bool,
+  rerenderIndex: PropTypes.number
 }
 
 Grade.defaultProps = {
   numColumns: 3,
-  testViewMode: false
+  testViewMode: false,
+  rerenderIndex: 0
 }

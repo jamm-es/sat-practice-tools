@@ -2,7 +2,15 @@
   width: 100%;
   margin-top: 85px;
   display: grid;
-  grid-template-columns: 1fr 20px 320px;
+  column-gap: 20px;
+  grid-template-columns: auto 320px;
+}
+
+.test-view-container.grade-view {
+  grid-template-columns: auto;
+  width: min(980px, 100%);
+  padding: 40px;
+  margin: 0 auto;
 }
 
 .test-view-pdf {
@@ -34,7 +42,8 @@
 .test-view-third-party-wrapper {
   display: grid;
   width: 100%;
-  grid-template-rows: auto 70px;
+  grid-template-rows: 44px auto;
+  row-gap: 10px;
   height: 100%;
 }
 
@@ -43,8 +52,19 @@
   height: 100%;
 }
 
-.test-view-grade {
-  grid-column: 3;
+.test-view-container:not(.grade-view) .test-view-grade {
   height: calc(100vh - 175px);
+  margin-bottom: 20px;
+}
+
+.test-view-change-button {
+  position: fixed;
+  z-index: 50;
+  left: 10px;
+  bottom: 10px;
+  box-shadow: 0 0 10px -3px #181510;
+}
+
+.grade-view h1 {
   margin-bottom: 20px;
 }

@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Helmet from 'react-helmet';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  Redirect
+  Route
 } from 'react-router-dom';
 
 import './index.css';
 
-import {Home, Footer, Header, NotFound} from './main';
-import {Grade} from './grade';
+import {Footer, Header, NotFound} from './main';
+import {Home, Test, Grade, About} from './pages';
 import {TestView} from './test-view';
-import {GradeView} from './grade-view';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,12 +23,15 @@ ReactDOM.render(
     <Header />
     <Router>
       <Switch>
-        <Route path='/test/:test' render={props => <TestView test={props.match.params.test}/>} />
+        <Route path='/test/:test' render={props =>  <TestView test={props.match.params.test} isTestMode />} />
+        <Route path='/grade/:test' render={props => <TestView test={props.match.params.test} />} />
         <Route> {/* encompasses everything that needs to be nested inside main */}
           <main>
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/grade/:test' render={props => <GradeView test={props.match.params.test}/>} />
+              <Route exact path='/test' component={Test} />
+              <Route exact path='/grade' component={Grade} />
+              <Route exact path='/about' component={About} />
               <Route exact path='/notfound' component={NotFound} />
               <Route component={NotFound} />
             </Switch>
@@ -39,7 +39,7 @@ ReactDOM.render(
         </Route>
       </Switch>
       <Switch>
-        <Route path='/test'/>
+        <Route path='/test/*'/>
         <Route component={Footer}/>
       </Switch>
     </Router>

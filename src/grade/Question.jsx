@@ -13,7 +13,21 @@ export default class Question extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.graded !== nextProps.graded || this.props.userAnswer !== nextProps.userAnswer;
+    return this.props.graded !== nextProps.graded 
+      || this.props.userAnswer !== nextProps.userAnswer
+      || this.props.rerenderIndex !== nextProps.rerenderIndex;
+  }
+
+  componentDidMount() {
+    if(this.props.sectionName === 'reading' && this.props.questionNumber === 1) {
+      this.props.myRef.current.focus();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.sectionName === 'reading' && this.props.questionNumber === 1 && prevProps.rerenderIndex !== this.props.rerenderIndex) {
+      this.props.myRef.current.focus();
+    }
   }
 
   handleMCQInput(e) {
@@ -53,8 +67,6 @@ export default class Question extends React.Component {
 
   handleBackgroundClick(e) {
     e.preventDefault();
-    console.log('background click', e.currentTarget);
-    console.log('background click', e.target === e.currentTarget || this.props.graded)
     if(e.target === e.currentTarget || this.props.graded) {
       this.props.handleShowAnswer(this.props.sectionName, this.props.questionNumber, this.highlightRef.current)
     }
@@ -62,7 +74,6 @@ export default class Question extends React.Component {
 
   handleOtherClick(e) {
     e.preventDefault();
-    console.log('other click', e.currentTarget)
     this.props.handleShowAnswer(this.props.sectionName, this.props.questionNumber, this.highlightRef.current)
   }
 
@@ -107,7 +118,7 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'A');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`}>
+              <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
                 A
               </div>
             </div>
@@ -115,7 +126,7 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'B');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'B' ? 'question-radio-selected' : ''}`}>
+              <div className={`question-radio ${this.props.userAnswer === 'B' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
                 B
               </div>
             </div>
@@ -123,7 +134,7 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'C');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'C' ? 'question-radio-selected' : ''}`}>
+              <div className={`question-radio ${this.props.userAnswer === 'C' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
                 C
               </div>
             </div>
@@ -131,7 +142,7 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'D');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'D' ? 'question-radio-selected' : ''}`}>
+              <div className={`question-radio ${this.props.userAnswer === 'D' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
                 D
               </div>
             </div>
@@ -183,5 +194,7 @@ Question.propTypes = {
   handleAnswerChange: PropTypes.func,
   handleGradedQuestionChange: PropTypes.func,
   type: PropTypes.string,
-  handleShowAnswer: PropTypes.func
+  handleShowAnswer: PropTypes.func,
+  rerenderIndex: PropTypes.number,
+  compactMode: PropTypes.bool
 }

@@ -10,31 +10,39 @@ export default class QuestionInfo extends React.Component {
     super(props);
 
     this.bodyRef = React.createRef();
+    this.iconRef = React.createRef();
+  }
 
-    this.state = {
-      isCollapsed: false
-    }
+  shouldComponentUpdate(nextProps) {
+    return this.props.isActive !== nextProps.isActive 
+      || this.props.isGraded !== nextProps.isGraded 
+      || this.props.section !== nextProps.section 
+      || this.props.questionNumber !== nextProps.questionNumber
+      || this.props.isFloating !== nextProps.isFloating;
   }
 
   handleToggle() {
-    if(this.state.isCollapsed) {
+    if(!this.bodyRef.current.classList.contains('show')) {
       this.bodyRef.current.classList.add('show');
+      this.iconRef.current.classList.remove('fa-chevron-right');
+      this.iconRef.current.classList.add('fa-chevron-down');
     }
     else {
       this.bodyRef.current.classList.remove('show');
+      this.iconRef.current.classList.remove('fa-chevron-down');
+      this.iconRef.current.classList.add('fa-chevron-right');
     }
-    this.setState(prevState => ({ isCollapsed: !prevState.isCollapsed }));
   }
 
   render() {
+    if(this.bodyRef.current !== null && !this.bodyRef.current.classList.contains('show')) {
+      this.handleToggle();
+    }
+
     return <div className={`question-info ${this.props.isFloating ? 'question-info-static' : 'question-info-sticky'}`}>
       <div className='question-info-header' onClick={this.handleToggle.bind(this)}>
         <div className='question-info-chevron-holder'>
-          {
-            this.state.isCollapsed
-            ? <span className='fas fa-chevron-right'/>
-            : <span className='fas fa-chevron-down'/>
-          }
+          <span className='fas fa-chevron-right' ref={this.iconRef} />
         </div> {/* adds space between chevron and title */}
         {
           !this.props.isActive

@@ -11,6 +11,10 @@ footer * {
   color: #BFB8AD;
 }
 
+footer a:hover {
+  color: #EADEDA;
+}
+
 footer > :first-child {
   margin-top: 0;
 }

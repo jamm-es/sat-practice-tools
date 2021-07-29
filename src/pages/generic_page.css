@@ -1,0 +1,8 @@
+h2 {
+  text-align: left;
+  font-size: 25px;
+}
+
+h2:first-of-type {
+  margin-top: 1em;
+}
