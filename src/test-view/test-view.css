@@ -3,7 +3,15 @@
   margin-top: 85px;
   display: grid;
   column-gap: 20px;
-  grid-template-columns: auto 320px;
+  grid-template-columns: auto 360px;
+}
+
+.test-view-container-expanded {
+  grid-template-columns: auto 20px;
+}
+
+.test-view-container-grade-only {
+  grid-template-columns: 0px auto;
 }
 
 .test-view-container.grade-view {
@@ -24,7 +32,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 70%;
+  width: min(100%, 700px);
   margin: 0 auto;
 }
 
@@ -53,8 +61,60 @@
 }
 
 .test-view-container:not(.grade-view) .test-view-grade {
-  height: calc(100vh - 175px);
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 20px 20px auto;
+  grid-column: 2;
+}
+
+.test-view-grade-collapser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 155px);
+}
+
+.test-view-grade-collapser > * {
+  background-color: #D5CBC4;
+  display: inline-block;
+  width: 20px;
+}
+
+.test-view-grade-collapser-edge {
+  height: 100%;
+  background-color: #D5CBC4;
+}
+
+.test-view-grade-tab {
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+.test-view-grade-tab-upper {
+  height: 20px;
+  position: relative;
+  top: 10px;
+  z-index: 1;
+  transform: skewY(-45deg);
+}
+
+.test-view-grade-tab-lower {
+  height: 20px;
+  position: relative;
+  bottom: 10px;
+  z-index: 1;
+  transform: skewY(45deg);
+}
+
+.test-view-container:not(.grade-view) .test-view-grade-container {
+  padding-bottom: 65px;
+  overflow-y: auto;
+  height: calc(100vh - 155px);
+}
+
+.test-view-grade-hide-children > .grade-footer-aligner, .test-view-grade-show-all-children > .section-wrapper {
+  display: none;
 }
 
 .test-view-change-button {
@@ -67,4 +127,31 @@
 
 .grade-view h1 {
   margin-bottom: 20px;
+}
+
+.test-view-button-container > a {
+  color: #254E70 !important;
+  text-decoration: underline !important;
+  line-height: 1em;
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+
+  :not(.test-view-third-party-wrapper) > .test-view-button-container {
+    flex-direction: column;
+  }
+
+  :not(.test-view-third-party-wrapper) > .test-view-button-container > :not(:first-child) {
+    margin-top: 10px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .test-view-container:not(.grade-view) .test-view-change-button {
+    bottom: 55px;
+  }
+
 }

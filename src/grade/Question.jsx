@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Overlay, Popover } from 'react-bootstrap';
 
 import './question.css';
 
@@ -15,7 +14,8 @@ export default class Question extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.graded !== nextProps.graded 
       || this.props.userAnswer !== nextProps.userAnswer
-      || this.props.rerenderIndex !== nextProps.rerenderIndex;
+      || this.props.rerenderIndex !== nextProps.rerenderIndex
+      || this.props.numColumns !== nextProps.numColumns;
   }
 
   componentDidMount() {
@@ -172,11 +172,11 @@ export default class Question extends React.Component {
         onClick={this.handleOtherClick.bind(this)}
       >
         {
-          !this.props.graded ?
-          <span className='question-check fas fa-ellipsis-h'/> :
-          this.props.correct ?
-          <span className='question-check-right fas fa-check'/> :
-          <div className='question-check-wrong'>{this.props.answer}</div>
+          !this.props.graded
+            ? '?'
+            : this.props.correct
+            ? <span className='question-check-right fas fa-check'/>
+            : <div className='question-check-wrong'>{this.props.answer}</div>
         }
       </div>
     </div>;
@@ -196,5 +196,6 @@ Question.propTypes = {
   type: PropTypes.string,
   handleShowAnswer: PropTypes.func,
   rerenderIndex: PropTypes.number,
-  compactMode: PropTypes.bool
+  compactMode: PropTypes.bool,
+  numColumns: PropTypes.number
 }

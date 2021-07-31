@@ -21,11 +21,16 @@ export default class TestView extends React.Component {
     this.embeddableHostnames = ['docdroid.net'];
 
     this.uploadRef = React.createRef();
+    this.gradeViewCollapseIcon = React.createRef();
+    this.gradeViewCollapseContainer = React.createRef();
+    this.testViewContainerRef = React.createRef();
+    this.pdfRef = React.createRef();
 
     this.state = {
       pdfPath: '',
       thirdPartyPath: '',
-      rerenderIndex: 0
+      rerenderIndex: 0,
+      windowWidth: 0
     }
     if(this.isPastTest) {
       for(let i = 0; i < thirdPartyUrls[this.props.test].length; ++i) {
@@ -41,6 +46,16 @@ export default class TestView extends React.Component {
           this.setState({ pdfPath: pdfPath.default });
         });
     }
+    this.setWidth();
+    window.addEventListener('resize', this.setWidth.bind(this)); 
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setWidth.bind(this)); 
+  }
+
+  setWidth() {
+    this.setState({ windowWidth: window.innerWidth });
   }
 
   handleUploadedFile(e) {
@@ -57,33 +72,103 @@ export default class TestView extends React.Component {
     });
   }
 
+  handleGradeViewToggle() {
+    if(this.state.windowWidth <= 700) {
+      if(!this.gradeViewCollapseContainer.current.classList.contains('test-view-grade-hide-children')) {
+        this.gradeViewCollapseContainer.current.classList.add('test-view-grade-hide-children');
+  
+        this.gradeViewCollapseIcon.current.classList.remove('fa-chevron-right');
+        this.gradeViewCollapseIcon.current.classList.add('fa-chevron-left');
+  
+        this.testViewContainerRef.current.classList.add('test-view-container-expanded');
+        this.testViewContainerRef.current.classList.remove('test-view-container-grade-only');
+
+        this.pdfRef.current.classList.add('show');
+      }
+      else {
+        this.gradeViewCollapseContainer.current.classList.remove('test-view-grade-hide-children');
+  
+        this.gradeViewCollapseIcon.current.classList.add('fa-chevron-right');
+        this.gradeViewCollapseIcon.current.classList.remove('fa-chevron-left');
+  
+        this.testViewContainerRef.current.classList.remove('test-view-container-expanded');
+        this.testViewContainerRef.current.classList.add('test-view-container-grade-only');
+
+        this.pdfRef.current.classList.remove('show');
+      }
+    }
+    else {
+      if(!this.gradeViewCollapseContainer.current.classList.contains('test-view-grade-hide-children')) {
+        this.gradeViewCollapseContainer.current.classList.add('test-view-grade-hide-children');
+  
+        this.gradeViewCollapseIcon.current.classList.remove('fa-chevron-right');
+        this.gradeViewCollapseIcon.current.classList.add('fa-chevron-left');
+  
+        this.testViewContainerRef.current.classList.add('test-view-container-expanded')
+      }
+      else {
+        this.gradeViewCollapseContainer.current.classList.remove('test-view-grade-hide-children');
+  
+        this.gradeViewCollapseIcon.current.classList.add('fa-chevron-right');
+        this.gradeViewCollapseIcon.current.classList.remove('fa-chevron-left');
+  
+        this.testViewContainerRef.current.classList.remove('test-view-container-expanded')
+      }
+    }
+  }
+
   render() {    
     return (
-      <div className={`test-view-container ${!this.props.isTestMode && 'grade-view'}`}>
-        {this.props.isTestMode && <div className='test-view-pdf'>
+      <div className={`test-view-container ${!this.props.isTestMode ? 'grade-view' : ''} ${this.state.windowWidth <= 700 ? 'test-view-container-expanded' : ''}`} ref={this.testViewContainerRef}>
+        {this.props.isTestMode && <div className='test-view-pdf collapse show' ref={this.pdfRef}>
           {
             this.state.thirdPartyPath !== ''
             ? <div className='test-view-third-party-wrapper'>
 
               <div className='test-view-button-container'>
                 {
-                  thirdPartyUrls[this.props.test].map((url, i) => 
-                    <Button 
-                      variant='main' 
-                      key={i}
-                      disabled={url === this.state.thirdPartyPath}
-                      onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
+                  this.state.windowWidth > 1100
+                  ? <>
+                    {
+                      thirdPartyUrls[this.props.test].map((url, i) => 
+                        <Button 
+                          variant='main' 
+                          key={i}
+                          disabled={url === this.state.thirdPartyPath}
+                          onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
+                        >
+                          Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
+                        </Button>
+                      )
+                    }
+                    <Button
+                      variant='main'
+                      onClick={() => this.setState(prevState => ({ thirdPartyPath: '', rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
-                      Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
+                      Return to Disclaimer
                     </Button>
-                  )
+                  </>
+                  : <>
+                    {
+                      thirdPartyUrls[this.props.test].map((url, i) => 
+                        this.state.thirdPartyPath !== url
+                          ? <a 
+                            key={i}
+                            onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
+                          >
+                            Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
+                          </a>
+                          : <></>
+                      )
+                    }
+                    <a
+                      variant='main'
+                      onClick={() => this.setState(prevState => ({ thirdPartyPath: '', rerenderIndex: prevState.rerenderIndex+1 }))}
+                    >
+                      Return to Disclaimer
+                    </a>
+                  </>
                 }
-                <Button
-                  variant='main'
-                  onClick={() => this.setState(prevState => ({ thirdPartyPath: '', rerenderIndex: prevState.rerenderIndex+1 }))}
-                >
-                  Return to Disclaimer
-                </Button>
               </div>
 
               {
@@ -114,15 +199,20 @@ export default class TestView extends React.Component {
               <p>Instead, you may attempt to load a test from a third-party source:</p>
               <div className='test-view-button-container' style={{margin: '20px 0'}}>
                 {
-                  thirdPartyUrls[this.props.test].map((url, i) => 
-                    <Button 
+                  this.state.windowWidth > 1100
+                    ? thirdPartyUrls[this.props.test].map((url, i) => <Button 
                       variant='main' 
                       key={i}
                       onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
                       Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
-                    </Button>
-                  )
+                    </Button>)
+                    : thirdPartyUrls[this.props.test].map((url, i) => <a
+                      key={i}
+                      onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
+                    >
+                      Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
+                    </a>)
                 }
               </div>
               <Alert variant='danger'>
@@ -133,15 +223,30 @@ export default class TestView extends React.Component {
 
           }
         </div>}
-        <div className={`test-view-grade ${this.props.isTestMode ? 'overflow-auto' : ''}`}>
+        <div className='test-view-grade'>
           {!this.props.isTestMode && <h1>Test: {this.toTitleCase(this.props.test.replaceAll('-', ' '))}</h1>}
-          <Grade 
-            test={this.props.test} 
-            thirdPartyMode={this.isPastTest}
-            numColumns={this.props.isTestMode ? 1 : 3} 
-            testViewMode={this.props.isTestMode}
-            rerenderIndex={this.state.rerenderIndex}
-          />
+          {
+            this.props.isTestMode && <>
+              <div className='test-view-grade-collapser' onClick={this.handleGradeViewToggle.bind(this)}>
+                <div className='test-view-grade-tab-upper'/>
+                <div className='test-view-grade-tab'>
+                  <span className={`fas ${this.state.windowWidth <= 700 ? 'fa-chevron-left' : 'fa-chevron-right'}`} ref={this.gradeViewCollapseIcon}/>
+                </div>
+                <div className='test-view-grade-tab-lower'/>
+              </div>
+              <div className='test-view-grade-collapser-edge' onClick={this.handleGradeViewToggle.bind(this)}/>
+            </>
+          }
+          <div className={`test-view-grade-container ${this.state.windowWidth <= 700 ? 'test-view-grade-hide-children' : ''}`} ref={this.gradeViewCollapseContainer}>
+            <Grade 
+              test={this.props.test} 
+              thirdPartyMode={this.isPastTest}
+              numColumns={this.props.isTestMode ? 1 : 3} 
+              testViewMode={this.props.isTestMode}
+              rerenderIndex={this.state.rerenderIndex}
+              windowWidth={this.state.windowWidth}
+            />
+          </div>
         </div>
         <div className='test-view-change-button'>
           <Link to={ location => {

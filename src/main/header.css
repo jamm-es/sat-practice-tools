@@ -2,7 +2,7 @@ header  {
   background-color: #37718E;
   font-size: 20px;
   position: relative;
-  z-index: 99999;
+  z-index: 1000;
 }
 
 nav {
@@ -63,7 +63,7 @@ nav {
     right: 0;
     bottom: 0;
     background-color: #00000080;
-    z-index: 9999;
+    z-index: 999;
   }
 
 }

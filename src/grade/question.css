@@ -3,6 +3,7 @@
   height: 26px;
   vertical-align: middle;
   line-height: 26px;
+  font-size: 20px;
 }
 
 .question > * {
@@ -149,6 +150,7 @@
   height: 24px;
   margin-left: 5px;
   text-align: center;
+  user-select: none;
 }
 
 .question-check-right {

@@ -11,6 +11,7 @@ import {default as ScoreSummary} from './ScoreSummary';
 
 import './grade.css';
 import './footer.css';
+import { flushSync } from 'react-dom';
 
 export default class Grade extends React.Component {
 
@@ -117,8 +118,40 @@ export default class Grade extends React.Component {
   }
 
   gradeQuestion(userAnswer, answer, type) {
-    return type === 'mcq' && userAnswer === answer.toUpperCase()
-    || type === 'saq' && answer.split(',').includes(userAnswer);
+    if(type === 'mcq') {
+      return userAnswer === answer.toUpperCase();
+    }
+    else { // type is saq
+      // check if input is valid.
+      if((userAnswer.match(/[\.\/]/g) || []).length > 1) {
+        return false;
+      }
+
+      let userAnswerFiltered = -1;
+      if((userAnswer.match(/\//g) || []).length === 1) { // case if userAnswer is a fraction
+        const fractionArguments = userAnswer.split('/');
+        userAnswerFiltered = fractionArguments[0] / fractionArguments[1];
+      }
+      else { // case if userAnswer is a decimal or integer
+        userAnswerFiltered = +userAnswer;
+      }
+
+      console.log(userAnswerFiltered);
+
+      const validAnswers = answer.split(',');
+      for(const potentialAnswer of validAnswers) {
+        if((potentialAnswer.match(/\//g) || []).length === 1) { // case if userAnswer is a fraction
+        const fractionArguments = potentialAnswer.split('/');
+        const potentialAnswerFraction = fractionArguments[0] / fractionArguments[1];
+        console.log(potentialAnswer, fractionArguments, potentialAnswerFraction);
+          if(Math.abs(potentialAnswerFraction - userAnswerFiltered) < 0.001) return true;
+        }
+        else { // case if potentialAnswer is a decimal or integer
+          if(userAnswerFiltered === +potentialAnswer) return true;
+        }
+      }
+      return false;
+    }
   }
 
   changeGradedQuestion(section, i, gradeAnyways) {
@@ -136,7 +169,7 @@ export default class Grade extends React.Component {
       state[`${section}_user_answers`] = [...this.state[`${section}_user_answers`]];
       state[`${section}_correct`] = [...this.state[`${section}_correct`]];
       state[`${section}_graded`][i] = true;
-      state[`${section}_user_answers`][i] = this.state[`${section}_user_answers`][i] === '' ? '~' : this.state[`${section}_user_answers`][i-1];
+      state[`${section}_user_answers`][i] = this.state[`${section}_user_answers`][i] === '' ? '~' : this.state[`${section}_user_answers`][i];
       state[`${section}_correct`][i] = isCorrect;
       this.setState(prevState => {
         state[`${section}_num_correct`] = prevState[`${section}_num_correct`] + (isCorrect ? 1 : 0); 
@@ -274,6 +307,7 @@ export default class Grade extends React.Component {
         question={this.state[`${this.state.questionInfoSection}_questions`][this.state.questionInfoIndex]}
         changeGradedQuestion={this.changeGradedQuestion.bind(this)}
         isFloating={this.props.testViewMode}
+        windowWidth={this.props.windowWidth}
       />
       {this.state.sections.map(section => 
         <Section 
@@ -290,10 +324,10 @@ export default class Grade extends React.Component {
           numAnswered={this.state[`${section}_num_answered`]}
           weighted={weightedSections[section]}
           shouldRerender={section === this.state.rerenderSection}
-          numColumns={this.props.numColumns}
-          compactMode={this.props.testViewMode}
+          compactMode={this.props.testViewMode || this.props.windowWidth <= 620}
           handleShowAnswer={this.handleShowAnswer.bind(this)}
           rerenderIndex={this.props.rerenderIndex}
+          windowWidth={this.props.windowWidth}
         />
       )}
       <ScoreSummary
@@ -356,14 +390,13 @@ export default class Grade extends React.Component {
 
 Grade.propTypes = {
   test: PropTypes.string,
-  numColumns: PropTypes.number,
   testViewMode: PropTypes.bool,
   thirdPartyMode: PropTypes.bool,
-  rerenderIndex: PropTypes.number
+  rerenderIndex: PropTypes.number,
+  windowWidth: PropTypes.number
 }
 
 Grade.defaultProps = {
-  numColumns: 3,
   testViewMode: false,
   rerenderIndex: 0
 }

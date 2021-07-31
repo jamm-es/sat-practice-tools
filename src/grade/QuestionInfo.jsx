@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 import './question-info.css';
 
@@ -18,7 +18,8 @@ export default class QuestionInfo extends React.Component {
       || this.props.isGraded !== nextProps.isGraded 
       || this.props.section !== nextProps.section 
       || this.props.questionNumber !== nextProps.questionNumber
-      || this.props.isFloating !== nextProps.isFloating;
+      || this.props.isFloating !== nextProps.isFloating
+      || this.props.windowWidth !== nextProps.windowWidth;
   }
 
   handleToggle() {
@@ -45,28 +46,46 @@ export default class QuestionInfo extends React.Component {
           <span className='fas fa-chevron-right' ref={this.iconRef} />
         </div> {/* adds space between chevron and title */}
         {
-          !this.props.isActive
-          ? 'No Question Selected'
-          : <>
-            {
-              this.props.section === 'reading' ? 'Reading'
-              : this.props.section === 'writing' ? 'Writing'
-              : this.props.section === 'math_no_calc' ? 'Math (Non-Calculator)'
-              : 'Math (Calculator)'
-            } - 
-            Question {this.props.questionNumber} - {/* adds space between dash and text*/}
-            {
-              this.props.question.type === 'mcq'
-              ? 'Multiple Choice'
-              : 'Short Answer'
-            }
-          </>
+          this.props.windowWidth <= 700 ? (
+            !this.props.isActive
+            ? 'No Q Selected'
+            : <>
+              {
+                this.props.section === 'reading' ? 'Reading'
+                : this.props.section === 'writing' ? 'Writing'
+                : this.props.section === 'math_no_calc' ? <> Math (No <span className='fas fa-calculator'/> )</>
+                : <> Math (w/ <span className='fas fa-calculator'/> )</>
+              } - 
+              Q{this.props.questionNumber}
+            </>
+          )
+          : (
+            !this.props.isActive
+            ? 'No Question Selected'
+            : <>
+              {
+                this.props.section === 'reading' ? 'Reading'
+                : this.props.section === 'writing' ? 'Writing'
+                : this.props.section === 'math_no_calc' ? 'Math (Non-Calculator)'
+                : 'Math (Calculator)'
+              } - 
+              Question {this.props.questionNumber} - {/* adds space between dash and text*/}
+              {
+                this.props.question.type === 'mcq'
+                ? 'Multiple Choice'
+                : 'Short Answer'
+              }
+            </>
+          )
         }
       </div>
       <div className='question-info-body collapse show' ref={this.bodyRef}>
         {
           !this.props.isActive
-          ? <p>Click on a question to view additional information, or click on the header to collapse this box.</p>
+          ? <>
+            <p>Click on a question to view additional information, or click on the header to collapse this box.</p>
+            <p><span className='fas fa-lightbulb'/> Tip: Type 1, 2, 3, 4 to quickly enter A, B, C, D into the question text input.</p>
+          </>
           : !this.props.isGraded
           ? <>
             <p>This question must be graded before its answer explanation can be revealed.</p>

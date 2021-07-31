@@ -28,6 +28,8 @@
   align-items: flex-start;
   flex-direction: column;
   margin-right: 40px;
+  font-size: 20px;
+  line-height: 1em;
 }
 
 .grade-footer-score-numbers-wrapper {
@@ -78,4 +80,17 @@
 
 .grade-button:disabled {
   background-color: #6C675F;
+}
+
+@media (max-width: 850px) {
+
+  .grade-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grade-footer > :first-child {
+    margin-bottom: 20px;
+  }
+
 }

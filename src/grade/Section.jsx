@@ -22,9 +22,12 @@ export default class Section extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if(nextProps.shouldRerender || this.props.weighted !== nextProps.weighted 
-      || this.props.rerenderIndex !== nextProps.rerenderIndex) {
+  shouldComponentUpdate(nextProps) {
+    if(
+      nextProps.shouldRerender || this.props.weighted !== nextProps.weighted 
+      || this.props.rerenderIndex !== nextProps.rerenderIndex
+      || this.props.windowWidth !== nextProps.windowWidth
+    ) {
       return true;
     }
 
@@ -109,6 +112,9 @@ export default class Section extends React.Component {
   render() {
     const questionTypes = this.props.questions.map(d => d.type).filter((value, index, self) => self.indexOf(value) === index);
     const isScoresUnknown = this.props.numCorrect === 0 && !this.props.graded.some(d => d);
+
+    const numColumns = this.props.compactMode ? 1 : this.props.windowWidth <= 620 ?  1 : this.props.windowWidth <= 850 ? 2 : 3;
+
     return (
       <div className='section-wrapper'>
         <div className='section-title-bottom' onClick={this.handleSectionCollapse.bind(this)}/>
@@ -124,8 +130,8 @@ export default class Section extends React.Component {
               const questionTypeQuestions = this.props.questions.filter(d => d.type === questionType);
               return <div className={`section-columns`} 
                 style={{ 
-                  columnCount: this.props.numColumns, height: 26 * Math.ceil((questionTypeQuestions.length+1) / this.props.numColumns),
-                  columnRule: this.props.numColumns !== 1 ? '2px solid #B5AEA4' : undefined
+                  columnCount: numColumns, height: 26 * Math.ceil((questionTypeQuestions.length+1) / numColumns),
+                  columnRule: numColumns !== 1 ? '2px solid #B5AEA4' : undefined
                 }}
                 key={questionType}
               >
@@ -133,7 +139,7 @@ export default class Section extends React.Component {
                   <div className={'section-center'}>
                     {questionTypeQuestions.map((d, i) => <>
                         <Question
-                          doHighlightBackground={i % (Math.ceil((questionTypeQuestions.length+1) / this.props.numColumns)) % 2 === 0 }
+                          doHighlightBackground={i % (Math.ceil((questionTypeQuestions.length+1) / numColumns)) % 2 === 0 }
                           sectionName={this.props.sectionName}
                           questionNumber={+d.question_number} 
                           answer={d.answer} 
@@ -148,6 +154,7 @@ export default class Section extends React.Component {
                           key={i}
                           rerenderIndex={this.props.rerenderIndex}
                           compactMode={this.props.compactMode}
+                          numColumns={numColumns}
                         />
                       </>
                     )}

@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: 900px;
+  width: min(900px, 100vw);
 }
 
 .question-info-sticky {
@@ -38,6 +38,15 @@
 .question-info-body {
   background-color: #D5CBC4;
   padding: 20px;
+  overflow-y: auto;
+}
+
+.question-info-sticky .question-info-body {
+  max-height: calc(100vh - 300px);
+}
+
+.question-info-static .question-info-body {
+  max-height: calc(100vh - 300px);
 }
 
 .question-info-body :first-child {
@@ -46,4 +55,12 @@
 
 .question-info-explanation {
   font-size: 16px;
+}
+
+@media (max-width: 420px) {
+
+  .question-info-sticky {
+    margin: 0 -40px 40px -40px;
+  }
+
 }

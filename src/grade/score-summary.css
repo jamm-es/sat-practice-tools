@@ -3,8 +3,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  width: 900px;
+  width: min(940px, 100vw);
+  max-height: 70vh;
   margin: 0 auto;
+  padding-left: min(20px, calc(calc(100vw - 900px) / 2));
+  padding-right: min(20px, calc(calc(100vw - 900px) / 2));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,23 +38,34 @@
   padding: 10px;
   user-select: none;
   color: #EADEDA;
+  z-index: 2;
 }
 
 .score-summary-tab-left, .score-summary-tab-right {
   width: 45px;
   position: relative;
+  z-index: 1;
 }
 
 .score-summary-tab-left {
-  clip-path: polygon(0 100%, 100% 100%, 100% 0);
-  left: 1px;
+  transform: skewX(-45deg);
+  left: 22.5px;
 }
 
 .score-summary-tab-right {
-  clip-path: polygon(0 100%, 0 0, 100% 100%);
-  right: 1px;
+  transform: skewX(45deg);
+  right: 22.5px;
 }
 
+.score-summary-scroll-wrapper {
+  max-height: calc(70vh - 45px);
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.score-summary-floating .score-summary-scroll-wrapper {
+  box-shadow: 0 0 20px -5px #181510;
+}
 
 .score-summary-body {
   display: grid;
@@ -66,7 +80,6 @@
   z-index: 5;
   background-color: #EADEDA;
   padding: 20px;
-  box-shadow: 0 0 20px -5px #181510;
 }
 
 .score-summary-overall {
@@ -84,8 +97,23 @@
   border-top: 2px solid #B5AEA4;
 }
 
+
+.score-summary-horizontal.score-summary-horizontal-compact {
+  display: none;
+}
+
 .score-summary-vertical {
   border-left: 2px solid #B5AEA4;
+}
+
+
+
+.score-summary-body .grade-footer-score:not(:first-child) {
+  margin-top: 15px;
+}
+
+.score-summary-body .grade-footer-score > :first-child {
+  margin-bottom: 5px;
 }
 
 .score-summary-perfect .grade-footer-score-main, .score-summary-perfect .fas {
@@ -98,4 +126,42 @@
 
 .score-summary-bad .grade-footer-score-main, .score-summary-bad .fas {
   color: #8C3131;
+}
+
+@media (max-width: 550px) {
+
+  .score-summary-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 2px auto auto 2px auto auto;
+  }
+
+  .score-summary-body > * {
+    grid-column: 1;
+  }
+  
+  .score-summary-vertical {
+    display: none;
+  }
+
+  .score-summary-horizontal-compact {
+    display: block;
+
+  }
+
+  .score-summary-math {
+    grid-row: 6;
+  }
+
+  .score-summary-math, .score-summary-english {
+    margin-bottom: 20px;
+  }
+
+  .score-summary-subscores-english {
+    grid-row: 4;
+  }
+
+  .score-summary-row-5 {
+    grid-row: 5;
+  }
+
 }

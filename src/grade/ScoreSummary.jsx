@@ -130,8 +130,6 @@ export default class ScoreSummary extends React.Component {
     const mathQuad = this.countCorrectFromTagState('mathQuad');
 
     const englishOrgRatio = this.props.weightedEnglish === '?' ? '?' : englishOrg / this.state.englishOrg.length;
-    console.log(this.props.weightedEnglish);
-    console.log(englishOrgRatio);
     const englishGrammarRatio = this.props.weightedEnglish === '?' ? '?' : englishGrammar / this.state.englishGrammar.length;
     const englishWordsRatio = this.props.weightedEnglish === '?' ? '?' : englishWords / this.state.englishWords.length;
     const englishEvidenceRatio =this.props.weightedEnglish === '?' ? '?' :  englishEvidence / this.state.englishEvidence.length;
@@ -145,155 +143,158 @@ export default class ScoreSummary extends React.Component {
         <div className='score-summary-tab-title'>Score Summary</div>
         <div className='score-summary-tab-right'></div>
       </div>
-      <div className={`score-summary-body ${this.state.isCollapsed ? 'd-none' : ''}`}>
-        <div className='score-summary-overall'>
-          <div className='grade-footer-score'>
-            <div>
-              Final Score:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {this.props.weightedOverall}
+      <div className={'score-summary-scroll-wrapper'}>
+        <div className={`score-summary-body ${this.state.isCollapsed ? 'd-none' : ''}`}>
+          <div className='score-summary-overall'>
+            <div className='grade-footer-score'>
+              <div>
+                Final Score:
               </div>
-              <div className='grade-footer-score-range'>
-                <div>400 to</div>
-                <div>1600</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='score-summary-horizontal' />
-        <div className='score-summary-english'>
-          <div className='grade-footer-score'>
-            <div>
-              Reading/Writing:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {this.props.weightedEnglish}
-              </div>
-              <div className='grade-footer-score-range'>
-                <div>200 to</div>
-                <div>800</div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {this.props.weightedOverall}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>400 to</div>
+                  <div>1600</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className='score-summary-vertical' />
-        <div className='score-summary-math'>
-          <div className='grade-footer-score'>
-            <div>
-              Math:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {this.props.weightedMath}
+          <div className='score-summary-horizontal' />
+          <div className='score-summary-english'>
+            <div className='grade-footer-score'>
+              <div>
+                Reading/Writing:
               </div>
-              <div className='grade-footer-score-range'>
-                <div>200 to</div>
-                <div>800</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='score-summary-horizontal' />
-        <div className='score-summary-subscores-english'>
-          <div className={`grade-footer-score ${this.determineQuestionClass(englishOrgRatio)}`}>
-            <div>
-            {this.determineQuestionIcon(englishOrgRatio)} Organization and Impact:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {englishOrgRatio === '?' ? '?' : englishOrg}
-              </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.englishOrg.length}</div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {this.props.weightedEnglish}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>200 to</div>
+                  <div>800</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className={`grade-footer-score ${this.determineQuestionClass(englishGrammarRatio)}`}>
-            <div>
-              {this.determineQuestionIcon(englishGrammarRatio)} Grammar:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {englishGrammarRatio === '?' ? '?' : englishGrammar}
+          <div className='score-summary-vertical' />
+          <div className='score-summary-math'>
+            <div className='grade-footer-score'>
+              <div>
+                Math:
               </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.englishGrammar.length}</div>
-              </div>
-            </div>
-          </div>
-          <div className={`grade-footer-score ${this.determineQuestionClass(englishWordsRatio)}`}>
-            <div>
-              
-              {this.determineQuestionIcon(englishOrgRatio)} Words in Context:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {englishWordsRatio === '?' ? '?' : englishWords}
-              </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.englishWords.length}</div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {this.props.weightedMath}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>200 to</div>
+                  <div>800</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className={`grade-footer-score ${this.determineQuestionClass(englishEvidenceRatio)}`}>
-            <div>
-              
-              {this.determineQuestionIcon(englishEvidenceRatio)} Using Evidence:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {englishEvidenceRatio === '?' ? '?' : englishEvidence}
+          <div className='score-summary-horizontal' />
+          <div className='score-summary-subscores-english'>
+            <div className={`grade-footer-score ${this.determineQuestionClass(englishOrgRatio)}`}>
+              <div>
+              {this.determineQuestionIcon(englishOrgRatio)} Organization and Impact:
               </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.englishEvidence.length}</div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {englishOrgRatio === '?' ? '?' : englishOrg}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.englishOrg.length}</div>
+                </div>
+              </div>
+            </div>
+            <div className={`grade-footer-score ${this.determineQuestionClass(englishGrammarRatio)}`}>
+              <div>
+                {this.determineQuestionIcon(englishGrammarRatio)} Grammar:
+              </div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {englishGrammarRatio === '?' ? '?' : englishGrammar}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.englishGrammar.length}</div>
+                </div>
+              </div>
+            </div>
+            <div className={`grade-footer-score ${this.determineQuestionClass(englishWordsRatio)}`}>
+              <div>
+                
+                {this.determineQuestionIcon(englishOrgRatio)} Words in Context:
+              </div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {englishWordsRatio === '?' ? '?' : englishWords}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.englishWords.length}</div>
+                </div>
+              </div>
+            </div>
+            <div className={`grade-footer-score ${this.determineQuestionClass(englishEvidenceRatio)}`}>
+              <div>
+                
+                {this.determineQuestionIcon(englishEvidenceRatio)} Using Evidence:
+              </div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {englishEvidenceRatio === '?' ? '?' : englishEvidence}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.englishEvidence.length}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className='score-summary-vertical' />
-        <div className='score-summary-subscores-math'>
-          <div className={`grade-footer-score ${this.determineQuestionClass(mathLinearRatio)}`}>
-            <div>
-              {this.determineQuestionIcon(mathLinearRatio)} Linear Equations:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {mathLinearRatio === '?' ? '?' : mathLinear}
+          <div className='score-summary-vertical' />
+          <div className='score-summary-subscores-math'>
+            <div className={`grade-footer-score ${this.determineQuestionClass(mathLinearRatio)}`}>
+              <div>
+                {this.determineQuestionIcon(mathLinearRatio)} Linear Equations:
               </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.mathLinear.length}</div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {mathLinearRatio === '?' ? '?' : mathLinear}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.mathLinear.length}</div>
+                </div>
+              </div>
+            </div>
+            <div className={`grade-footer-score ${this.determineQuestionClass(mathRatesRatio)}`}>
+              <div>
+              {this.determineQuestionIcon(mathRatesRatio)} Rates and Data Analysis:
+              </div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {mathRatesRatio === '?' ? '?' : mathRates}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.mathRates.length}</div>
+                </div>
+              </div>
+            </div>
+            <div className={`grade-footer-score ${this.determineQuestionClass(mathQuadRatio)}`}>
+              <div>
+                {this.determineQuestionIcon(mathQuadRatio)} Quadratics, Polynomials, Exponentials:
+              </div>
+              <div className='grade-footer-score-numbers-wrapper'>
+                <div className='grade-footer-score-main'>
+                  {mathQuadRatio === '?' ? '?' : mathQuad}
+                </div>
+                <div className='grade-footer-score-range'>
+                  <div>/{this.state.mathQuad.length}</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className={`grade-footer-score ${this.determineQuestionClass(mathRatesRatio)}`}>
-            <div>
-            {this.determineQuestionIcon(mathRatesRatio)} Rates and Data Analysis:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {mathRatesRatio === '?' ? '?' : mathRates}
-              </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.mathRates.length}</div>
-              </div>
-            </div>
-          </div>
-          <div className={`grade-footer-score ${this.determineQuestionClass(mathQuadRatio)}`}>
-            <div>
-              {this.determineQuestionIcon(mathQuadRatio)} Polynomials, Exponentials:
-            </div>
-            <div className='grade-footer-score-numbers-wrapper'>
-              <div className='grade-footer-score-main'>
-                {mathQuadRatio === '?' ? '?' : mathQuad}
-              </div>
-              <div className='grade-footer-score-range'>
-                <div>/{this.state.mathQuad.length}</div>
-              </div>
-            </div>
-          </div>
+          <div className='score-summary-horizontal score-summary-horizontal-compact score-summary-row-5'/>
         </div>
       </div>
     </div>
