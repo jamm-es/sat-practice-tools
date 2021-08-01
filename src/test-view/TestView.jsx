@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import {Grade} from '../grade';
 import {default as PDFViewer} from './PDFViewer';
 
-import thirdPartyUrls from '../data/past-urls.json';
+import testUrls from '../data/test-urls.json';
 import practiceTests from '../data/practice-tests.json';
 
 import './test-view.css';
@@ -27,25 +28,19 @@ export default class TestView extends React.Component {
     this.pdfRef = React.createRef();
 
     this.state = {
-      pdfPath: '',
+      pdfPath: this.isPastTest ? '' : testUrls[this.props.test][0],
       thirdPartyPath: '',
       rerenderIndex: 0,
       windowWidth: 0
     }
     if(this.isPastTest) {
-      for(let i = 0; i < thirdPartyUrls[this.props.test].length; ++i) {
+      for(let i = 0; i < testUrls[this.props.test].length; ++i) {
         this.state[`${i}_status`] = false; // indicates if load has failed
       }
     }
   }
 
   componentDidMount() {
-    if(!this.isPastTest) {
-      import(`../data/pdfs/${this.props.test}.pdf`)
-        .then(pdfPath => {
-          this.setState({ pdfPath: pdfPath.default });
-        });
-    }
     this.setWidth();
     window.addEventListener('resize', this.setWidth.bind(this)); 
   }
@@ -69,7 +64,7 @@ export default class TestView extends React.Component {
   toTitleCase(str) {
     return str.replace(/\w\S*/g, function(txt){
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
+    }).replaceAll('Us', 'US');
   }
 
   handleGradeViewToggle() {
@@ -118,8 +113,37 @@ export default class TestView extends React.Component {
   }
 
   render() {    
+    const testTitle = this.toTitleCase(this.props.test.replaceAll('-', ' '));
+
     return (
       <div className={`test-view-container ${!this.props.isTestMode ? 'grade-view' : ''} ${this.state.windowWidth <= 700 ? 'test-view-container-expanded' : ''}`} ref={this.testViewContainerRef}>
+        <Helmet>
+          <title>SAT {testTitle}</title>
+          <meta 
+            name='description'
+            content={`Easily take and grade the SAT ${testTitle} online, and other free, official practice tests and past exams. Measure your skills and view explanations of questions you're confused about.`}
+          />
+          <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "SAT ${testTitle}",
+                "item": "https://satpractice.tools/${this.props.test}"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "${this.props.isTestMode ? 'Test' : 'Grade'}",
+                "item": "https://satpractice.tools/${this.props.test}/${this.props.isTestMode ? 'test' : 'grade'}"
+              }
+            ]
+          }
+        `}</script>
+        </Helmet>
         {this.props.isTestMode && <div className='test-view-pdf collapse show' ref={this.pdfRef}>
           {
             this.state.thirdPartyPath !== ''
@@ -130,7 +154,7 @@ export default class TestView extends React.Component {
                   this.state.windowWidth > 1100
                   ? <>
                     {
-                      thirdPartyUrls[this.props.test].map((url, i) => 
+                      testUrls[this.props.test].map((url, i) => 
                         <Button 
                           variant='main' 
                           key={i}
@@ -150,7 +174,7 @@ export default class TestView extends React.Component {
                   </>
                   : <>
                     {
-                      thirdPartyUrls[this.props.test].map((url, i) => 
+                      testUrls[this.props.test].map((url, i) => 
                         this.state.thirdPartyPath !== url
                           ? <a 
                             key={i}
@@ -200,14 +224,14 @@ export default class TestView extends React.Component {
               <div className='test-view-button-container' style={{margin: '20px 0'}}>
                 {
                   this.state.windowWidth > 1100
-                    ? thirdPartyUrls[this.props.test].map((url, i) => <Button 
+                    ? testUrls[this.props.test].map((url, i) => <Button 
                       variant='main' 
                       key={i}
                       onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
                       Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
                     </Button>)
-                    : thirdPartyUrls[this.props.test].map((url, i) => <a
+                    : testUrls[this.props.test].map((url, i) => <a
                       key={i}
                       onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
@@ -224,7 +248,7 @@ export default class TestView extends React.Component {
           }
         </div>}
         <div className='test-view-grade'>
-          {!this.props.isTestMode && <h1>Test: {this.toTitleCase(this.props.test.replaceAll('-', ' '))}</h1>}
+          {!this.props.isTestMode && <h1>SAT {testTitle}</h1>}
           {
             this.props.isTestMode && <>
               <div className='test-view-grade-collapser' onClick={this.handleGradeViewToggle.bind(this)}>
@@ -249,10 +273,7 @@ export default class TestView extends React.Component {
           </div>
         </div>
         <div className='test-view-change-button'>
-          <Link to={ location => {
-            const segments = location.pathname.split('/');
-            return `/${segments[1] === 'grade' ? 'test' : 'grade'}/${segments[2]}`
-          }}>
+          <Link to={`/${this.props.test}/${this.props.isTestMode ? 'grade' : 'test'}`}>
             <Button variant='main' onClick={() => this.setState(prevState => ({ rerenderIndex: prevState.rerenderIndex+1 }))}>
               {this.props.isTestMode ? 'Remove Test View' : 'View Test Side-by-side'}
             </Button>

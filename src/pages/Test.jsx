@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 
 import practiceTests from '../data/practice-tests.json';
 import pastTests from '../data/past-tests.json'
@@ -10,6 +11,9 @@ export default class Grade extends React.Component {
 
   render() {
     return <div>
+      <Helmet>
+        <title>Take Tests</title>
+      </Helmet>
       <h1>Take SAT Tests</h1>
       <p>If you want to take an SAT test online,
         these links will allow you to view a test digitally,
@@ -23,11 +27,11 @@ export default class Grade extends React.Component {
 
       <h2>Official Practice</h2>
       <ul>
-        {practiceTests.map((testName, i) => <li key={i}><Link to={`/grade/${testName.toLowerCase().replaceAll(' ', '-')}`}>{testName}</Link></li>)}
+        {practiceTests.map((testName, i) => <li key={i}><Link to={`/${testName.toLowerCase().replaceAll(' ', '-')}/grade`}>{testName}</Link></li>)}
       </ul>
       <h2>Past Exams</h2>
       <ul>
-        {pastTests.map((testName, i) => <li key={i}><Link to={`/grade/${testName.toLowerCase().replaceAll(' ', '-')}`}>{testName}</Link></li>)}
+        {pastTests.map((testName, i) => <li key={i}><Link to={`/${testName.toLowerCase().replaceAll(' ', '-')}/grade`}>{testName}</Link></li>)}
       </ul>
     </div>
   }

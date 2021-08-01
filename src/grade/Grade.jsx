@@ -87,6 +87,7 @@ export default class Grade extends React.Component {
         .then(async weightsPath => {
           const state = {};
           const weightsData = await csv(weightsPath.default);
+          console.log(weightsData);
           for(const weightsCategory of this.weightsCategories) {
             state[`${weightsCategory}_weights`] = [];
             for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
@@ -289,6 +290,9 @@ export default class Grade extends React.Component {
       }
       weightedSections[section] = weighted;
     }
+
+    console.log(this.state);
+    console.log(weightedSections);
 
     const englishSectionWeighted = this.state[`reading_graded`].some(d => d) || this.state[`writing_graded`].some(d => d)
       ? weightedSections['reading'] + weightedSections['writing']

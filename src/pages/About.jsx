@@ -1,5 +1,6 @@
 import React from 'react';
 import Alert from 'react-bootstrap/Alert';
+import {Helmet} from 'react-helmet';
 
 import './generic_page.css';
 
@@ -7,6 +8,9 @@ export default class About extends React.Component {
 
   render() {
     return <div>
+      <Helmet>
+        <title>About</title>
+      </Helmet>
       <h1>About</h1>
       <p>SATPractice.tools was created in 2021 to help others study more efficiently for the SATs.</p>
       <p>This website serves as an easy place to find practice tests to take and grade.</p>

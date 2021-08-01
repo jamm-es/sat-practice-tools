@@ -226,7 +226,7 @@ export default class ScoreSummary extends React.Component {
             <div className={`grade-footer-score ${this.determineQuestionClass(englishWordsRatio)}`}>
               <div>
                 
-                {this.determineQuestionIcon(englishOrgRatio)} Words in Context:
+                {this.determineQuestionIcon(englishWordsRatio)} Words in Context:
               </div>
               <div className='grade-footer-score-numbers-wrapper'>
                 <div className='grade-footer-score-main'>

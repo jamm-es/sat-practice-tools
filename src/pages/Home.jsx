@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 
 import practiceTests from '../data/practice-tests.json';
 import pastTests from '../data/past-tests.json';
@@ -29,7 +30,7 @@ export default class Home extends React.Component {
     this.setState({ windowWidth: window.innerWidth });
   }
 
-  generateQuestionGrid(urlFirstPart) {
+  generateQuestionGrid(type) {
     if(this.state.windowWidth > 600) {
       return <div className='home-test-container'>
         <h3 className='home-practice-col'>Official Practice</h3>
@@ -39,7 +40,7 @@ export default class Home extends React.Component {
         <div className='home-practice-entries'>
           <div>
             {
-              practiceTests.map(d => <p><Link to={`/${urlFirstPart}/${d.toLowerCase().replaceAll(' ', '-')}`}>{d}</Link></p>)
+              practiceTests.map(d => <p><Link to={`/${d.toLowerCase().replaceAll(' ', '-')}/${type}`}>{d}</Link></p>)
             }
           </div>
         </div>
@@ -47,7 +48,7 @@ export default class Home extends React.Component {
         <div className='home-past-entries'>
           <div>
             {
-              pastTests.map(d => <p><Link to={`/${urlFirstPart}/${d.toLowerCase().replaceAll(' ', '-')}`}>{d}</Link></p>)
+              pastTests.map(d => <p><Link to={`/${d.toLowerCase().replaceAll(' ', '-')}/${type}`}>{d}</Link></p>)
             }
           </div>
         </div>
@@ -60,7 +61,7 @@ export default class Home extends React.Component {
         <div className='home-practice-entries'>
           <div>
             {
-              practiceTests.map(d => <p><Link to={`/${urlFirstPart}/${d.toLowerCase().replaceAll(' ', '-')}`}>{d}</Link></p>)
+              practiceTests.map(d => <p><Link to={`/${d.toLowerCase().replaceAll(' ', '-')}/${type}`}>{d}</Link></p>)
             }
           </div>
         </div>
@@ -70,7 +71,7 @@ export default class Home extends React.Component {
         <div className='home-past-entries'>
           <div>
             {
-              pastTests.map(d => <p><Link to={`/${urlFirstPart}/${d.toLowerCase().replaceAll(' ', '-')}`}>{d}</Link></p>)
+              pastTests.map(d => <p><Link to={`/${d.toLowerCase().replaceAll(' ', '-')}/${type}`}>{d}</Link></p>)
             }
           </div>
         </div>
@@ -79,9 +80,16 @@ export default class Home extends React.Component {
   }
 
   render() {
+
+    const questionArray = [];
+    const correctArray = [];
+
     return (
       <div className='home'>
-        <h2>Take a practice test completely online:</h2>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+        <h2>Take an SAT practice test completely online:</h2>
         {this.generateQuestionGrid('test')}
         <h2>Or, grade a test you've already completed:</h2>
         {this.generateQuestionGrid('grade')}

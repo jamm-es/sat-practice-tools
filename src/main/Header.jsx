@@ -32,6 +32,7 @@ export default class Footer extends React.Component {
               <Nav className="me-auto" className='justify-content-end'>
                 <Nav.Link href="/test">Take Tests</Nav.Link>
                 <Nav.Link href="/grade">Grade Tests</Nav.Link>
+                <Nav.Link href="/list">All Tests</Nav.Link>
                 <Nav.Link href="/about">About</Nav.Link>
               </Nav>
             </Navbar.Collapse>

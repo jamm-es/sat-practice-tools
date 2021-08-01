@@ -7,11 +7,14 @@ import {
   Route
 } from 'react-router-dom';
 
-import './index.css';
-
 import {Footer, Header, NotFound} from './main';
-import {Home, Test, Grade, About} from './pages';
+import {Home, Test, Grade, About, List, ListEntry} from './pages';
 import {TestView} from './test-view';
+
+import practiceTests from './data/practice-tests.json';
+import pastTests from './data/past-tests.json'
+
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,8 +26,8 @@ ReactDOM.render(
     <Header />
     <Router>
       <Switch>
-        <Route path='/test/:test' render={props =>  <TestView test={props.match.params.test} isTestMode />} />
-        <Route path='/grade/:test' render={props => <TestView test={props.match.params.test} />} />
+        <Route path='/:test/test' exact render={props =>  <TestView test={props.match.params.test} isTestMode />} />
+        <Route path='/:test/grade' exact render={props => <TestView test={props.match.params.test} />} />
         <Route> {/* encompasses everything that needs to be nested inside main */}
           <main>
             <Switch>
@@ -32,14 +35,17 @@ ReactDOM.render(
               <Route exact path='/test' component={Test} />
               <Route exact path='/grade' component={Grade} />
               <Route exact path='/about' component={About} />
-              <Route exact path='/notfound' component={NotFound} />
-              <Route component={NotFound} />
+              <Route exact path='/list' component={List} />
+              {practiceTests.map(testName => testName.toLowerCase().replaceAll(' ', '-')).map(testName => <Route path={`/${testName}`} exact render={() => <ListEntry test={testName} />} />)}
+              {pastTests.map(testName => testName.toLowerCase().replaceAll(' ', '-')).map(testName => <Route path={`/${testName}`} exact render={() => <ListEntry test={testName} />} />)}
+              <Route exact path='/notfound' component={NotFound} status={404} />
+              <Route component={NotFound} status={404} />
             </Switch>
           </main>
         </Route>
       </Switch>
       <Switch>
-        <Route path='/test/*'/>
+        <Route path='/*/test'/>
         <Route component={Footer}/>
       </Switch>
     </Router>

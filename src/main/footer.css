@@ -8,11 +8,11 @@ footer {
 }
 
 footer * {
-  color: #BFB8AD;
+  color: #BFB8AD !important;
 }
 
 footer a:hover {
-  color: #EADEDA;
+  color: #EADEDA !important;
 }
 
 footer > :first-child {
