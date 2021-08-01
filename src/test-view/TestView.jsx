@@ -114,11 +114,10 @@ export default class TestView extends React.Component {
 
   render() {    
     const testTitle = this.toTitleCase(this.props.test.replaceAll('-', ' '));
-
     return (
       <div className={`test-view-container ${!this.props.isTestMode ? 'grade-view' : ''} ${this.state.windowWidth <= 700 ? 'test-view-container-expanded' : ''}`} ref={this.testViewContainerRef}>
         <Helmet>
-          <title>SAT {testTitle}</title>
+          <title>SAT {testTitle}{this.isPastTest ? ' | Past Exam' : ''}</title>
           <meta 
             name='description'
             content={`Easily take and grade the SAT ${testTitle} online, and other free, official practice tests and past exams. Measure your skills and view explanations of questions you're confused about.`}
@@ -248,7 +247,7 @@ export default class TestView extends React.Component {
           }
         </div>}
         <div className='test-view-grade'>
-          {!this.props.isTestMode && <h1>SAT {testTitle}</h1>}
+          {!this.props.isTestMode && <h1>SAT {testTitle}{this.isPastTest && ' (Past Exam)'}</h1>}
           {
             this.props.isTestMode && <>
               <div className='test-view-grade-collapser' onClick={this.handleGradeViewToggle.bind(this)}>

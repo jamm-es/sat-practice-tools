@@ -19,15 +19,15 @@ export default class ListEntry extends React.Component {
 
   render() {
     const testTitle = this.toTitleCase(this.props.test.replaceAll('-', ' '));
-    const isThirdParty = pastTests.includes(testTitle);
+    const isPastTest = pastTests.includes(testTitle);
 
     return <div>
       <Helmet>
-        <title>SAT {testTitle}</title>
+        <title>SAT {testTitle}{isPastTest ? ' | Past Exam' : ''}</title>
         <meta 
-          name='description'
-          content={`Easily take and grade the SAT ${testTitle} online. Measure your skills and view explanations of questions you're confused about.`}
-        />
+            name='description'
+            content={`Easily take and grade the SAT ${testTitle} online, and other free, official practice tests and past exams. Measure your skills and view explanations of questions you're confused about.`}
+          />
         <script type="application/ld+json">{`
         {
           "@context": "https://schema.org",
@@ -43,9 +43,9 @@ export default class ListEntry extends React.Component {
         }
       `}</script>
       </Helmet>
-      <h1>SAT {testTitle}</h1>
+      <h1>SAT {testTitle}{isPastTest && ' (Past Exam)'}</h1>
       {
-        !isThirdParty
+        !isPastTest
         ? <>
           <p>This is an official practice test. This means that you will have full access to answer explanations and accurate score curves, along with
             skill breakdowns.

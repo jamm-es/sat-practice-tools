@@ -22,6 +22,10 @@ ReactDOM.render(
       titleTemplate='%s | SAT Practice Tools'
       defaultTitle='SAT Practice Tools'
     >
+      <meta
+        name="description"
+        content="Easily take and grade free, official SAT practice tests and past exams online. Measure your skills and view explanations of questions you're confused about."
+      />
     </Helmet>
     <Header />
     <Router>
