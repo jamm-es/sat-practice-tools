@@ -168,7 +168,7 @@ export default class Question extends React.Component {
       <div className='question-divider' />
 
       <div 
-        className='question-check'
+        className={`question-check ${this.props.type === 'saq' ? 'question-check-saq' : ''}`}
         onClick={this.handleOtherClick.bind(this)}
       >
         {

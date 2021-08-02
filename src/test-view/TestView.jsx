@@ -19,7 +19,12 @@ export default class TestView extends React.Component {
 
     this.isPastTest = !practiceTests.some(d => d.replaceAll(' ', '-').toLowerCase() === this.props.test);
 
-    this.embeddableHostnames = ['docdroid.net'];
+    this.embeddableHostnames = [
+      'docdroid.net',
+      'web.archive.org',
+      'maine.gov',
+      'drive.google.com'
+    ];
 
     this.uploadRef = React.createRef();
     this.gradeViewCollapseIcon = React.createRef();

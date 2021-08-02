@@ -312,6 +312,7 @@ export default class Grade extends React.Component {
         changeGradedQuestion={this.changeGradedQuestion.bind(this)}
         isFloating={this.props.testViewMode}
         windowWidth={this.props.windowWidth}
+        test={this.props.test}
       />
       {this.state.sections.map(section => 
         <Section 

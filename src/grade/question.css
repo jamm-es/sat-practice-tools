@@ -153,6 +153,12 @@
   user-select: none;
 }
 
+.question-check-saq {
+  width: 60px;
+  text-align: left;
+  margin-left: 10px;
+}
+
 .question-check-right {
   color: #65A46D;
   pointer-events: none;

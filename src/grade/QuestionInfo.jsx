@@ -11,15 +11,26 @@ export default class QuestionInfo extends React.Component {
 
     this.bodyRef = React.createRef();
     this.iconRef = React.createRef();
+
+    this.state = {
+      imagePath: ''
+    }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.props.isActive !== nextProps.isActive 
       || this.props.isGraded !== nextProps.isGraded 
       || this.props.section !== nextProps.section 
       || this.props.questionNumber !== nextProps.questionNumber
       || this.props.isFloating !== nextProps.isFloating
-      || this.props.windowWidth !== nextProps.windowWidth;
+      || this.props.windowWidth !== nextProps.windowWidth
+      || this.state.imagePath !== nextState.imagePath;
+  }
+
+  componentDidUpdate(prevProps) {
+    if((prevProps.questionNumber !== this.props.questionNumber || prevProps.section !== this.props.section) && this.props.question.is_image === 'TRUE') {
+      this.setState({ imagePath: require(`../data/explanation_images/${this.props.test}/${this.props.section}/${this.props.questionNumber}.png`).default })
+    }
   }
 
   handleToggle() {
@@ -39,6 +50,7 @@ export default class QuestionInfo extends React.Component {
     if(this.bodyRef.current !== null && !this.bodyRef.current.classList.contains('show')) {
       this.handleToggle();
     }
+    console.log(this.props.question);
 
     return <div className={`question-info ${this.props.isFloating ? 'question-info-static' : 'question-info-sticky'}`}>
       <div className='question-info-header' onClick={this.handleToggle.bind(this)}>
@@ -100,9 +112,15 @@ export default class QuestionInfo extends React.Component {
             </p>
           </>
           : <div className='question-info-explanation'>
-            <p>
-              {this.props.question.explanation}
-            </p>
+            {
+              this.props.question.is_image === 'TRUE'
+              ? <p>
+                <img src={this.state.imagePath} style={{margin: '0 auto'}} alt={`Answer Explanation for Question ${this.props.questionNumber}`} />
+              </p>
+              : <p>
+                {this.props.question.explanation}
+              </p>
+            }
           </div>
         }
       </div>
