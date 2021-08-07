@@ -30,6 +30,7 @@
   display: inline-block;
   background-color: #37718E;
   height: 45px;
+  cursor: pointer;
 }
 
 .score-summary-tab-title {
@@ -106,8 +107,6 @@
   border-left: 2px solid #B5AEA4;
 }
 
-
-
 .score-summary-body .grade-footer-score:not(:first-child) {
   margin-top: 15px;
 }
@@ -126,6 +125,10 @@
 
 .score-summary-bad .grade-footer-score-main, .score-summary-bad .fas {
   color: #8C3131;
+}
+
+.score-summary-subscores-english, .score-summary-subscores-math {
+  font-size: 20px;
 }
 
 @media (max-width: 550px) {

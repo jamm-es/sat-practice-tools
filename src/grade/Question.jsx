@@ -77,9 +77,19 @@ export default class Question extends React.Component {
     this.props.handleShowAnswer(this.props.sectionName, this.props.questionNumber, this.highlightRef.current)
   }
 
+  handleMouseEnter() {
+    this.highlightRef.current.classList.add('hovered');
+  }
+
+  handleMouseLeave() {
+    this.highlightRef.current.classList.remove('hovered');
+  }
+
   render() {
     return <div 
       className={`question ${this.props.graded ? 'question-graded' : ''}`} 
+      onMouseEnter={this.handleMouseEnter.bind(this)}
+      onMouseLeave={this.handleMouseLeave.bind(this)}
     >
 
       <div

@@ -87,7 +87,6 @@ export default class Grade extends React.Component {
         .then(async weightsPath => {
           const state = {};
           const weightsData = await csv(weightsPath.default);
-          console.log(weightsData);
           for(const weightsCategory of this.weightsCategories) {
             state[`${weightsCategory}_weights`] = [];
             for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
@@ -137,14 +136,16 @@ export default class Grade extends React.Component {
         userAnswerFiltered = +userAnswer;
       }
 
-      console.log(userAnswerFiltered);
+      const answerSplitInequality = answer.split('<');
+      if(answerSplitInequality.length === 3) {
+        return +answerSplitInequality[0] < userAnswerFiltered && userAnswerFiltered < +answerSplitInequality[2];
+      }
 
       const validAnswers = answer.split(',');
       for(const potentialAnswer of validAnswers) {
         if((potentialAnswer.match(/\//g) || []).length === 1) { // case if userAnswer is a fraction
         const fractionArguments = potentialAnswer.split('/');
         const potentialAnswerFraction = fractionArguments[0] / fractionArguments[1];
-        console.log(potentialAnswer, fractionArguments, potentialAnswerFraction);
           if(Math.abs(potentialAnswerFraction - userAnswerFiltered) < 0.001) return true;
         }
         else { // case if potentialAnswer is a decimal or integer
@@ -290,9 +291,6 @@ export default class Grade extends React.Component {
       }
       weightedSections[section] = weighted;
     }
-
-    console.log(this.state);
-    console.log(weightedSections);
 
     const englishSectionWeighted = this.state[`reading_graded`].some(d => d) || this.state[`writing_graded`].some(d => d)
       ? weightedSections['reading'] + weightedSections['writing']

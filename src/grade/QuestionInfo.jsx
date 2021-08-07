@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
 
+import testTags from '../data/test-tags.json';
 import './question-info.css';
 
 export default class QuestionInfo extends React.Component {
@@ -28,7 +28,7 @@ export default class QuestionInfo extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if((prevProps.questionNumber !== this.props.questionNumber || prevProps.section !== this.props.section) && this.props.question.is_image === 'TRUE') {
+    if((prevProps.questionNumber !== this.props.questionNumber || prevProps.section !== this.props.section) && this.props.question.is_image.toLowerCase() === 'true') {
       this.setState({ imagePath: require(`../data/explanation_images/${this.props.test}/${this.props.section}/${this.props.questionNumber}.png`).default })
     }
   }
@@ -50,8 +50,6 @@ export default class QuestionInfo extends React.Component {
     if(this.bodyRef.current !== null && !this.bodyRef.current.classList.contains('show')) {
       this.handleToggle();
     }
-    console.log(this.props.question);
-
     return <div className={`question-info ${this.props.isFloating ? 'question-info-static' : 'question-info-sticky'}`}>
       <div className='question-info-header' onClick={this.handleToggle.bind(this)}>
         <div className='question-info-chevron-holder'>
@@ -96,7 +94,12 @@ export default class QuestionInfo extends React.Component {
           !this.props.isActive
           ? <>
             <p>Click on a question to view additional information, or click on the header to collapse this box.</p>
-            <p><span className='fas fa-lightbulb'/> Tip: Type 1, 2, 3, 4 to quickly enter A, B, C, D into the question text input.</p>
+            <p><span className='fas fa-lightbulb' style={{color: '#37718E'}} /> Tip: Type 1, 2, 3, 4 to quickly enter A, B, C, D into the question text input.</p>
+            <p style={{marginTop: testTags[this.props.test].hasWeights && testTags[this.props.test].hasExplanations && testTags[this.props.test].hasTags ? 0 : undefined}}>
+              {!testTags[this.props.test].hasWeights && <div><span className='fas fa-exclamation-triangle' style={{color: '#B76D38'}} /> This test uses estimated grading curves.</div>}
+              {!testTags[this.props.test].hasExplanations && <div><span className='fas fa-exclamation-triangle' style={{color: '#B76D38'}} /> Answer explanations are not available.</div>}
+              {!testTags[this.props.test].hasTags && <div><span className='fas fa-exclamation-triangle' style={{color: '#B76D38'}} /> Skill grades is not available.</div>}
+            </p>
           </>
           : !this.props.isGraded
           ? <>
@@ -113,7 +116,7 @@ export default class QuestionInfo extends React.Component {
           </>
           : <div className='question-info-explanation'>
             {
-              this.props.question.is_image === 'TRUE'
+              this.props.question.is_image.toLowerCase() === 'true'
               ? <p>
                 <img src={this.state.imagePath} style={{margin: '0 auto'}} alt={`Answer Explanation for Question ${this.props.questionNumber}`} />
               </p>

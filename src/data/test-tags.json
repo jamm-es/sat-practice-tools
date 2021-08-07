@@ -1,0 +1,117 @@
+{
+  "practice-test-1": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-2": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-3": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-4": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-5": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-6": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-7": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-8": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-9": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "practice-test-10": {
+    "hasWeights": true,
+    "hasExplanations": true,
+    "hasTags": true
+  },
+  "april-2017-school-day": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
+  "may-2017": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
+  "march-2018": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
+  "march-2019": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
+  "april-2019-school-day": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
+  "may-2019-us": {
+    "hasWeights": false,
+    "hasExplanations": false,
+    "hasTags": false
+  },
+  "may-2019-international": {
+    "hasWeights": false,
+    "hasExplanations": false,
+    "hasTags": false
+  },
+  "october-2019": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
+  "march-2020": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": false
+  },
+  "october-2020": {
+    "hasWeights": false,
+    "hasExplanations": false,
+    "hasTags": false
+  },
+  "march-2021": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": false
+  },
+  "may-2021-us": {
+    "hasWeights": false,
+    "hasExplanations": false,
+    "hasTags": false
+  },
+  "may-2021-international": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": false
+  }
+}

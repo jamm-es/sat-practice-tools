@@ -7,6 +7,7 @@
   z-index: 1;
   position: relative;
   user-select: none;
+  cursor: pointer;
 }
 
 .section-collapse-icon {
@@ -54,6 +55,7 @@
   margin-top: -15px;
   top: 50px;
   z-index: 0;
+  cursor: pointer;
 }
 
 .section {
@@ -92,4 +94,5 @@
   line-height: 20px;
   background-color: #E0D5CF;
   text-align: center;
+  cursor: pointer;
 }

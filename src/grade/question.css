@@ -32,12 +32,15 @@
   right: 0;
   height: 26px;
   z-index: 10;
-  pointer-events: none
+  pointer-events: none;
+}
+
+.question-select-highlight.hovered {
+  border: 2px solid #A2B1B8;
 }
 
 .question-select-highlight.active {
   border: 2px solid #648DA1;
-
 }
 
 .question-graded .question-divider {
@@ -56,6 +59,7 @@
   margin-right: 5px;
   text-align: right;
   user-select: none;
+  cursor: pointer;
 }
 
 .question-graded .question-number {
@@ -76,6 +80,7 @@
   z-index: 1;
   margin-bottom: 1px;
   user-select: none;
+  cursor: text;
 }
 
 .question-text::placeholder {
@@ -94,7 +99,7 @@
 
 .question-saq {
   width: 60px;
-  margin-right: 5px;
+  padding-right: 5px;
   text-align: right;
   font-family: 'Consolas', monospace;
   font-weight: bold;
@@ -108,6 +113,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.question-radio-selecter * {
+  cursor: pointer;
 }
 
 .question-radio {
@@ -151,10 +160,11 @@
   margin-left: 5px;
   text-align: center;
   user-select: none;
+  cursor: pointer;
 }
 
 .question-check-saq {
-  width: 60px;
+  width: 80px;
   text-align: left;
   margin-left: 10px;
 }
