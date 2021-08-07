@@ -27,11 +27,11 @@ export default class Grade extends React.Component {
 
       <h2>Official Practice</h2>
       <ul>
-        {practiceTests.map((testName, i) => <li key={i}><Link to={`/${testName.toLowerCase().replaceAll(' ', '-')}/grade`}>{testName}</Link></li>)}
+        {practiceTests.map((testName, i) => <li key={i}><Link to={`/${testName.toLowerCase().replaceAll(' ', '-')}/test`}>{testName}</Link></li>)}
       </ul>
       <h2>Past Exams</h2>
       <ul>
-        {pastTests.map((testName, i) => <li key={i}><Link to={`/${testName.toLowerCase().replaceAll(' ', '-')}/grade`}>{testName}</Link></li>)}
+        {pastTests.map((testName, i) => <li key={i}><Link to={`/${testName.toLowerCase().replaceAll(' ', '-')}/test`}>{testName}</Link></li>)}
       </ul>
     </div>
   }

@@ -25,6 +25,7 @@
   color: #EADEDA;
   padding: 10px;
   user-select: none;
+  -webkit-user-select: none;
   height: 45px;
   cursor: pointer;
 }
@@ -37,7 +38,7 @@
 }
 
 .question-info-body {
-  background-color: #D5CBC4;
+  background-color: #E0D5CF;
   padding: 20px;
   overflow-y: auto;
 }

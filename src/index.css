@@ -234,6 +234,11 @@ a:hover {
   box-shadow: none !important;
 }
 
+.alert-main {
+  background-color: #D5CBC4;
+  border-color: #B5AEA4;
+}
+
 .form-check-input:checked {
   background-color: #2E607F;
   border-color: #2E607F;

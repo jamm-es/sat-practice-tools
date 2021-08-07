@@ -207,6 +207,7 @@ export default class TestView extends React.Component {
                 : <div className='d-flex justify-content-center align-items-center'>
                   <div style={{width: '50%'}}>
                     <p>We cannot directly embed this PDF.</p>
+                    <p>We recommend that you use one of the other links to view this test.</p>
                     <p>If you click the button to externally download the file, you can re-upload it to display side-by-side on this page.</p>
                     <div className='test-view-button-container' style={{marginTop: 20}}>
                       <a href={this.state.thirdPartyPath} target='_blank'><Button variant='main'>Download Test</Button></a>
@@ -229,7 +230,7 @@ export default class TestView extends React.Component {
                 {
                   this.state.windowWidth > 1100
                     ? testUrls[this.props.test].map((url, i) => <Button 
-                      variant='main' 
+                      variant={i === 0 ? 'main' : 'sub'} 
                       key={i}
                       onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
@@ -239,7 +240,7 @@ export default class TestView extends React.Component {
                       key={i}
                       onClick={() => this.setState(prevState => ({ thirdPartyPath: url, rerenderIndex: prevState.rerenderIndex+1 }))}
                     >
-                      Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
+                      {i === 0 && <span className='fas fa-star' />} Link {i+1}{i === 0 ? ' (preferred)' : ''} ({new URL(url).hostname})
                     </a>)
                 }
               </div>

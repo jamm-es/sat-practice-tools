@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {csv} from 'd3';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import {Redirect} from 'react-router-dom';
 
 import {default as Section} from './Section';
@@ -11,7 +12,7 @@ import {default as ScoreSummary} from './ScoreSummary';
 
 import './grade.css';
 import './footer.css';
-import { flushSync } from 'react-dom';
+import testTags from '../data/test-tags.json';
 
 export default class Grade extends React.Component {
 
@@ -49,53 +50,45 @@ export default class Grade extends React.Component {
     };
   }
 
-  componentDidMount() {
-    import(`../data/tests/${this.props.test}.csv`)
-      .then(async questionsPath => {
-        const questions = await csv(questionsPath.default);
-        const state = {};
-        state.allQuestions = questions;
-        state.sections = questions.map(d => d.section).filter((value, index, self) => self.indexOf(value) === index);
-        state.sections.forEach(section => {
-          const numQuestions = questions.filter(d => d.section === section).length;
-          state[`${section}_user_answers`] = new Array(numQuestions).fill('');
-          state[`${section}_questions`] = questions.filter(d => d.section === section);
-          state[`${section}_graded`] = new Array(numQuestions).fill(false);
-          state[`${section}_correct`] = new Array(numQuestions).fill(false);
-        });
-        this.setState(state);
-      })
-      .catch(() => this.setState({ failedToLoad: true }));
+  async componentDidMount() {
+    const questionsPath = require(`../data/tests/${this.props.test}.csv`).default;
+    const questions = await csv(questionsPath);
+    const state = {};
+    state.allQuestions = questions;
+    console.log(questions);
+    state.sections = questions.map(d => d.section.toLowerCase().replaceAll(/[^a-z_]/g, '')).filter((value, index, self) => self.indexOf(value) === index);
+    state.sections.forEach(section => {
+      const numQuestions = questions.filter(d => d.section === section).length;
+      state[`${section}_user_answers`] = new Array(numQuestions).fill('');
+      state[`${section}_questions`] = questions.filter(d => d.section === section);
+      state[`${section}_graded`] = new Array(numQuestions).fill(false);
+      state[`${section}_correct`] = new Array(numQuestions).fill(false);
+    });
+    this.setState(state);
 
-    if(this.props.thirdPartyMode) {
-      import(`../data/weights/estimated.csv`)
-        .then(async weightsPath => {
-          const state = {};
-          const weightsData = await csv(weightsPath.default);
-          for(const weightsCategory of this.weightsCategories) {
-            state[`${weightsCategory}_weights`] = [];
-            for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
-              state[`${weightsCategory}_weights`][weight.raw_score] = weight.weighted;
-            }
-          }
-          this.setState(state);
-        })
-        .catch(() => this.setState({ failedToLoad: true }));
+    if(!testTags[this.props.test].hasWeights) {
+      const weightsPath = require(`../data/weights/estimated.csv`).default;
+      const state = {};
+      const weightsData = await csv(weightsPath);
+      for(const weightsCategory of this.weightsCategories) {
+        state[`${weightsCategory}_weights`] = [];
+        for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
+          state[`${weightsCategory}_weights`][weight.raw_score] = weight.weighted;
+        }
+      }
+      this.setState(state);
     }
     else {
-      import(`../data/weights/${this.props.test}.csv`)
-        .then(async weightsPath => {
-          const state = {};
-          const weightsData = await csv(weightsPath.default);
-          for(const weightsCategory of this.weightsCategories) {
-            state[`${weightsCategory}_weights`] = [];
-            for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
-              state[`${weightsCategory}_weights`][weight.raw_score] = weight.weighted;
-            }
-          }
-          this.setState(state);
-        })
-        .catch(() => this.setState({ failedToLoad: true }));
+      const weightsPath = require(`../data/weights/${this.props.test}.csv`).default;
+      const state = {};
+      const weightsData = await csv(weightsPath);
+      for(const weightsCategory of this.weightsCategories) {
+        state[`${weightsCategory}_weights`] = [];
+        for(const weight of weightsData.filter(d => d.section === weightsCategory)) {
+          state[`${weightsCategory}_weights`][weight.raw_score] = weight.weighted;
+        }
+      }
+      this.setState(state);
     }
 
   }
@@ -274,6 +267,7 @@ export default class Grade extends React.Component {
   }
 
   render() {
+    console.log(this.state.sections);
     if(this.state.failedToLoad) return <Redirect to='/not-found' />
 
     if(typeof this.state['reading_questions'] === 'undefined') return <></>;
@@ -312,6 +306,10 @@ export default class Grade extends React.Component {
         windowWidth={this.props.windowWidth}
         test={this.props.test}
       />
+      <Alert variant='main' style={{margin: this.props.testViewMode ? '20px' : '0 0 40px 0'}}>
+        <p>Type in the question input or click on the bubbles to input your answers.</p>
+        <p>Type 1, 2, 3, 4 to quickly enter A, B, C, D into the question text input.</p>
+      </Alert>
       {this.state.sections.map(section => 
         <Section 
           key={section}

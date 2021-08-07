@@ -60,7 +60,7 @@ export default class ListEntry extends React.Component {
       <p>Go to the following links to take the test online, or grade the test if you've already completed it on paper.</p>
       <div className='center-buttons'>
         <Link to={`${this.props.test}/test`}><Button variant='main'>Take Test Online</Button></Link>
-        <Link to={`${this.props.test}/test`}><Button variant='main'>Grade Completed Test</Button></Link>
+        <Link to={`${this.props.test}/grade`}><Button variant='main'>Grade Completed Test</Button></Link>
       </div>
       <p>If you just want to view the test, without being entering answers as you take it, try using the following links. Please note that, for third-party links,
         SATPractice.tools is not responsible for their content. All of the following content was uploading by third parties. As such, they may become unavailable at any

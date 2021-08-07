@@ -94,7 +94,6 @@ export default class QuestionInfo extends React.Component {
           !this.props.isActive
           ? <>
             <p>Click on a question to view additional information, or click on the header to collapse this box.</p>
-            <p><span className='fas fa-lightbulb' style={{color: '#37718E'}} /> Tip: Type 1, 2, 3, 4 to quickly enter A, B, C, D into the question text input.</p>
             <p style={{marginTop: testTags[this.props.test].hasWeights && testTags[this.props.test].hasExplanations && testTags[this.props.test].hasTags ? 0 : undefined}}>
               {!testTags[this.props.test].hasWeights && <div><span className='fas fa-exclamation-triangle' style={{color: '#B76D38'}} /> This test uses estimated grading curves.</div>}
               {!testTags[this.props.test].hasExplanations && <div><span className='fas fa-exclamation-triangle' style={{color: '#B76D38'}} /> Answer explanations are not available.</div>}

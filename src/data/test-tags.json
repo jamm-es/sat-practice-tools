@@ -64,6 +64,11 @@
     "hasExplanations": false,
     "hasTags": true
   },
+  "april-2018-school-day": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
   "march-2019": {
     "hasWeights": true,
     "hasExplanations": false,
