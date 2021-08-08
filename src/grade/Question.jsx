@@ -81,6 +81,7 @@ export default class Question extends React.Component {
   }
 
   render() {
+    console.log(this.props.rowNum, this.props.colNum);
     return <div 
       className={`question ${this.props.graded ? 'question-graded' : ''} ${this.props.doHighlightBackground ? 'question-background-accent' : ''}`} 
       onMouseEnter={this.handleMouseEnter.bind(this)}
@@ -112,15 +113,15 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'A');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
-                <div className='question-radio-center-text'></div>A
+              <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`} >
+                A
               </div>
             </div>
             <div 
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'B');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'B' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
+              <div className={`question-radio ${this.props.userAnswer === 'B' ? 'question-radio-selected' : ''}`} >
                 B
               </div>
             </div>
@@ -128,7 +129,7 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'C');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'C' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
+              <div className={`question-radio ${this.props.userAnswer === 'C' ? 'question-radio-selected' : ''}`} >
                 C
               </div>
             </div>
@@ -136,7 +137,7 @@ export default class Question extends React.Component {
               className='question-radio-selecter'
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'D');}}
             >
-              <div className={`question-radio ${this.props.userAnswer === 'D' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
+              <div className={`question-radio ${this.props.userAnswer === 'D' ? 'question-radio-selected' : ''}`} >
                 D
               </div>
             </div>

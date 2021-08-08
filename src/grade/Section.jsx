@@ -110,6 +110,7 @@ export default class Section extends React.Component {
   }
 
   render() {
+    console.log(this.props.sectionName);
     const questionTypes = this.props.questions.map(d => d.type).filter((value, index, self) => self.indexOf(value) === index);
     const isScoresUnknown = this.props.numCorrect === 0 && !this.props.graded.some(d => d);
 
@@ -129,7 +130,11 @@ export default class Section extends React.Component {
             {questionTypes.map((questionType) => {
               const questionTypeQuestions = this.props.questions.filter(d => d.type === questionType);
               const numRows = Math.ceil(questionTypeQuestions.length / numColumns);
-              return <div className='section-columns' key={questionType} >
+              let gridTemplateColumns = '1fr';
+              for(let i = 1; i < numColumns; ++i) {
+                gridTemplateColumns += ' 2px 1fr';
+              }
+              return <div className='section-columns' key={questionType} style={{gridTemplateColumns: gridTemplateColumns}}>
                 {questionTypeQuestions.map((d, i) =>
                   <Question
                     doHighlightBackground={i % numRows % 2 === 0 }
@@ -148,7 +153,7 @@ export default class Section extends React.Component {
                     rerenderIndex={this.props.rerenderIndex}
                     compactMode={this.props.compactMode}
                     numColumns={numColumns}
-                    rowNum={(i+1) % numRows}
+                    rowNum={(i % numRows)+1}
                     colNum={Math.ceil((i+1) / numRows)}
                   />
                 )}

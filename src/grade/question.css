@@ -64,7 +64,7 @@
 .question-text {
   width: 26px;
   height: 26px;
-  line-height: 20px;
+  line-height: 26px;
   font-weight: bold;
   padding: 0;
   border: 0;
@@ -73,9 +73,8 @@
   background: none;
   color: #181510;
   position: relative;
-  margin-bottom: 1px;
-  user-select: none;
-  -webkit-user-select: none;
+  user-select: auto;
+  -webkit-user-select: auto;
   cursor: text;
 }
 

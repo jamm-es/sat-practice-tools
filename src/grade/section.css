@@ -72,7 +72,6 @@
 .section-columns {
   margin-bottom: 40px;
   display: grid;
-  grid-template-columns: 1fr 2px 1fr 2px 1fr;
 }
 
 .section-column-divider {
