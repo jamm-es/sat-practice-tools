@@ -1,38 +1,29 @@
 .question {
-  text-align: right;
   height: 26px;
-  vertical-align: middle;
   line-height: 26px;
   font-size: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question.question-background-accent {
+  background-color: #D5CBC4;
 }
 
 .question > * {
   display: inline-block;
-  vertical-align: middle;
   position: relative;
-  z-index: 2;
-}
-
-.question-background {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 26px;
-  z-index: 1;
-  background-color: #E0D5CF;
-}
-
-.question-background-accent {
-  background-color: #D5CBC4;
+  z-index: 3;
 }
 
 .question-select-highlight {
   position: absolute;
+  z-index: 2;
   left: 0;
   right: 0;
   height: 26px;
-  z-index: 10;
-  pointer-events: none;
 }
 
 .question-select-highlight.hovered {
@@ -47,12 +38,10 @@
   pointer-events: none;
 }
 
-
 .question-divider {
   height: 26px;
-  vertical-align: middle;
   border-left: 2px solid #BFB8AD;
-
+  z-index: 1;
 }
 
 .question-number {
@@ -61,6 +50,11 @@
   user-select: none;
   -webkit-user-select: none;
   cursor: pointer;
+  z-index: 1;
+  width: 40px;
+  font-size: 20px;
+  line-height: 20px;
+  height: 20px;
 }
 
 .question-graded .question-number {
@@ -68,8 +62,9 @@
 }
 
 .question-text {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
+  line-height: 20px;
   font-weight: bold;
   padding: 0;
   border: 0;
@@ -78,7 +73,6 @@
   background: none;
   color: #181510;
   position: relative;
-  z-index: 1;
   margin-bottom: 1px;
   user-select: none;
   -webkit-user-select: none;
@@ -111,10 +105,7 @@
   width: 26px;
   height: 26px;
   padding: 1px;
-  margin-top: -0.8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
 }
 
 .question-radio-selecter * {
@@ -132,9 +123,11 @@
   font-weight: bold;
   color: #181510;
   text-align: center;
-  vertical-align: bottom;
   user-select: none;
   -webkit-user-select: none;
+  position: absolute;
+  top: 1px;
+  left: 1px;
 }
 
 .question-radio-selected {
@@ -159,12 +152,15 @@
 
 .question-check {
   width: 24px;
-  height: 24px;
+  height: 20px;
+  line-height: 20px;
   margin-left: 5px;
+  margin-right: 5px;
   text-align: center;
   user-select: none;
   -webkit-user-select: none;
   cursor: pointer;
+  z-index: 1;
 }
 
 .question-check-saq {

@@ -14,7 +14,7 @@ is incorrect because the passage is focused on the idea of Akira’s
 
 and Naomi’s present lives and possible futures. Choice D is incorrect
 because the interactions between Chie and Akira are polite, not critical;
-for example, Chie views Akira with “amusement,” not animosity.",false,reading,mcq,
+for example, Chie views Akira with “amusement,” not animosity.",FALSE,reading,mcq,
 2,B,"Choice B is the best answer. The passage centers on a night when
 
 
@@ -32,13 +32,13 @@ concludes without resolution to the question of whether Akira and
 Naomi will receive permission to marry. Choice D is incorrect because
 the passage repeatedly makes clear that for Chie, her encounter with
 Akira is momentous and unsettling, as when Akira acknowledges in
-line 73 that he has “startled” her.",false,reading,mcq,
+line 73 that he has “startled” her.",FALSE,reading,mcq,
 3,C,"Choice C is the best answer. Akira “came directly, breaking all
 tradition,” (line 1) when he approached Chie and asked to marry her
 daughter, and he “ask[ed] directly,” without “a go-between” (line 65) or
 “mediation,” because doing otherwise would have taken too much time.
 Choices A, B, and D are incorrect because in these contexts, “directly”
-does not mean in a frank, confident, or precise manner.",false,reading,mcq,WORDS_IN_CONTEXT
+does not mean in a frank, confident, or precise manner.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 4,A,"Choice A is the best answer. Akira is very concerned Chie will find his
 marriage proposal inappropriate because he did not follow traditional
 protocol and use a “go-between” (line 65). This is clear in lines 63-64,
@@ -52,7 +52,7 @@ unscheduled visit is a nuisance, his larger concern is that Chie will
 reject him due to the inappropriateness of his proposal. Choice D
 
 is incorrect because there is no evidence in the passage that Akira
-worries Chie will underestimate the sincerity of his emotions.",false,reading,mcq,COMMAND_OF_EVIDENCE
+worries Chie will underestimate the sincerity of his emotions.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 5,C,"Choice C is the best answer. In lines 63-64, Akira says to Chie,
 “Please don’t judge my candidacy by the unseemliness of this
 proposal.” This reveals Akira’s concern that Chie may say no to the
@@ -64,7 +64,7 @@ to the previous question. Choice A is incorrect because line 33 merely
 describes Akira’s voice as “soft, refined.” Choice B is incorrecl because
 lines 49-51 reflect Chie’s perspective, not Akira’s. Choice D is incorrect
 because lines 71-72 indicate only that Akira was speaking in an eager
-and forthright matter.",false,reading,mcq,
+and forthright matter.",FALSE,reading,mcq,
 6,D,"Choice D is the best answer because Akira clearly treats Chie with
 respect, including “bow[ing]” (line 26) to her, calling her “Madame”
 (line 31), and looking at her with “a deferential peek” (line 34). Akira
@@ -76,7 +76,7 @@ Choice A is incorrect because while Akira conveys respect to Chie, there
 is no evidence in the passage that he feels affection for her. Choice B is
 incorrect because neither objectivity nor impartiality accurately describes
 how Akira addresses Chie. Choice C is incorrect because Akira conveys
-respect to Chie and takes the conversation seriously.",false,reading,mcq,
+respect to Chie and takes the conversation seriously.",FALSE,reading,mcq,
 7,D,"Choice D is the best answer. The first paragraph (lines 1-4) reflects on
 how Akira approached Chie to ask for her daughter’s hand in marriage.
 In these lines, the narrator is wondering whether Chie would have
@@ -95,7 +95,7 @@ as a whole. Choice B is incorrect because the first paragraph implies
 
 a criticism of Akira’s individual marriage proposal but not the entire
 tradition of Japanese marriage proposals. Choice C is incorrect
-because the narrator does not question a suggestion.",false,reading,mcq,
+because the narrator does not question a suggestion.",FALSE,reading,mcq,
 8,B,"Choice B is the best answer. In line 1, the narrator suggests that
 Akira’s direct approach broke “all tradition.” The narrator then
 wonders if Akira had “followed form,” or the tradition expected of him,
@@ -103,7 +103,7 @@ would Chie have been more receptive to his proposal. In this context,
 following “form” thus means following a certain tradition or custom.
 Choices A, C, and D are incorrect because in this context “form” does
 not mean the way something looks (appearance), the way it is built
-(structure), or its essence (nature).",false,reading,mcq,WORDS_IN_CONTEXT
+(structure), or its essence (nature).",FALSE,reading,mcq,WORDS_IN_CONTEXT
 9,C,"Choice C is the best answer. Akira states that his unexpected meeting
 with Chie occurred only because of a “matter of urgency,” which he
 explains as “an opportunity to go to America, as dentist for Seattle’s
@@ -117,7 +117,7 @@ incorrect because Akira has “an understanding” with Naomi (line 63).
 Choice D is incorrect; while Akira may know that Chie is unaware
 
 of his feelings for Naomi, this is not what he is referring to when he
-mentions “a matter of urgency. ”",false,reading,mcq,
+mentions “a matter of urgency. ”",FALSE,reading,mcq,
 10,B,"Choice B is the best answer. In lines 39-42, Akira clarifies that the “matter of urgency” is that he has “an opportunity to go to America, as dentist for Seattle’s Japanese community.” Akira needs Chie’s answer to his marriage proposal so he can decide whether to accept the job in Seattle.
 
 Choices A, C, and D do not provide the best evidence for the answer to
@@ -126,7 +126,7 @@ apologizes for interrupting Chie’s quiet evening. Choice C is incorrect
 because lines 58-59 address the seriousness of Akira’s request, not its
 urgency. Choice D is incorrect because line 73 shows only that Akira’s
 proposal has “startled” Chie and does not explain why his request is
-time—sensitive.",false,reading,mcq,COMMAND_OF_EVIDENCE
+time—sensitive.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 11,A,"Choice A is the best answer. Lines 1-9 include examples of how many
 people shop (“millions of shoppers”), how much money they spend
 (“over $30 billion at retail stores in the month of December alone”),
@@ -142,7 +142,7 @@ because lines 1—9 provide a context for the amount of shopping that
 occurs in the US, but the anxiety (or “dread”) it might cause is not
 introduced until later in the passage. Choice D is incorrect because
 lines 1-9 do more than highlight the number of different occasions that
-lead to gift-giving.",false,reading,mcq,
+lead to gift-giving.",FALSE,reading,mcq,
 12,B,"Choice B is the best answer. Lines 9-10 state “This frequent experience
 of gift-giving can engender ambivalent feelings in gift-givers.” In
 
@@ -151,7 +151,7 @@ exemplified as conflicted feelings, as shopping is said to be something
 that “[mIany relish” (lines 10-11) and “many dread” (line 14).
 
 Choices A, C, and D are incorrect because in this context, “ambivalent”
-does not mean feelings that are unrealistic, apprehensive, or supportive.",false,reading,mcq,WORDS_IN_CONTEXT
+does not mean feelings that are unrealistic, apprehensive, or supportive.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 13,D,"Choice D is the best answer. In lines 10-13, the authors clearly state that
 some people believe gift-giving can help a relationship because it “offers
 a powerful means to build stronger bonds with one’s closest peers.”
@@ -163,7 +163,7 @@ self-expression. Choice B is incorrect because the passage implies
 that shopping is an expensive habit. Choice C is incorrect because the
 passage states that most people have purchased and received gifts,
 but it never implies that people are required to reciprocate the
-gift-giving process.",false,reading,mcq,
+gift-giving process.",FALSE,reading,mcq,
 14,A,"Choice A is the best answer. In lines 10-13, the authors suggest that
 people value gift-giving because it may strengthen their relationships
 with others: “Many relish the opportunity to buy presents because
@@ -176,7 +176,7 @@ discuss how people often buy gifts that the recipients would not
 purchase. Choice C is incorrect because lines 31-32 explain how gift-
 givers often fail to consider the recipients’ preferences. Choice D is
 incorrect because lines 44-47 suggest that the cost of a gift may not
-correlate to a recipient’s appreciation of it.",false,reading,mcq,COMMAND_OF_EVIDENCE
+correlate to a recipient’s appreciation of it.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 15,A,"Choice A is the best answer. The “deadweight loss” mentioned in the
 second paragraph is the significant monetary difference between what
 a gift-giver would pay for something and what a gift-recipient would
@@ -190,7 +190,7 @@ lines 31-34).
 Choices B, C, and D are all incorrect because lines 31-34 make clear
 that social psychologists would expect a disconnect between gift-
 givers and gift-recipients, not that they would question it, be disturbed
-by it, or find it surprising or unprecedented.",false,reading,mcq,
+by it, or find it surprising or unprecedented.",FALSE,reading,mcq,
 16,C,"Choice C is the best answer. Lines 41-44 suggest that gift-givers
 assume a correlation between the cost of a gift and how well-received
 it will be: “. . . gift-givers equate how much they spend with how
@@ -203,7 +203,7 @@ consideration” (lines 63-65).
 
 Choices A, B, and D are all incorrect because the passage neither
 states nor implies that the gift-givers’ assumption is insincere,
-unreasonable, or substantiated.",false,reading,mcq,
+unreasonable, or substantiated.",FALSE,reading,mcq,
 17,C,"Choice C is the best answer. Lines 63-65 suggest that the assumption made by gift-givers in lines 41-44 may be incorrect. The gift-givers assume that recipients will have a greater appreciation for costly gifts than for less costly gifts, but the authors suggest this relationship may
 be incorrect, as gift-recipients “may not construe smaller and larger
 gifts as representing smaller and larger signals of thoughtfulness and
@@ -212,7 +212,7 @@ Choices A and D are incorrect because lines 53-55 and 75-78 address
 the question of “why” gift-givers make specific assumptions rather
 than addressing the validity of these assumptions. Choice B is
 incorrect because lines 55-60 focus on the reasons people give gifts to
-others.",false,reading,mcq,COMMAND_OF_EVIDENCE
+others.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 18,D,"Choice D is the best answer. Lines 53-55 state that “Perhaps givers
 believe that bigger (i.e., more expensive) gifts convey stronger signals
 of thoughtfulness and consideration.” In this context, saying that more
@@ -222,7 +222,7 @@ communicate, stronger signals to the recipients.
 Choices A, B, and C are incorrect because in this context, to “convey”
 something does not mean to transport it (physically move something),
 counteract it (act in opposition to something), or exchange it (trade one
-thing for another).",false,reading,mcq,WORDS_IN_CONTEXT
+thing for another).",FALSE,reading,mcq,WORDS_IN_CONTEXT
 19,A,"Choice A is the best answer. The paragraph examines how gift—givers
 believe expensive gifts are more thoughtful than less expensive gifts
 and will be more valued by recipients. The work of Camerer and
@@ -237,7 +237,7 @@ by Camerer and others is used to explain an idea put forward by
 
 the authors (“givers believe that bigger . . . gifts convey stronger
 signals”), not to introduce an argument, question a motive, or support
-a conclusion.",false,reading,mcq,COMMAND_OF_EVIDENCE
+a conclusion.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 20,B,"Choice B is the best answer. The graph clearly shows that gift-givers
 believe that a “more valuable” gift will be more appreciated than
 
@@ -250,7 +250,7 @@ Choice A is incorrect because the graph does not suggest that gift-
 givers are aware of gift-recipients’ appreciation levels. Choices C and
 D are incorrect because neither the gift-givers’ desire for the gifts they
 purchase nor the gift-givers’ relationship with the gift-recipients is
-addressed in the graph.",false,reading,mcq,
+addressed in the graph.",FALSE,reading,mcq,
 21,A,"Choice A is the best answer. Lines 69—75 explain that while people
 
 are often both gift-givers and gift-receivers, they struggle to apply
@@ -270,7 +270,7 @@ because the passage emphasizes that gift-givers and gift-recipients
 fail to understand each other’s perspective, but it offers no evidence
 that the disconnect results only from a failure to understand the
 
-other’s intentions.",false,reading,mcq,
+other’s intentions.",FALSE,reading,mcq,
 22,B,"Choice B is the best answer. Lines 2-4 of the passage describe DNA
 as “a very long chain, the backbone of which consists of a regular
 alternation of sugar and phosphate groups.” The backbone of DNA,
@@ -284,7 +284,7 @@ organisms. Choice C is incorrect because the passage describes the
 backbone of the molecule as having “a regular alternation” of sugar
 and phosphate, not one or the other. Choice D is incorrect because the
 nitrogenous bases are not the main structural unit of DNA; rather, they
-are attached only to the repeating units of sugar.",false,reading,mcq,WORDS_IN_CONTEXT
+are attached only to the repeating units of sugar.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 23,D,"Choice D is the best answer. The authors explain that hydrogen bonds
 join together pairs of nitrogenous bases, and that these bases have a
 specific structure that leads to the pairing: “One member of a pair must
@@ -296,7 +296,7 @@ bases attach to sugar but not how those bases pair with one another.
 Choice B is incorrect because lines 9-10 do not contradict the student’s
 claim. Choice C is incorrect because lines 23-25 describe how the two
 molecules’ chains are linked, not what the specific pairing between
-nitrogenous bases is.",false,reading,mcq,COMMAND_OF_EVIDENCE
+nitrogenous bases is.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 24,D,"Choice D is the best answer. In lines 12-14 the authors state: “the first
 feature of our structure which is of biological interest is that it consists
 not of one chain, but of two.”
@@ -306,7 +306,7 @@ it is the two chains of DNA that are of “biological interest,” not the
 chemical formula of DNA, nor the common fiber axis those two chains
 are wrapped around. Choice C is incorrect because, while the X—ray
 evidence did help Watson and Crick to discover that DNA consists of
-two chains, it was not claimed to be the feature of biological interest.",false,reading,mcq,
+two chains, it was not claimed to be the feature of biological interest.",FALSE,reading,mcq,
 25,C,"Choice C is the best answer. In lines 12-14 the authors claim that
 DNA molecules appear to be comprised of two chains, even though
 “it has often been assumed . . . there would be only one” (lines 15-17).
@@ -318,7 +318,7 @@ Choices A, B, and D are incorrect because the authors mention
 density and X-ray evidence to support a claim, not to establish that
 DNA carries genetic information, present a hypothesis about the
 composition of a nucleotide, or confirm a relationship between the
-density and chemical formula of DNA.",false,reading,mcq,
+density and chemical formula of DNA.",FALSE,reading,mcq,
 26,B,"Choice B is the best answer. The authors explain that “only certain pairs
 of bases will fit into the structure” (lines 25-26) of the DNA molecule.
 These pairs must contain “a purine and the other a pyrimidine in order
@@ -332,14 +332,14 @@ because the passage never makes clear the size of the pyrimidines or
 purines in relation to each other, only in relation to the space needed to
 bond the chains of the DNA molecule. Choice D is incorrect because the
 lines do not make an implication about the size of a pair of pyrimidines
-in relation to the size of a pair consisting of a purine and a pyrimidine.",false,reading,mcq,
-27,D,"Choice D is the best answer. The authors explain how the DNA molecule contains a "precise sequence of bases" (lines 43-44), and that
+in relation to the size of a pair consisting of a purine and a pyrimidine.",FALSE,reading,mcq,
+27,D,"Choice D is the best answer. The authors explain how the DNA molecule contains a ""precise sequence of bases"" (lines 43-44), and that
 the authors can use the order of bases on one chain to determine the 
 order of bases on the other chain: “If the actual order of the bases on 
 one of the pair of chains were given, one could write down the exact order of the bases on the other one, because of the specific pairing.
 Thus one chain is, as it were, the complement of the other, and it is 
 this feature which suggests how the deoxyribonucleic acid molecule 
-might duplicate itself” (lines 45-51). The authors use the words "exact," "specific," and "complement" in these lines to suggest that the
+might duplicate itself” (lines 45-51). The authors use the words ""exact,"" ""specific,"" and ""complement"" in these lines to suggest that the
 base pairings along a DNA chain is understood and predictable, and 
 may explain how DNA “duplicate[s] itself” (line 51). 
 
@@ -348,14 +348,14 @@ nucleotide sequences are known. Choice B is incorrect because these
 lines are not discussing the random nature of the base sequence 
 along one chain of DNA. Choice C is incorrect because the authors 
 are describing the bases attached only to the sugar, not to the sugar-
-phosphate backbone. ",false,reading,mcq,WORDS_IN_CONTEXT
+phosphate backbone. ",FALSE,reading,mcq,WORDS_IN_CONTEXT
 28,C,"Choice C is the best answer. Lines 6-7 state that “Two of the possible
 bases — adenine and guanine — are purines,” and on the table the
 percentages of adenine and guanine in yeast DNA are listed as 31.3%
 and 18.7% respectively.
 
 Choices A, B, and D are incorrect because they do not state the
-percentages of both purines, adenine and guanine, in yeast DNA.",false,reading,mcq,COMMAND_OF_EVIDENCE
+percentages of both purines, adenine and guanine, in yeast DNA.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 29,A,"Choice A is the best answer. The authors state: “We believe that the
 bases will be present almost entirely in their most probable forms.
 
@@ -368,7 +368,7 @@ similar percentages in DNA for all organisms listed.
 Choice B is incorrect. Although the choice of “Yes” is correct, the
 explanation for that choice misrepresents the data in the table. Choices C
 and D are incorrect because the table does support the authors’ proposed
-pairing of nitrogenous bases in DNA molecules.",false,reading,mcq,COMMAND_OF_EVIDENCE
+pairing of nitrogenous bases in DNA molecules.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 30,A,"Choice A is the best answer because it gives the percentage of
 cytosine (17.3%) in sea urchin DNA and the percentage of guanine
 (17.7%) in sea urchin DNA. Their near similar pairing supports the
@@ -380,7 +380,7 @@ to the previous question. Choice B (cytosine and thymine), Choice
 
 C (cytosine and adenine), and Choice D (guanine and adenine) are
 incorrect because they show pairings of nitrogenous bases that do not
-compose a similar percentage of the bases in sea urchin DNA.",false,reading,mcq,
+compose a similar percentage of the bases in sea urchin DNA.",FALSE,reading,mcq,
 31,D,"Choice D is the best answer. The table clearly shows that the
 percentage of adenine in each organism’s DNA is different, ranging
 from 24.7% in E.coli to 33.2% in the octopus. That such a variability
@@ -391,7 +391,7 @@ Choices A and B are incorrect because the table shows that the
 percentage of adenine varies between 24.7% and 33.2% in different
 organisms. Choice C is incorrect because lines 36-38 state that adenine
 pairs with thymine but does not mention the variability of the base
-composition of DNA.",false,reading,mcq,
+composition of DNA.",FALSE,reading,mcq,
 32,B,"Choice B is the best answer. In this passage, Woolf asks women
 
 a series of questions. Woolf wants women to consider joining “the
@@ -406,7 +406,7 @@ Choice C is incorrect because Woolf is not highlighting the severity
 of social divisions as much as she is explaining how those divisions
 might be reduced (with women joining the workforce). Choice D is
 incorrect because Woolf does not question the feasibility of changing
-the workforce dynamic.",false,reading,mcq,
+the workforce dynamic.",FALSE,reading,mcq,
 33,A,"Choice A is the best answer. Throughout the passage, Woolf
 advocates for more women to engage with existing institutions by
 joining the workforce: “We too can leave the house, can mount those
@@ -427,7 +427,7 @@ effects. Choice D is incorrect because while Woolf suggests educated
 women can hold positions currently held by men, she does not
 suggest that women’s entry into positions of power will change
 
-those positions.",false,reading,mcq,
+those positions.",FALSE,reading,mcq,
 34,C,"Choice C is the best answer. Woolf uses the word “we” to refer
 
 to herself and educated women in English society, the “daughters
@@ -447,7 +447,7 @@ thinking” within traditional female roles (lines 64-69), she does not use
 “we” to advocate for more candor among women. Choice D is incorrect
 because Woolf does not use “we” to emphasize a need for people in a
 group to respect one other; rather, she wants to establish a sense of
-solidarity among women.",false,reading,mcq,WORDS_IN_CONTEXT
+solidarity among women.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 35,B,"Choice B is the best answer. Woolf argues that the “bridge over the
 River Thames, [has] an admirable vantage ground for us to make a
 survey” (lines 1-3). The phrase “make a survey” means to carefully
@@ -462,7 +462,7 @@ reflection; she is analyzing “the procession of the sons of educated men”
 (fines 10-11). Choice C is incorrect because Woolf does not compare the
 bridge to historic episodes. Choice D is incorrect because Woolf does not
 suggest that the bridge is a symbol of a male-dominated past, but rather
-that it serves as a good place to watch men proceed to work.",false,reading,mcq,
+that it serves as a good place to watch men proceed to work.",FALSE,reading,mcq,
 36,D,"Choice D is the best answer. Woolf writes that the men who conduct
 the affairs of the nation (lines 15-17: “ascending those pulpits,
 preaching, teaching, administering justice, practising medicine,
@@ -474,7 +474,7 @@ procession, we go ourselves” (lines 23-24).
 
 Choice A is incorrect because the procession is described as “a
 solemn sight always” (lines 17-18), which indicates that it has
-always been influential. Choice B is incorrect because the passage",false,reading,mcq,
+always been influential. Choice B is incorrect because the passage",FALSE,reading,mcq,
 37,C,"Choice C is the best answer, as lines 23-24 suggest that the workforce
 has become less exclusionary. In these lines Woolf describes how
 women are joining the male—dominated procession that travels to and
@@ -488,7 +488,7 @@ held by men. Choice B is incorrect because lines 17-19 use a
 metaphor to describe how the procession physically looks.
 
 Choice D is incorrect because lines 30-34 hypothesize about future
-jobs for women.",false,reading,mcq,COMMAND_OF_EVIDENCE
+jobs for women.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 38,C,"Choice C is the best answer. Woolf characterizes the questions she
 asks in lines 53-57 as significant (“so important that they may well
 change the lives of all men and women for ever,” lines 52-53) and
@@ -501,7 +501,7 @@ urgent and important, not as something that would cause controversy
 or fear. Choice B is incorrect because though Woolf considers the
 questions to be weighty (or “important”), she implies that they can be
 answered. Choice D is incorrect because Woolf does not imply that the
-questions are mysterious.",false,reading,mcq,
+questions are mysterious.",FALSE,reading,mcq,
 39,B,"Choice B is the best answer. The answer to the previous question
 shows how Woolf characterizes the questions posed in lines 53-57
 as momentous and pressing. In lines 48-49, Woolf describes these
@@ -514,7 +514,7 @@ to the previous question. Choices A and D are incorrect because
 lines 46-47 and line 62 suggest that women need to think about these
 questions and not offer trivial objections to them. Choice C is incorrect
 because line 57 characterizes only the need for urgency and does not
-mention the significance of the questions.",false,reading,mcq,COMMAND_OF_EVIDENCE
+mention the significance of the questions.",FALSE,reading,mcq,COMMAND_OF_EVIDENCE
 40,C,"Choice C is the best answer. Woolf writes that women “have
 thought” while performing traditional roles such as cooking and
 caring for children (lines 67-69). Woolf argues that this “thought”
@@ -526,7 +526,7 @@ take advantage of the opportunity to join the male-dominated
 workforce.
 
 Choices A, B, and D are incorrect because in this context, “Sixpence”
-does not refer to tolerance, knowledge, or perspective.",false,reading,mcq,WORDS_IN_CONTEXT
+does not refer to tolerance, knowledge, or perspective.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 41,B,"Choice B is the best answer. In lines 72-76, Woolf repeats the
 phrase “let us think” to emphasize how important it is for women to
 critically reflect on their role in society. Woolf states this reflection
@@ -542,18 +542,18 @@ Choices A, C, and D are incorrect because in lines 72-76 Woolf is
 
 not emphasizing the novelty of the challenge faced by women, the
 complexity of social and political issues, or the enjoyable aspect of
-women’s career possibilities.",false,reading,mcq,
+women’s career possibilities.",FALSE,reading,mcq,
 42,B,"Choice B is the best answer. The author of Passage 1 identifies
 specific companies such as the “Planetary Resources of Washington,”
 “Deep Space Industries of Virginia,” and “Golden Spike of Colorado”
 to support his earlier assertion that there are many interested groups
-“working to make space mining a reality" (line 8).
+“working to make space mining a reality"" (line 8).
 
 Choices A, C, and D are incorrect because the author of Passage 1 does
 not mention these companies to profile the technological advances
 
 in space mining, the profit margins from space mining, or the diverse
-approaches to space mining.",false,reading,mcq,
+approaches to space mining.",FALSE,reading,mcq,
 43,A,"Choice A is the best answer. The author of Passage 1 explicitly states
 that one benefit to space mining is access to precious metals and
 earth elements: “within a few decades, [space mining] may be meeting
@@ -565,7 +565,7 @@ Choice B is incorrect because Passage 1 does not suggest that precious
 metals extracted from space may make metals more valuable on
 Earth. Choice C and Choice D are incorrect because Passage 1 never
 mentions how space mining could create unanticipated technological
-innovations or change scientists’ understanding of space resources.",false,reading,mcq,
+innovations or change scientists’ understanding of space resources.",FALSE,reading,mcq,
 44,A,"Choice A is the best answer. Lines 18-22 suggest that space mining
 may help meet “earthly demands for precious metals . . . and the rare
 earth elements vital for personal electronics.” In this statement, the
@@ -580,7 +580,7 @@ mining. Choice C is incorrect because lines 29-30 suggest the relative
 value of water found in space. Choice D is incorrect because lines 41-44
 state that space mining companies hope to find specific resources in
 lunar soil and asteroids but do not address how these resources are
-important to Earth’s economy.",false,reading,mcq,
+important to Earth’s economy.",FALSE,reading,mcq,
 45,D,"Choice D is the best answer. The author suggests in lines 19-22
 that space mining may meet “earthly demands for precious metals,
 such as platinum and gold, and the rare earth elements vital for
@@ -589,7 +589,7 @@ that people want, or desire, these precious metals and rare earth
 elements.
 
 Choices A, B, and C are incorrect because in this context “demands”
-does not mean offers, claims, or inquiries.",false,reading,mcq,WORDS_IN_CONTEXT
+does not mean offers, claims, or inquiries.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 46,C,"Choice C is the best answer. Lines 29-30 introduce the idea that water
 mined in space may be very valuable: “water mined from other worlds
 could become the most desired commodity.” Lines 35-40 support this
@@ -603,7 +603,7 @@ desert) is not expanded upon in lines 35-40. Choice B is incorrect
 because the question asked in the previous paragraph is also answered
 in that paragraph. Choice D is incorrect because no specific proposals
 are made in the previous paragraph; rather, an assertion is made and a
-question is posed.",false,reading,mcq,
+question is posed.",FALSE,reading,mcq,
 47,B,"Choice B is the best answer. The author of Passage 2 recognizes
 
 that space mining may prove beneficial to humanity, stating that “we
@@ -624,7 +624,7 @@ that may be disappearing on Earth. Choice D is incorrect because
 the author of Passage 2 admits that “resources that are valuable in
 orbit and beyond may be very different to those we prize on Earth”
 (lines 74-76) but does not mention any disagreement about the
-commercial viabilities of space mining discoveries.",false,reading,mcq,
+commercial viabilities of space mining discoveries.",FALSE,reading,mcq,
 48,A,"Choice A is the best answer. In lines 60-66, the author presents some
 environmental arguments against space mining: “[space] is not ours
 
@@ -635,7 +635,7 @@ of space mining: “History suggests that those will be hard lines to
 hold . . .” (line 68).
 
 Choices B, C, and D are incorrect because in this context, “hold” does
-not mean grip, restrain, or withstand.",false,reading,mcq,WORDS_IN_CONTEXT
+not mean grip, restrain, or withstand.",FALSE,reading,mcq,WORDS_IN_CONTEXT
 49,D,"Choice D is the best answer. The author of Passage 1 is excited
 
 about the possibilities of space mining and how it can yield valuable
@@ -652,7 +652,7 @@ benefits to space mining. Choice B is incorrect because the author of
 Passage 1 does not describe space mining in more general terms than
 does the author of Passage 2. Choice C is incorrect because the author
 of Passage 2 is not suggesting that the space mining proposals stated
-in Passage 1 are impractical.",false,reading,mcq,
+in Passage 1 are impractical.",FALSE,reading,mcq,
 50,B,"Choice B is the best answer. In lines 18-28, the author of Passage 1
 describes many of the possible economic benefits of space mining,
 including the building of “an off-planet economy” (line 25). The author
@@ -669,7 +669,7 @@ lines 18-28 of Passage 1 are unsustainable, unachievable, or will
 negatively affect Earth’s economy. Rather, the author recognizes
 
 the benefits of space mining but advocates for the development of
-regulation procedures.",false,reading,mcq,
+regulation procedures.",FALSE,reading,mcq,
 51,D,"Choice D is the best answer. In lines 85-87, the author of Passage 2
 states that the future of space mining will prove difficult without
 regulations because “claims will be disputed, investments risky, and
@@ -682,7 +682,7 @@ space mining. Choice B is incorrect because lines 74-76 focus on how
 space mining may discover valuable resources that are different from
 the ones found on Earth. Choice C is incorrect because lines 81-83
 simply describe one person’s objections to the regulation of the space
-mining industry.",false,reading,mcq,
+mining industry.",FALSE,reading,mcq,
 52,A,"Choice A is the best answer because both Passage 1 and Passage 2
 indicate a belief that the resources most valued in space may differ
 from those most valued on our planet. Passage 2 says this explicitly in
@@ -698,13 +698,13 @@ Choice C is incorrect because Passage 2 does not specifically
 
 identify precious metals or rare earth elements but instead focuses on
 theoretical problems with space mining. Choice D is incorrect because
-diminishing resources on Earth is not discussed in Passage 2.",false,reading,mcq,
+diminishing resources on Earth is not discussed in Passage 2.",FALSE,reading,mcq,
 1,D,"Choice D is the best answer because “outweigh” is the only choice
 that appropriately reflects the relationship the sentence sets up
 between “advantages” and “drawbacks.”
 
 Choices A, B, and C are incorrect because each implies a competitive
-relationship that is inappropriate in this context.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+relationship that is inappropriate in this context.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
 2,B,"Choice B is the best answer because it offers a second action that
 farmers can undertake to address the problem of acid whey disposal,
@@ -714,7 +714,7 @@ the problem of disposal, farmers have found a number of uses for
 acid whey”).
 
 Choices A, C, and D are incorrect because they do not offer examples
-of how farmers could make use of acid whey.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+of how farmers could make use of acid whey.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE"
 3,A,"Choice A is the best answer because it results in a sentence that is
 grammatically correct and coherent. In choice A, “waterways,” the
@@ -725,7 +725,7 @@ Choices B and D are incorrect because both use the possessive form
 
 of “waterway.” Choice C is incorrect because it creates an unnecessary
 shift in verb tense. The present tense verb “can pollute” should be used
-instead, as it is consistent with the other verbs in the paragraph.",false,writing,mcq,"STANDARD_ENGLISH_CONVENTIONS,"
+instead, as it is consistent with the other verbs in the paragraph.",FALSE,writing,mcq,"STANDARD_ENGLISH_CONVENTIONS,"
 4,C,"Choice C is the best answer because it utilizes proper punctuation
 
 for items listed in a series. In this case those items are nouns: “Yogurt
@@ -737,7 +737,7 @@ that the items are a part of a series. Since a comma is used after
 “manufacturers,” a semicolon or colon should not be used after
 “scientists.” Choice D is incorrect because the comma after “and” is
 unnecessary and deviates from grammatical conventions for presenting
-items in a series.",false,writing,mcq,"STANDARD_ENGLISH_CONVENTIONS,"
+items in a series.",FALSE,writing,mcq,"STANDARD_ENGLISH_CONVENTIONS,"
 5,C,"Choice C is the best answer because sentence 5 logically links
 
 sentence 2, which explains why Greek yogurt production yields large
@@ -751,7 +751,7 @@ illogical progression of sentences for this paragraph. If sentence 5 were
 left where it is or placed after sentence 3, it would appear illogically
 after the discussion of “the problem of disposal.” If sentence 5 were
 placed after sentence 1, it would illogically discuss “acid-whey runoff”
-before the mention of acid Whey being “difficult to dispose of.”",false,writing,mcq,EXPRESSION_OF_IDEAS
+before the mention of acid Whey being “difficult to dispose of.”",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
 6,D,"Choice D is the best answer because the paragraph includes several
 benefits of consuming Greek yogurt, particularly in regard to nutrition
 and satisfying hunger, to support the sentence’s claim that the
@@ -760,29 +760,29 @@ the passage’s earlier claim that “the advantages of Greek yogurt
 outweigh the potential drawbacks of its production.”
 
 Choices A, B, and C are incorrect because they inaccurately describe
-the sentence in question.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+the sentence in question.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE"
-7,B,Choice B is the best answer because it provides a grammatically
+7,B,"Choice B is the best answer because it provides a grammatically
 standard preposition that connects the verb “serves” and noun
 “digestive aid” and accurately depicts their relationship.
 
 Choice A is incorrect because the infinitive form “to be” yields a
 grammatically incorrect verb construction: “serves to be.” Choices C
 and D are incorrect because both present options that deviate from
-standard English usage.,false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-8,C,Choice C is the best answer because it presents a verb tense that is
+standard English usage.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+8,C,"Choice C is the best answer because it presents a verb tense that is
 consistent in the context of the sentence. The choice is also free of the
 redundant “it.”
 
 Choice A is incorrect because the subject “it” creates a redundancy.
 Choices B and D are incorrect because they present verb tenses that
-are inconsistent in the context of the sentence.,false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+are inconsistent in the context of the sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 9,A,"Choice A is the best answer because it properly introduces an
 additional health benefit in a series of sentences that list health benefits.
 “Also” is the logical and coherent choice to communicate an addition.
 Choices B, C, and D are incorrect because none of the transitions they
 offer logically fits the content that precedes or follows the proposed
-choice.",false,writing,mcq,EXPRESSION_OF_IDEAS
+choice.",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
 10,A,"Choice A is the best answer because “satiated” is the only choice that
 communicates effectively that Greek yogurt will satisfy hunger for a
 longer period of time.
@@ -790,7 +790,7 @@ Choices B, C, and D are incorrect because each is improper usage in
 this context. A person can be “fulfilled” spiritually or in other ways,
 but a person who has eaten until he or she is no longer hungry cannot
 be described as fulfilled. Neither can he or she be described as being
-“complacent” or “sufficient.”",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+“complacent” or “sufficient.”",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
 11,B,"Choice B is the best answer because it provides a syntactically
 coherent and grammatically correct sentence.
@@ -799,7 +799,7 @@ Choices A and C are incorrect because the adverbial conjunctions
 “therefore” and “so,” respectively, are unnecessary following
 “Because.” Choice D is incorrect because it results in a grammatically
 incomplete sentence (the part of the sentence before the colon must be
-an independent clause).",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+an independent clause).",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 12,B,"Choice B is the best answer because the graph clearly indicates that, on
 March 5, average low temperatures are at their lowest point: 12 degrees
 Fahrenheit.
@@ -809,29 +809,29 @@ the temperature falls no lower than 20 degrees Fahrenheit, but the
 chart shows that in January, February, and March, the temperature
 frequently falls below that point. Choices C and D are incorrect
 because the information each provides is inconsistent with the
-information on the Chart.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+information on the Chart.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE"
 13,A,"Choice A is the best answer because it concisely combines the two
 sentences while maintaining the original meaning.
 
 Choices B, C, and D are incorrect because each is unnecessarily wordy,
 thus undermining one purpose of combining two sentences: to make
-the phrasing more concise.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+the phrasing more concise.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
-14,B,"Choice B is the best answer because it provides a conjunctive adverb that accurately represents the relationship between the two sentences. “However” signals an exception to a case stated in the preceding sentence. Choices A, C, and D are incorrect because each provides a transition that does not accurately represent the relationship between the two sentences, and as a result each compromises the logical coherence of these sentences.",false,writing,mcq,EXPRESSION_OF_IDEAS
-15,C,Choice C is the best answer because it provides commas to offset the
+14,B,"Choice B is the best answer because it provides a conjunctive adverb that accurately represents the relationship between the two sentences. “However” signals an exception to a case stated in the preceding sentence. Choices A, C, and D are incorrect because each provides a transition that does not accurately represent the relationship between the two sentences, and as a result each compromises the logical coherence of these sentences.",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
+15,C,"Choice C is the best answer because it provides commas to offset the
 nonrestrictive modifying clause “an associate professor of geology at
-Ohio State.”,false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-16,C,"Choice C is the best answer because the colon signals that the other factor that contributed to the early thaw is about to be provided. Choice A is incorrect because it results in a sentence that deviates from grammatical standards: a semicolon should be used to separate two independent clauses, but in choice A the second clause only has a subject, not a verb. Choice B is incorrect because it is unnecessarily wordy. Choice D is incorrect because “being” is unnecessary and creates an incoherent clause.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-17,C,"Choice C is the best answer because it provides the correct preposition (“of”) and relative pronoun (“which”) that together create a dependent clause following the comma. Choices A, B, and D are incorrect because each results in a comma splice. Two independent clauses cannot be joined with only a comma.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+Ohio State.”",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+16,C,"Choice C is the best answer because the colon signals that the other factor that contributed to the early thaw is about to be provided. Choice A is incorrect because it results in a sentence that deviates from grammatical standards: a semicolon should be used to separate two independent clauses, but in choice A the second clause only has a subject, not a verb. Choice B is incorrect because it is unnecessarily wordy. Choice D is incorrect because “being” is unnecessary and creates an incoherent clause.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+17,C,"Choice C is the best answer because it provides the correct preposition (“of”) and relative pronoun (“which”) that together create a dependent clause following the comma. Choices A, B, and D are incorrect because each results in a comma splice. Two independent clauses cannot be joined with only a comma.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 18,A,"Choice A is the best answer because the verb tense is consistent with
 the preceding past tense verbs in the sentence, specifically “produced”
 and “drifted.”
 
 Choices B, C, and D are incorrect because each utilizes a verb tense
 that is not consistent with the preceding past tense verbs in the
-sentence.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-19,D,"Choice D is the best answer because “their” is the possessive form of a plural noun. In this case, the noun is plural: “snow and ice.” Choices A and B are incorrect because the possessive pronoun must refer to a plural noun, “snow and ice,” rather than a singular noun. Choice C is incorrect because “there” would result in an incoherent sentence.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+19,D,"Choice D is the best answer because “their” is the possessive form of a plural noun. In this case, the noun is plural: “snow and ice.” Choices A and B are incorrect because the possessive pronoun must refer to a plural noun, “snow and ice,” rather than a singular noun. Choice C is incorrect because “there” would result in an incoherent sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 20,D,"Choice D is the best answer. The preceding sentences in the paragraph
 
 have established that a darker surface of soot-covered snow leads to
@@ -848,15 +848,15 @@ that the preceding sentences already imply.
 
 Choices A, B, and C are incorrect because the information each
 provides fails to support the previous claim that the “result” of the soot
-“is a self-reinforcing cycle.”",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+“is a self-reinforcing cycle.”",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE"
 21,B,"Choice B is the best answer because it is free of redundancies.
 Choices A, C, and D are incorrect because each of the three presents
 a redundancy: Choice A uses “repeat” and “again”; Choice C uses
 “damage” and “harmful effects”; and Choice D uses “may” and
-“possibly.”",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+“possibly.”",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
-22,D,"Choice D is the best answer because sentence 5 describes the information Box seeks: “to determine just how much the soot is contributing to the melting of the ice sheet.” Unless sentence 4 comes after sentence 5, readers will not know what the phrase “this crucial information” in sentence 4 refers to. Choices A, B, and C are incorrect because each results in an illogical sentence progression. None of the sentences that would precede sentence 4 provides details that could be referred to as “this crucial information.”",false,writing,mcq,EXPRESSION_OF_IDEAS
+22,D,"Choice D is the best answer because sentence 5 describes the information Box seeks: “to determine just how much the soot is contributing to the melting of the ice sheet.” Unless sentence 4 comes after sentence 5, readers will not know what the phrase “this crucial information” in sentence 4 refers to. Choices A, B, and C are incorrect because each results in an illogical sentence progression. None of the sentences that would precede sentence 4 provides details that could be referred to as “this crucial information.”",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
 23,D,"Choice D is the best answer because it is free of redundancies and
 offers the correct form of the verb “wear” in this context.
 
@@ -864,7 +864,7 @@ Choices A, B, and C are incorrect because all three contain a
 redundancy. Considering that “quickly” is a fixed part of the sentence,
 choice A’s “soon” and choice B and C’s “promptly” all result in
 redundancies. Choices A and B are also incorrect because each uses
-an incorrect form of the verb.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+an incorrect form of the verb.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
 24,D,"Choice D is the best answer because it is the only choice that
 provides a grammatically standard and coherent sentence. The
@@ -875,14 +875,14 @@ Choices A, B, and C are incorrect because each results in a dangling
 modifier. The participial phrase “Having become frustrated . . .” does
 not refer to choice A’s “no colleagues,” choice B’s “colleagues,” or
 choice C’s “ideas.” As such, all three choices yield incoherent and
-grammatically incorrect sentences.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+grammatically incorrect sentences.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 25,B,"Choice B is the best answer because it provides the correct
 preposition in this context, “about.”
 Choices A, C, and D are incorrect because each provides a preposition
 that deviates from correct usage. One might read an article “about”
 coworking spaces but not an article “into,” “upon,” or “for” coworking
-spaces.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-26,A,"Choice A is the best answer because it provides the correct punctuation for the dependent clause that begins with the phrase “such as.” Choices B, C, and D are incorrect because each presents punctuation that deviates from the standard way of punctuating the phrase “such as.” When “such as” is a part of a nonrestrictive clause, as it is here, only one comma is needed to separate it from the main independent clause.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+spaces.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+26,A,"Choice A is the best answer because it provides the correct punctuation for the dependent clause that begins with the phrase “such as.” Choices B, C, and D are incorrect because each presents punctuation that deviates from the standard way of punctuating the phrase “such as.” When “such as” is a part of a nonrestrictive clause, as it is here, only one comma is needed to separate it from the main independent clause.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 27,B,"Choice B is the best answer because it provides a transitional phrase,
 “In addition to equipment,” that accurately represents the relationship
 between the two sentences connected by the transitional phrase.
@@ -890,10 +890,10 @@ Together, the sentences describe the key features of coworking spaces,
 focusing on what the spaces offer (equipment and meeting rooms).
 Choices A, C, and D are incorrect because each provides a transition
 that does not accurately represent the relationship between the two
-sentences.",false,writing,mcq,EXPRESSION_OF_IDEAS
-28,C,Choice C is the best answer because the sentence is a distraction from the paragraph’s focus. Nothing in the paragraph suggests that the cost of setting up a coworking business is relevant here. Choices A and D are incorrect because neither accurately represents the information in the paragraph. Choice B is incorrect because it does not accurately represent the information in the next paragraph.,false,writing,mcq,"EXPRESSION_OF_IDEAS,
+sentences.",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
+28,C,Choice C is the best answer because the sentence is a distraction from the paragraph’s focus. Nothing in the paragraph suggests that the cost of setting up a coworking business is relevant here. Choices A and D are incorrect because neither accurately represents the information in the paragraph. Choice B is incorrect because it does not accurately represent the information in the next paragraph.,FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE "
-29,B,"Choice B is the best answer because it logically follows the writer’s preceding statement about creativity and accurately represents the information in the graph. Choices A, C, and D are incorrect because they present inaccurate and unsupported interpretations of the information in the graph. In addition, none of these choices provides directly relevant support for the main topic of the paragraph.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+29,B,"Choice B is the best answer because it logically follows the writer’s preceding statement about creativity and accurately represents the information in the graph. Choices A, C, and D are incorrect because they present inaccurate and unsupported interpretations of the information in the graph. In addition, none of these choices provides directly relevant support for the main topic of the paragraph.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE "
 30,D,"Choice D is the best answer because it provides a relative pronoun
 and verb that create a standard and coherent sentence. The relative
@@ -904,16 +904,16 @@ Choices A and B are incorrect because “whom” is the relative pronoun
 used to represent an object. The noun “people” is a subject performing
 an action (using the coworking space). Choices B and C are also
 incorrect because they display a form of the verb “to use” that does not
-correspond to the plural noun “people.”",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-31,C,"Choice C is the best answer because the proposed sentence offers a logical transition between sentence 2, which introduces the the facility the writer chose, and sentence 3, which tells what happened at the facility "Throughout the morning." Choices A, B and D are incorrect because each would result in an illogical progression of sentences. ",false,writing,mcq,EXPRESSION_OF_IDEAS
-32,A,"Choice A is the best answer because the punctuation it provides results in a grammatically standard and coherent sentence. When an independent clause is followed by a list, a colon is used to link the two. Choice B is incorrect because the punctuation creates a fragment (a semicolon should be used to link two independent clauses). Choice C is incorrect because its use of the comma creates a series in which “several of my coworking colleagues” are distinguished from the “website developer” and others, although the logic of the sentence would suggest that they are the same. Choice D is incorrect because it lacks the punctuation necessary to link the independent clause and the list.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-33,A,"Choice A is the best answer because it provides a phrase that is consistent with standard English usage and also maintains the tone and style of the passage. Choice B is incorrect because “give some wisdom” deviates from standard English usage and presents a somewhat colloquial phrase in a text that is generally free of colloquialisms. Choices C and D are incorrect because both are inconsistent with the tone of the passage as well as its purpose. The focus of the paragraph is on sharing, not on proclaiming opinions",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+correspond to the plural noun “people.”",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+31,C,"Choice C is the best answer because the proposed sentence offers a logical transition between sentence 2, which introduces the the facility the writer chose, and sentence 3, which tells what happened at the facility ""Throughout the morning."" Choices A, B and D are incorrect because each would result in an illogical progression of sentences. ",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
+32,A,"Choice A is the best answer because the punctuation it provides results in a grammatically standard and coherent sentence. When an independent clause is followed by a list, a colon is used to link the two. Choice B is incorrect because the punctuation creates a fragment (a semicolon should be used to link two independent clauses). Choice C is incorrect because its use of the comma creates a series in which “several of my coworking colleagues” are distinguished from the “website developer” and others, although the logic of the sentence would suggest that they are the same. Choice D is incorrect because it lacks the punctuation necessary to link the independent clause and the list.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+33,A,"Choice A is the best answer because it provides a phrase that is consistent with standard English usage and also maintains the tone and style of the passage. Choice B is incorrect because “give some wisdom” deviates from standard English usage and presents a somewhat colloquial phrase in a text that is generally free of colloquialisms. Choices C and D are incorrect because both are inconsistent with the tone of the passage as well as its purpose. The focus of the paragraph is on sharing, not on proclaiming opinions",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
 34,A,"Choice A is the best answer because it offers a phrase that introduces
 a basic definition of philosophy and thereby fits the sentence.
 
 Choices B, C, and D are incorrect because each offers a transition that
-does not suit the purpose of the sentence.",false,writing,mcq,EXPRESSION_OF_IDEAS
+does not suit the purpose of the sentence.",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
 35,A,"Choice A is the best answer because it offers the most succinct
 comparison between the basic definition of philosophy and the fact
 that students can gain specific, practical skills from the study of
@@ -922,9 +922,9 @@ this sentence, as it is clear from context that the writer is offering a
 different perspective.
 
 Choices B, C, and D are incorrect because they provide options that are
-unnecessarily wordy.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+unnecessarily wordy.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 WORDS_IN_CONTEXT"
-36,B,"Choice B is the best answer because it provides a verb that creates a grammatically complete, standard, and coherent sentence. Choices A, C, and D are incorrect because each results in a grammatically incomplete and incoherent sentence.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+36,B,"Choice B is the best answer because it provides a verb that creates a grammatically complete, standard, and coherent sentence. Choices A, C, and D are incorrect because each results in a grammatically incomplete and incoherent sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 37,D,"Choice D is the best answer because it most effectively sets up the
 information in the following sentences, which state that (according
 
@@ -936,7 +936,7 @@ not always supported the study of philosophy.”
 
 Choices A, B, and C are incorrect because none of these effectively
 sets up the information that follows, which is about colleges’ failure to
-support the study of philosophy.",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+support the study of philosophy.",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE"
 38,C,"Choice C is the best answer because it provides a transition that
 logically connects the information in the previous sentence to the
@@ -949,7 +949,7 @@ Choices A, B, and D are incorrect because each presents a transition
 that does not accurately depict or support the relationship between
 the two sentences. The second sentence is not a result of the first
 (“Therefore,” “Thus”), and the sentences do not provide a contrast
-(“However”).",false,writing,mcq,WORDS_IN_CONTEXT
+(“However”).",FALSE,writing,mcq,WORDS_IN_CONTEXT
 39,A,"Choice A is the best answer because it succinctly expresses the
 idea that “students who major in philosophy often do better . . . as
 measured by standardized test scores.”
@@ -963,9 +963,9 @@ do better” than some other students “in both verbal reasoning and
 analytical writing as measured by standardized test scores.” Choice
 C is incorrect because there is no indication that multiple criteria are
 used to evaluate students’ “verbal reasoning and analytical writing”:
-test scores and something else. Only test scores are mentioned.",false,writing,mcq,EXPRESSION_OF_IDEAS
-40,B,"Choice B is the best answer because it provides subject-verb agreement and thus creates a grammatically correct and coherent sentence. Choice A is incorrect because the verb “has scored” does not correspond with the plural subject “students.” Similarly, Choice C is incorrect because the verb “scores” would correspond with a singular subject, but not the plural subject present in this sentence. Choice D is incorrect because it results in a grammatically incomplete and incoherent sentence.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-41,B,"Choice B is the best answer because it provides a coherent and grammatically standard sentence. Choices A and D are incorrect because both present “students” in the possessive form, whereas the sentence establishes “students” as the subject (“many students . . . have”). Choice C is incorrect because the verb form it proposes results in an incomplete and incoherent sentence.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+test scores and something else. Only test scores are mentioned.",FALSE,writing,mcq,EXPRESSION_OF_IDEAS
+40,B,"Choice B is the best answer because it provides subject-verb agreement and thus creates a grammatically correct and coherent sentence. Choice A is incorrect because the verb “has scored” does not correspond with the plural subject “students.” Similarly, Choice C is incorrect because the verb “scores” would correspond with a singular subject, but not the plural subject present in this sentence. Choice D is incorrect because it results in a grammatically incomplete and incoherent sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+41,B,"Choice B is the best answer because it provides a coherent and grammatically standard sentence. Choices A and D are incorrect because both present “students” in the possessive form, whereas the sentence establishes “students” as the subject (“many students . . . have”). Choice C is incorrect because the verb form it proposes results in an incomplete and incoherent sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
 42,C,"Choice C is the best answer because it accurately depicts how
 inserting this sentence would affect the overall paragraph. The fact
 that Plato used the dialogue form has little relevance to the preceding
@@ -974,65 +974,65 @@ claim about the usefulness of a philosophy background.
 Choices A and B are incorrect because the proposed sentence
 interrupts the progression of reasoning in the paragraph. Choice D is
 incorrect because, as with Choice A, Plato’s works have nothing to do
-with “the employability of philosophy majors.”",false,writing,mcq,"EXPRESSION_OF_IDEAS,
+with “the employability of philosophy majors.”",FALSE,writing,mcq,"EXPRESSION_OF_IDEAS,
 COMMAND_OF_EVIDENCE"
-43,D,"Choice D is the best answer because it creates a complete and coherent sentence. Choices A, B, and C are incorrect because each inserts an unnecessary relative pronoun or conjunction, resulting in a sentence without a main verb.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-44,D,"Choice D is the best answer because it provides a possessive pronoun that is consistent with the sentence’s plural subject “students,” thus creating a grammatically sound sentence. Choices A, B, and C are incorrect because each proposes a possessive pronoun that is inconsistent with the plural noun “students,” the established subject of the sentence.",false,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
-1,D,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-2,A,,true,math_no_calc,mcq,
-3,C,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-4,B,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-5,C,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-6,A,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-7,B,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-8,C,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-9,B,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-10,A,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-11,D,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-12,D,,true,math_no_calc,mcq,HEART_OF_ALGEBRA
-13,B,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-14,A,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-15,D,,true,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-16,2,,true,math_no_calc,saq,PASSPORT_TO_ADVANCED_MATH
-17,1600,,true,math_no_calc,saq,
-18,7,,true,math_no_calc,saq,HEART_OF_ALGEBRA
-19,0.8,,true,math_no_calc,saq,
-20,100,,true,math_no_calc,saq,PASSPORT_TO_ADVANCED_MATH
-1,B,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-2,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-3,D,,true,math_calc,mcq,
-4,C,,true,math_calc,mcq,HEART_OF_ALGEBRA
-5,D,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-6,D,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-7,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-8,D,,true,math_calc,mcq,HEART_OF_ALGEBRA
-9,A,,true,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-10,B,,true,math_calc,mcq,HEART_OF_ALGEBRA
-11,A,,true,math_calc,mcq,HEART_OF_ALGEBRA
-12,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-13,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-14,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-15,A,,true,math_calc,mcq,HEART_OF_ALGEBRA
-16,C,,true,math_calc,mcq,HEART_OF_ALGEBRA
-17,B,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-18,A,,true,math_calc,mcq,HEART_OF_ALGEBRA
-19,B,,true,math_calc,mcq,HEART_OF_ALGEBRA
-20,D,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-21,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-22,B,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-23,B,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-24,A,,true,math_calc,mcq,
-25,D,,true,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-26,B,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-27,C,,true,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-28,C,,true,math_calc,mcq,HEART_OF_ALGEBRA
-29,D,,true,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-30,D,,true,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
-31,"4,5,6",,true,math_calc,saq,HEART_OF_ALGEBRA
-32,107,,true,math_calc,saq,HEART_OF_ALGEBRA
-33,5/8,,true,math_calc,saq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-34,96,,true,math_calc,saq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
-35,6,,true,math_calc,saq,
-36,3,,true,math_calc,saq,PASSPORT_TO_ADVANCED_MATH
-37,1.02,,true,math_calc,saq,PASSPORT_TO_ADVANCED_MATH
-38,6.11,,true,math_calc,saq,PASSPORT_TO_ADVANCED_MATH
+43,D,"Choice D is the best answer because it creates a complete and coherent sentence. Choices A, B, and C are incorrect because each inserts an unnecessary relative pronoun or conjunction, resulting in a sentence without a main verb.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+44,D,"Choice D is the best answer because it provides a possessive pronoun that is consistent with the sentence’s plural subject “students,” thus creating a grammatically sound sentence. Choices A, B, and C are incorrect because each proposes a possessive pronoun that is inconsistent with the plural noun “students,” the established subject of the sentence.",FALSE,writing,mcq,STANDARD_ENGLISH_CONVENTIONS
+1,D,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+2,A,,TRUE,math_no_calc,mcq,
+3,C,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+4,B,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+5,C,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+6,A,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+7,B,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+8,C,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+9,B,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+10,A,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+11,D,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+12,D,,TRUE,math_no_calc,mcq,HEART_OF_ALGEBRA
+13,B,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+14,A,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+15,D,,TRUE,math_no_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+16,2,,TRUE,math_no_calc,saq,PASSPORT_TO_ADVANCED_MATH
+17,1600,,TRUE,math_no_calc,saq,
+18,7,,TRUE,math_no_calc,saq,HEART_OF_ALGEBRA
+19,0.8,,TRUE,math_no_calc,saq,
+20,100,,TRUE,math_no_calc,saq,PASSPORT_TO_ADVANCED_MATH
+1,B,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+2,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+3,D,,TRUE,math_calc,mcq,
+4,C,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+5,D,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+6,D,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+7,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+8,D,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+9,A,,TRUE,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+10,B,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+11,A,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+12,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+13,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+14,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+15,A,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+16,C,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+17,B,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+18,A,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+19,B,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+20,D,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+21,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+22,B,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+23,B,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+24,A,,TRUE,math_calc,mcq,
+25,D,,TRUE,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+26,B,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+27,C,,TRUE,math_calc,mcq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+28,C,,TRUE,math_calc,mcq,HEART_OF_ALGEBRA
+29,D,,TRUE,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+30,D,,TRUE,math_calc,mcq,PASSPORT_TO_ADVANCED_MATH
+31,"4,5,6",,TRUE,math_calc,saq,HEART_OF_ALGEBRA
+32,107,,TRUE,math_calc,saq,HEART_OF_ALGEBRA
+33,5/8,,TRUE,math_calc,saq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+34,96,,TRUE,math_calc,saq,PROBLEM_SOLVING_AND_DATA_ANALYSIS
+35,6,,TRUE,math_calc,saq,
+36,3,,TRUE,math_calc,saq,PASSPORT_TO_ADVANCED_MATH
+37,1.02,,TRUE,math_calc,saq,PASSPORT_TO_ADVANCED_MATH
+38,6.11,,TRUE,math_calc,saq,PASSPORT_TO_ADVANCED_MATH

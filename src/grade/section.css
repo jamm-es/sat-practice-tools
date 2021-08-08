@@ -70,23 +70,13 @@
 }
 
 .section-columns {
-  column-gap: 2px;
   margin-bottom: 40px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  page-break-inside: avoid;
-  -webkit-column-break-inside: avoid;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr 2px 1fr;
 }
 
-.section-column-relative {
-  width: 100%;
-  position: relative;
-}
-
-.section-center {
-  display: inline-block;
-  text-align: right;
+.section-column-divider {
+  border-left: 2px solid #B5AEA4;
 }
 
 .section-compact-collapse-tab {

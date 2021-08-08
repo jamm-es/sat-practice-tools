@@ -128,38 +128,33 @@ export default class Section extends React.Component {
           <div className='collapse show' ref={this.collapseRef}>
             {questionTypes.map((questionType) => {
               const questionTypeQuestions = this.props.questions.filter(d => d.type === questionType);
-              return <div className={`section-columns`} 
-                style={{ 
-                  columnCount: numColumns, height: 26 * Math.ceil((questionTypeQuestions.length+1) / numColumns),
-                  columnRule: numColumns !== 1 ? '2px solid #B5AEA4' : undefined
-                }}
-                key={questionType}
-              >
-                <div className='section-column-relative'>
-                  <div className={'section-center'}>
-                    {questionTypeQuestions.map((d, i) => <>
-                        <Question
-                          doHighlightBackground={i % (Math.ceil((questionTypeQuestions.length+1) / numColumns)) % 2 === 0 }
-                          sectionName={this.props.sectionName}
-                          questionNumber={+d.question_number} 
-                          answer={d.answer} 
-                          userAnswer={this.props.userAnswer[d.question_number-1]}
-                          graded={this.props.graded[d.question_number-1]}
-                          handleAnswerChange={this.props.handleAnswerChange.bind(this)} 
-                          type={d.type}
-                          correct={this.props.correct[d.question_number-1]}
-                          myRef={this.questionRefs[d.question_number-1]}
-                          nextRef={+d.question_number !== this.props.questions.length ? this.questionRefs[d.question_number] : null}
-                          handleShowAnswer={this.props.handleShowAnswer.bind(this)}
-                          key={i}
-                          rerenderIndex={this.props.rerenderIndex}
-                          compactMode={this.props.compactMode}
-                          numColumns={numColumns}
-                        />
-                      </>
-                    )}
-                  </div>
-                </div>
+              const numRows = Math.ceil(questionTypeQuestions.length / numColumns);
+              return <div className='section-columns' key={questionType} >
+                {questionTypeQuestions.map((d, i) =>
+                  <Question
+                    doHighlightBackground={i % numRows % 2 === 0 }
+                    sectionName={this.props.sectionName}
+                    questionNumber={+d.question_number} 
+                    answer={d.answer} 
+                    userAnswer={this.props.userAnswer[d.question_number-1]}
+                    graded={this.props.graded[d.question_number-1]}
+                    handleAnswerChange={this.props.handleAnswerChange.bind(this)} 
+                    type={d.type}
+                    correct={this.props.correct[d.question_number-1]}
+                    myRef={this.questionRefs[d.question_number-1]}
+                    nextRef={+d.question_number !== this.props.questions.length ? this.questionRefs[d.question_number] : null}
+                    handleShowAnswer={this.props.handleShowAnswer.bind(this)}
+                    key={i}
+                    rerenderIndex={this.props.rerenderIndex}
+                    compactMode={this.props.compactMode}
+                    numColumns={numColumns}
+                    rowNum={(i+1) % numRows}
+                    colNum={Math.ceil((i+1) / numRows)}
+                  />
+                )}
+                {
+                  new Array(numColumns-1).fill(0).map((_, i) => <div className='section-column-divider' style={{gridColumn: 2*(i+1), gridRow: `1 / ${numRows+1}`}} />)
+                }
               </div>
             })}
           </div>

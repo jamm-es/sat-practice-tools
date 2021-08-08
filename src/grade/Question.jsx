@@ -11,7 +11,7 @@ export default class Question extends React.Component {
     this.highlightRef = React.createRef();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return this.props.graded !== nextProps.graded 
       || this.props.userAnswer !== nextProps.userAnswer
       || this.props.rerenderIndex !== nextProps.rerenderIndex
@@ -72,11 +72,6 @@ export default class Question extends React.Component {
     }
   }
 
-  handleOtherClick(e) {
-    e.preventDefault();
-    this.props.handleShowAnswer(this.props.sectionName, this.props.questionNumber, this.highlightRef.current)
-  }
-
   handleMouseEnter() {
     this.highlightRef.current.classList.add('hovered');
   }
@@ -87,26 +82,15 @@ export default class Question extends React.Component {
 
   render() {
     return <div 
-      className={`question ${this.props.graded ? 'question-graded' : ''}`} 
+      className={`question ${this.props.graded ? 'question-graded' : ''} ${this.props.doHighlightBackground ? 'question-background-accent' : ''}`} 
       onMouseEnter={this.handleMouseEnter.bind(this)}
       onMouseLeave={this.handleMouseLeave.bind(this)}
+      style={{gridRow: this.props.rowNum, gridColumn: this.props.colNum*2-1}}
     >
 
-      <div
-        className={`question-background ${this.props.doHighlightBackground ? 'question-background-accent' : ''}`}
-        onClick={this.handleBackgroundClick.bind(this)}
-      >
-      </div>
-      <div
-        className={'question-select-highlight'}
-        ref={this.highlightRef}
-      >
-      </div>
+      <div className='question-select-highlight' ref={this.highlightRef} onClick={this.handleBackgroundClick.bind(this)} />
 
-      <span 
-        className='question-number'
-        onClick={this.handleOtherClick.bind(this)}
-      >
+      <span className='question-number' >
         {this.props.questionNumber}:
       </span>
       
@@ -129,7 +113,7 @@ export default class Question extends React.Component {
               onClick={() => {if(!this.props.graded) this.props.handleAnswerChange(this.props.sectionName, this.props.questionNumber, 'A');}}
             >
               <div className={`question-radio ${this.props.userAnswer === 'A' ? 'question-radio-selected' : ''}`} style={{paddingRight: this.props.compactMode ? 1 : 0}}>
-                A
+                <div className='question-radio-center-text'></div>A
               </div>
             </div>
             <div 
@@ -177,10 +161,7 @@ export default class Question extends React.Component {
 
       <div className='question-divider' />
 
-      <div 
-        className={`question-check ${this.props.type === 'saq' ? 'question-check-saq' : ''}`}
-        onClick={this.handleOtherClick.bind(this)}
-      >
+      <div className={`question-check ${this.props.type === 'saq' ? 'question-check-saq' : ''}`} >
         {
           !this.props.graded
             ? '?'
@@ -207,5 +188,6 @@ Question.propTypes = {
   handleShowAnswer: PropTypes.func,
   rerenderIndex: PropTypes.number,
   compactMode: PropTypes.bool,
-  numColumns: PropTypes.number
+  numColumns: PropTypes.number,
+  rowNum: PropTypes.number
 }

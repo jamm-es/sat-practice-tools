@@ -55,7 +55,6 @@ export default class Grade extends React.Component {
     const questions = await csv(questionsPath);
     const state = {};
     state.allQuestions = questions;
-    console.log(questions);
     state.sections = questions.map(d => d.section.toLowerCase().replaceAll(/[^a-z_]/g, '')).filter((value, index, self) => self.indexOf(value) === index);
     state.sections.forEach(section => {
       const numQuestions = questions.filter(d => d.section === section).length;
@@ -267,7 +266,6 @@ export default class Grade extends React.Component {
   }
 
   render() {
-    console.log(this.state.sections);
     if(this.state.failedToLoad) return <Redirect to='/not-found' />
 
     if(typeof this.state['reading_questions'] === 'undefined') return <></>;
