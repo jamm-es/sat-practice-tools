@@ -105,6 +105,7 @@ export default class Question extends React.Component {
               disabled={this.props.graded}
               ref={this.props.myRef}
               placeholder={['A', 'B', 'C', 'D'][(this.props.questionNumber-1) % 4]}
+              type={isMobile ? 'tel' : ''}
             ></input>{/* user answer text box*/}
 
             <div className='question-divider' />
@@ -153,6 +154,8 @@ export default class Question extends React.Component {
               onChange={this.handleSAQInput.bind(this)}
               disabled={this.props.graded}
               ref={this.props.myRef}
+              type='number'
+              inputMode='numeric'
             />
           </>
         }
