@@ -91,6 +91,8 @@
 .question-graded > .question-text {
   color: #6C675F;
   pointer-events: none;
+  -webkit-text-fill-color: #6C675F;
+  opacity: 1; /* required on iOS */
 }
 
 .question-saq {
