@@ -155,7 +155,7 @@ export default class Question extends React.Component {
               disabled={this.props.graded}
               ref={this.props.myRef}
               type='number'
-              inputMode='numeric'
+              inputMode={isMobile ? 'numeric' : ''}
             />
           </>
         }
