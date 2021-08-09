@@ -154,7 +154,6 @@ export default class Question extends React.Component {
               onChange={this.handleSAQInput.bind(this)}
               disabled={this.props.graded}
               ref={this.props.myRef}
-              type='number'
               inputMode={isMobile ? 'numeric' : ''}
             />
           </>
