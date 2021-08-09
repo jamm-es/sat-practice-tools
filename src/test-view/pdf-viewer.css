@@ -1,0 +1,29 @@
+.pdf-viewer-container {
+  position: relative;
+}
+
+.pdf-viewer-zoom-buttons {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.pdf-viewer-zoom-buttons > div {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  display: inline-block;
+  background-color: #D5CBC4;
+  border: 2px solid #B5AEA4;
+  color: #181510;
+  position: relative;
+}
+
+.pdf-viewer-zoom-buttons .fas {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}

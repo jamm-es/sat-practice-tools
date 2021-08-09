@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {isMobile} from 'react-device-detect';
 
 import './question.css';
 
@@ -19,13 +20,13 @@ export default class Question extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.sectionName === 'reading' && this.props.questionNumber === 1) {
+    if(this.props.sectionName === 'reading' && this.props.questionNumber === 1 && !isMobile) {
       this.props.myRef.current.focus();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.sectionName === 'reading' && this.props.questionNumber === 1 && prevProps.rerenderIndex !== this.props.rerenderIndex) {
+    if(this.props.sectionName === 'reading' && this.props.questionNumber === 1 && prevProps.rerenderIndex !== this.props.rerenderIndex && !isMobile) {
       this.props.myRef.current.focus();
     }
   }
@@ -81,7 +82,6 @@ export default class Question extends React.Component {
   }
 
   render() {
-    console.log(this.props.rowNum, this.props.colNum);
     return <div 
       className={`question ${this.props.graded ? 'question-graded' : ''} ${this.props.doHighlightBackground ? 'question-background-accent' : ''}`} 
       onMouseEnter={this.handleMouseEnter.bind(this)}

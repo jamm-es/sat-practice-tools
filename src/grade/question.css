@@ -76,6 +76,7 @@
   user-select: auto;
   -webkit-user-select: auto;
   cursor: text;
+  border-radius: 0;
 }
 
 .question-text::placeholder {

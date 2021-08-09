@@ -6,11 +6,3 @@ h2 {
 h2:first-of-type {
   margin-top: 1em;
 }
-
-.center-buttons {
-  text-align: center;
-}
-
-.center-buttons :not(:first-child) {
-  margin-left: 10px;
-}

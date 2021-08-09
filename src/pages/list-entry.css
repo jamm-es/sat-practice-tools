@@ -1,0 +1,11 @@
+.center-buttons {
+  text-align: center;
+}
+
+.center-buttons :not(:first-child) {
+  margin-left: 10px;
+}
+
+.center-buttons button {
+  margin-top: 1em;
+}

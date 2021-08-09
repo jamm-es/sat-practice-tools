@@ -5,14 +5,17 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import {Redirect} from 'react-router-dom';
+import {isMobile} from 'react-device-detect';
 
 import {default as Section} from './Section';
 import {default as QuestionInfo} from './QuestionInfo';
 import {default as ScoreSummary} from './ScoreSummary';
 
+import testTags from '../data/test-tags.json';
+import testUrls from '../data/test-urls.json';
+
 import './grade.css';
 import './footer.css';
-import testTags from '../data/test-tags.json';
 
 export default class Grade extends React.Component {
 
@@ -53,17 +56,19 @@ export default class Grade extends React.Component {
   async componentDidMount() {
     const questionsPath = require(`../data/tests/${this.props.test}.csv`).default;
     const questions = await csv(questionsPath);
-    const state = {};
-    state.allQuestions = questions;
-    state.sections = questions.map(d => d.section.toLowerCase().replaceAll(/[^a-z_]/g, '')).filter((value, index, self) => self.indexOf(value) === index);
-    state.sections.forEach(section => {
-      const numQuestions = questions.filter(d => d.section === section).length;
-      state[`${section}_user_answers`] = new Array(numQuestions).fill('');
-      state[`${section}_questions`] = questions.filter(d => d.section === section);
-      state[`${section}_graded`] = new Array(numQuestions).fill(false);
-      state[`${section}_correct`] = new Array(numQuestions).fill(false);
+    this.setState(prevState => {
+      const state = {};
+      state.allQuestions = questions;
+      state.sections = questions.map(d => d.section.toLowerCase().replaceAll(/[^a-z_]/g, '')).filter((value, index, self) => self.indexOf(value) === index);
+      state.sections.forEach(section => {
+        const numQuestions = questions.filter(d => d.section === section).length;
+        state[`${section}_user_answers`] = new Array(numQuestions).fill('');
+        state[`${section}_questions`] = questions.filter(d => d.section === section);
+        state[`${section}_graded`] = new Array(numQuestions).fill(false);
+        state[`${section}_correct`] = new Array(numQuestions).fill(false);
+      });
+      return state;
     });
-    this.setState(state);
 
     if(!testTags[this.props.test].hasWeights) {
       const weightsPath = require(`../data/weights/estimated.csv`).default;
@@ -93,20 +98,34 @@ export default class Grade extends React.Component {
   }
 
   changeAnswers(section, questionNum, answer) {
-    const state = {};
-    state[`${section}_user_answers`] = [...this.state[`${section}_user_answers`]];
-    if(this.state[`${section}_user_answers`][questionNum-1] === answer) {
-      state[`${section}_user_answers`][questionNum-1] = '';
-      state[`${section}_num_answered`] = this.state[`${section}_num_answered`] - 1;
-    }
-    else {
-      if(this.state[`${section}_user_answers`][questionNum-1] === '') {
-        state[`${section}_num_answered`] = this.state[`${section}_num_answered`] + 1;
+    this.setState(prevState => {
+      const state = {};
+      state[`${section}_user_answers`] = [...prevState[`${section}_user_answers`]];
+      if(prevState[`${section}_user_answers`][questionNum-1] === answer) {
+        state[`${section}_user_answers`][questionNum-1] = '';
+        state[`${section}_num_answered`] = prevState[`${section}_num_answered`] - 1;
       }
-      state[`${section}_user_answers`][questionNum-1] = answer;
-    }
-    state['rerenderSection'] = section;
-    this.setState(state);
+      else {
+        if(prevState[`${section}_user_answers`][questionNum-1] === '') {
+          state[`${section}_num_answered`] = prevState[`${section}_num_answered`] + 1;
+        }
+        state[`${section}_user_answers`][questionNum-1] = answer;
+      }
+      state['rerenderSection'] = section;
+      state[`${section}_user_answers`] = [...prevState[`${section}_user_answers`]];
+      if(prevState[`${section}_user_answers`][questionNum-1] === answer) {
+        state[`${section}_user_answers`][questionNum-1] = '';
+        state[`${section}_num_answered`] = prevState[`${section}_num_answered`] - 1;
+      }
+      else {
+        if(prevState[`${section}_user_answers`][questionNum-1] === '') {
+          state[`${section}_num_answered`] = prevState[`${section}_num_answered`] + 1;
+        }
+        state[`${section}_user_answers`][questionNum-1] = answer;
+      }
+      state['rerenderSection'] = section;
+      return state;
+    });
   }
 
   gradeQuestion(userAnswer, answer, type) {
@@ -157,15 +176,15 @@ export default class Grade extends React.Component {
       });
     }
     else {
-      const state = {};
-      const isCorrect = this.gradeQuestion(this.state[`${section}_user_answers`][i], this.state[`${section}_questions`][i].answer, this.state[`${section}_questions`][i].type);
-      state[`${section}_graded`] = [...this.state[`${section}_graded`]];
-      state[`${section}_user_answers`] = [...this.state[`${section}_user_answers`]];
-      state[`${section}_correct`] = [...this.state[`${section}_correct`]];
-      state[`${section}_graded`][i] = true;
-      state[`${section}_user_answers`][i] = this.state[`${section}_user_answers`][i] === '' ? '~' : this.state[`${section}_user_answers`][i];
-      state[`${section}_correct`][i] = isCorrect;
       this.setState(prevState => {
+        const state = {};
+        const isCorrect = this.gradeQuestion(prevState[`${section}_user_answers`][i], prevState[`${section}_questions`][i].answer, prevState[`${section}_questions`][i].type);
+        state[`${section}_graded`] = [...prevState[`${section}_graded`]];
+        state[`${section}_user_answers`] = [...prevState[`${section}_user_answers`]];
+        state[`${section}_correct`] = [...prevState[`${section}_correct`]];
+        state[`${section}_graded`][i] = true;
+        state[`${section}_user_answers`][i] = prevState[`${section}_user_answers`][i] === '' ? '~' : prevState[`${section}_user_answers`][i];
+        state[`${section}_correct`][i] = isCorrect;
         state[`${section}_num_correct`] = prevState[`${section}_num_correct`] + (isCorrect ? 1 : 0); 
         return state
       });
@@ -180,19 +199,21 @@ export default class Grade extends React.Component {
       });
     }
     else {
-      const numQuestions = this.state[`${section}_questions`].length;
-      const state = {};
-      state[`${section}_graded`] = new Array(numQuestions).fill(true);
-      state[`${section}_user_answers`] = this.state[`${section}_user_answers`].map(d => d === '' ? '~' : d);
-      state[`${section}_correct`] = new Array(numQuestions);
-      state[`${section}_num_correct`] = 0;
-      state[`${section}_num_answered`] = state[`${section}_user_answers`].filter(d => d !== '~').length;
-      for(let i = 0; i < numQuestions; ++i) {
-        const isCorrect = this.gradeQuestion(this.state[`${section}_user_answers`][i], this.state[`${section}_questions`][i].answer, this.state[`${section}_questions`][i].type);
-        state[`${section}_correct`][i] = isCorrect;
-        if(isCorrect) ++state[`${section}_num_correct`];
-      }
-      this.setState(prevState => ({ ...state, pressedGradeButtonIndex: prevState.pressedGradeButtonIndex+1}));
+      this.setState(prevState => {
+        const numQuestions = prevState[`${section}_questions`].length;
+        const state = {};
+        state[`${section}_graded`] = new Array(numQuestions).fill(true);
+        state[`${section}_user_answers`] = prevState[`${section}_user_answers`].map(d => d === '' ? '~' : d);
+        state[`${section}_correct`] = new Array(numQuestions);
+        state[`${section}_num_correct`] = 0;
+        state[`${section}_num_answered`] = state[`${section}_user_answers`].filter(d => d !== '~').length;
+        for(let i = 0; i < numQuestions; ++i) {
+          const isCorrect = this.gradeQuestion(prevState[`${section}_user_answers`][i], prevState[`${section}_questions`][i].answer, prevState[`${section}_questions`][i].type);
+          state[`${section}_correct`][i] = isCorrect;
+          if(isCorrect) ++state[`${section}_num_correct`];
+        }
+        return ({ ...state, pressedGradeButtonIndex: prevState.pressedGradeButtonIndex+1})
+      });
     }
   }
 
@@ -207,22 +228,24 @@ export default class Grade extends React.Component {
       });
     }
     else {
-      const state = {};
-      state.graded = true;
-      this.state.sections.forEach(section => {
-        const numQuestions = this.state[`${section}_questions`].length;
-        state[`${section}_graded`] = new Array(numQuestions).fill(true);
-        state[`${section}_user_answers`] = this.state[`${section}_user_answers`].map(d => d === '' ? '~' : d);
-        state[`${section}_correct`] = new Array(numQuestions);
-        state[`${section}_num_correct`] = 0;
-        state[`${section}_num_answered`] = state[`${section}_user_answers`].filter(d => d !== '~').length;
-        for(let i = 0; i < numQuestions; ++i) {
-          const isCorrect = this.gradeQuestion(this.state[`${section}_user_answers`][i], this.state[`${section}_questions`][i].answer, this.state[`${section}_questions`][i].type);
-          state[`${section}_correct`][i] = isCorrect;
-          if(isCorrect) ++state[`${section}_num_correct`];
-        }
+      this.setState(prevState => {
+        const state = {};
+        state.graded = true;
+        this.state.sections.forEach(section => {
+          const numQuestions = prevState[`${section}_questions`].length;
+          state[`${section}_graded`] = new Array(numQuestions).fill(true);
+          state[`${section}_user_answers`] = prevState[`${section}_user_answers`].map(d => d === '' ? '~' : d);
+          state[`${section}_correct`] = new Array(numQuestions);
+          state[`${section}_num_correct`] = 0;
+          state[`${section}_num_answered`] = state[`${section}_user_answers`].filter(d => d !== '~').length;
+          for(let i = 0; i < numQuestions; ++i) {
+            const isCorrect = this.gradeQuestion(prevState[`${section}_user_answers`][i], prevState[`${section}_questions`][i].answer, prevState[`${section}_questions`][i].type);
+            state[`${section}_correct`][i] = isCorrect;
+            if(isCorrect) ++state[`${section}_num_correct`];
+          }
+        });
+        return ({ ...state, pressedGradeButtonIndex: prevState.pressedGradeButtonIndex+1})
       });
-      this.setState(prevState => ({ ...state, pressedGradeButtonIndex: prevState.pressedGradeButtonIndex+1}));
     }
   }
 
@@ -304,10 +327,18 @@ export default class Grade extends React.Component {
         windowWidth={this.props.windowWidth}
         test={this.props.test}
       />
-      <Alert variant='main' style={{margin: this.props.testViewMode ? '20px' : '0 0 40px 0'}}>
+      <Alert variant='main' style={{margin: this.props.testViewMode ? '20px' : isMobile ? '0 0 1em 0' : '0 0 40px 0'}}>
         <p>Type in the question input or click on the bubbles to input your answers.</p>
         <p>Type 1, 2, 3, 4 to quickly enter A, B, C, D into the question text input.</p>
       </Alert>
+      {isMobile && <Alert variant='main' style={{marginBottom: '40px'}}>
+        <p>On mobile, use one the following links to access the test:</p>
+        {testUrls[this.props.test].map((url, i) => {
+          let hostname = new URL(url).hostname;
+          if(hostname.length > 20) hostname = hostname.substr(hostname.indexOf('.')+1);
+          return <p><a target='_blank' href={url}>Link {i+1} {i === 0 && '(preferred) '}({hostname})</a></p>
+        })}
+      </Alert>}
       {this.state.sections.map(section => 
         <Section 
           key={section}

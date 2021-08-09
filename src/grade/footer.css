@@ -32,6 +32,10 @@
   line-height: 1em;
 }
 
+.grade-footer-score > :first-child {
+  margin-bottom: 5px; 
+}
+
 .grade-footer-score-numbers-wrapper {
   display: inline-flex;
   align-items: center;

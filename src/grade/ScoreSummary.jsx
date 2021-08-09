@@ -143,7 +143,7 @@ export default class ScoreSummary extends React.Component {
         <div className='score-summary-tab-title'>Score Summary</div>
         <div className='score-summary-tab-right'></div>
       </div>
-      <div className={'score-summary-scroll-wrapper'}>
+      <div className={'score-summary-scroll-wrapper'} style={{maxHeight: this.props.isFloating ? 'calc(70vh - 45px)' : ''}}>
         <div className={`score-summary-body ${this.state.isCollapsed ? 'd-none' : ''}`}>
           <div className='score-summary-overall'>
             <div className='grade-footer-score'>

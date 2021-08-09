@@ -86,3 +86,11 @@
   text-align: center;
   cursor: pointer;
 }
+
+@media (max-width: 400px) {
+
+  .section {
+    padding: 20px 20px 0 20px;
+  }
+
+}

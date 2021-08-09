@@ -4,6 +4,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
 import Helmet from 'react-helmet';
+import {isMobile} from 'react-device-detect';
 
 import {Grade} from '../grade';
 import {default as PDFViewer} from './PDFViewer';
@@ -118,6 +119,18 @@ export default class TestView extends React.Component {
   }
 
   render() {    
+    if(isMobile && this.props.isTestMode) {
+      return <div className='test-view-mobile-error'>
+        <p>We are unable to embed the test directly on mobile.</p>
+        <p>Instead, use the following link to grade your test, with external links to the test available.</p>
+        <Link to={`/${this.props.test}/grade`}>
+          <Button variant='main' onClick={() => this.setState(prevState => ({ rerenderIndex: prevState.rerenderIndex+1 }))}>
+            Enter Grading View
+          </Button>
+        </Link>
+      </div>
+    }
+
     const testTitle = this.toTitleCase(this.props.test.replaceAll('-', ' '));
     return (
       <div className={`test-view-container ${!this.props.isTestMode ? 'grade-view' : ''} ${this.state.windowWidth <= 700 ? 'test-view-container-expanded' : ''}`} ref={this.testViewContainerRef}>
@@ -277,13 +290,15 @@ export default class TestView extends React.Component {
             />
           </div>
         </div>
-        <div className='test-view-change-button'>
-          <Link to={`/${this.props.test}/${this.props.isTestMode ? 'grade' : 'test'}`}>
-            <Button variant='main' onClick={() => this.setState(prevState => ({ rerenderIndex: prevState.rerenderIndex+1 }))}>
-              {this.props.isTestMode ? 'Remove Test View' : 'View Test Side-by-side'}
-            </Button>
-          </Link>
-        </div>
+        {
+          !isMobile && <div className='test-view-change-button'>
+            <Link to={`/${this.props.test}/${this.props.isTestMode ? 'grade' : 'test'}`}>
+             <Button variant='main' onClick={() => this.setState(prevState => ({ rerenderIndex: prevState.rerenderIndex+1 }))}>
+               {this.props.isTestMode ? 'Remove Test View' : 'View Test Side-by-side'}
+             </Button>
+           </Link>
+          </div>
+        }
       </div>
     )
   }

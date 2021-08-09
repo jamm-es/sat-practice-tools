@@ -60,7 +60,6 @@
 }
 
 .score-summary-scroll-wrapper {
-  max-height: calc(70vh - 45px);
   overflow-y: auto;
   pointer-events: auto;
 }
@@ -110,10 +109,6 @@
 
 .score-summary-body .grade-footer-score:not(:first-child) {
   margin-top: 15px;
-}
-
-.score-summary-body .grade-footer-score > :first-child {
-  margin-bottom: 5px;
 }
 
 .score-summary-perfect .grade-footer-score-main, .score-summary-perfect .fas {

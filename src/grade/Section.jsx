@@ -110,7 +110,6 @@ export default class Section extends React.Component {
   }
 
   render() {
-    console.log(this.props.sectionName);
     const questionTypes = this.props.questions.map(d => d.type).filter((value, index, self) => self.indexOf(value) === index);
     const isScoresUnknown = this.props.numCorrect === 0 && !this.props.graded.some(d => d);
 

@@ -7,6 +7,7 @@ import pastTests from '../data/past-tests.json';
 import testUrls from '../data/test-urls.json';
 
 import './generic_page.css';
+import './list-entry.css';
 
 export default class ListEntry extends React.Component {
 
