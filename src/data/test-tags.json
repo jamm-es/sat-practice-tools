@@ -69,6 +69,11 @@
     "hasExplanations": false,
     "hasTags": true
   },
+  "may-2018": {
+    "hasWeights": true,
+    "hasExplanations": false,
+    "hasTags": true
+  },
   "march-2019": {
     "hasWeights": true,
     "hasExplanations": false,
