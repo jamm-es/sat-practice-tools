@@ -98,20 +98,9 @@ export default class Grade extends React.Component {
   }
 
   changeAnswers(section, questionNum, answer) {
+    if(this.state[`${section}_user_answers`][questionNum-1] === answer) return;
     this.setState(prevState => {
       const state = {};
-      state[`${section}_user_answers`] = [...prevState[`${section}_user_answers`]];
-      if(prevState[`${section}_user_answers`][questionNum-1] === answer) {
-        state[`${section}_user_answers`][questionNum-1] = '';
-        state[`${section}_num_answered`] = prevState[`${section}_num_answered`] - 1;
-      }
-      else {
-        if(prevState[`${section}_user_answers`][questionNum-1] === '') {
-          state[`${section}_num_answered`] = prevState[`${section}_num_answered`] + 1;
-        }
-        state[`${section}_user_answers`][questionNum-1] = answer;
-      }
-      state['rerenderSection'] = section;
       state[`${section}_user_answers`] = [...prevState[`${section}_user_answers`]];
       if(prevState[`${section}_user_answers`][questionNum-1] === answer) {
         state[`${section}_user_answers`][questionNum-1] = '';

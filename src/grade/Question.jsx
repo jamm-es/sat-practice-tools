@@ -59,6 +59,21 @@ export default class Question extends React.Component {
     let processedOutput = e.target.value
       .replace(/[^0-9/\.]/g, '');
 
+    let dotHasOccurred = false;
+    let slashHasOccurred  = false;
+    // A is marker for later removal
+    for(let i = 0; i < processedOutput.length; ++i) {
+      if(processedOutput[i] === '.') {
+        if(dotHasOccurred) processedOutput = processedOutput.slice(0, i) + processedOutput.slice(i+1, processedOutput.length);
+        dotHasOccurred = true;
+      }
+
+      if(processedOutput[i] === '/') {
+        if(slashHasOccurred) processedOutput = processedOutput.slice(0, i) + processedOutput.slice(i+1, processedOutput.length);
+        slashHasOccurred = true;
+      }    
+    }
+
     if(processedOutput.length === 4 && this.props.nextRef !== null) {
       this.props.nextRef.current.focus();
     }
