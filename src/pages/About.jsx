@@ -18,6 +18,8 @@ export default class About extends React.Component {
         hypothetical weighted final score, along with a host of other convenient features.
       </p>
       <p>If you want to get in contact with us, simply email us here: <a href='mailto:SATPracticeTools@gmail.com'>SATPracticeTools@gmail.com</a></p>
+      <p>If you want to check out other websites we made, check out <a href='https://wordlestat.com'>WordleStat.com</a>, where you can view
+        collated statistics and win rates for each day's Wordle game, based on results publicly posted on Twitter.</p>
       <Alert variant='danger' style={{marginTop: 20}}>
         <Alert.Heading>Disclaimers</Alert.Heading>
         <p>SATPractice.tools is in no way affiliated with the SATs or the College Board.</p>
