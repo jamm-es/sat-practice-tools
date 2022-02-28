@@ -22,7 +22,7 @@ export default class TestView extends React.Component {
 
     this.embeddableHostnames = [
       'docdroid.net',
-      'web.archive.org',
+      //'web.archive.org',
       'maine.gov',
       'drive.google.com'
     ];
