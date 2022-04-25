@@ -6,6 +6,7 @@ import practiceTests from '../data/practice-tests.json';
 import pastTests from '../data/past-tests.json';
 
 import './home.css';
+import { Alert } from 'react-bootstrap';
 
 export default class Home extends React.Component {
 
@@ -13,7 +14,8 @@ export default class Home extends React.Component {
     super(props);
 
     this.state = {
-      windowWidth: 0
+      windowWidth: 0,
+      showPopup: true
     }
   }
 
@@ -80,15 +82,17 @@ export default class Home extends React.Component {
   }
 
   render() {
-
-    const questionArray = [];
-    const correctArray = [];
-
     return (
       <div className='home'>
         <Helmet>
           <title>Home</title>
         </Helmet>
+        <Alert variant='info' dismissible show={this.state.showPopup} onClose={() => this.setState({ showPopup: false })}>
+          <Alert.Heading>
+            Email inbox full of college spam?
+          </Alert.Heading>
+          Use <Alert.Link href='https://collegespamguard.com'>College Spam Guard</Alert.Link> to instantly clean your email account of unwanted college spam!
+        </Alert>
         <h2>Take an SAT practice test completely online:</h2>
         {this.generateQuestionGrid('test')}
         <h2>Or, grade a test you've already completed:</h2>
