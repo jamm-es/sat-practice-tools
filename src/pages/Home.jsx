@@ -87,12 +87,14 @@ export default class Home extends React.Component {
         <Helmet>
           <title>Home</title>
         </Helmet>
+        {/*
         <Alert variant='info' dismissible show={this.state.showPopup} onClose={() => this.setState({ showPopup: false })}>
           <Alert.Heading>
             Email inbox full of college spam?
           </Alert.Heading>
           Use <Alert.Link href='https://collegespamguard.com'>College Spam Guard</Alert.Link> to instantly clean your email account of unwanted college spam!
         </Alert>
+        */}
         <h2>Take an SAT practice test completely online:</h2>
         {this.generateQuestionGrid('test')}
         <h2>Or, grade a test you've already completed:</h2>
